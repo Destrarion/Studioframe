@@ -68,7 +68,7 @@ struct LocalLibraryListView: View {
     ]
     
     init() {
-        UITableView.appearance().backgroundColor = .white
+        UITableView.appearance().backgroundColor = .black
         
     }
     
