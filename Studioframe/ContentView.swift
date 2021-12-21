@@ -69,32 +69,69 @@ struct LocalLibraryListView: View {
     
     init() {
         UITableView.appearance().backgroundColor = .black
-        
+      
+        UITableView.appearance().contentInset.top = -45
     }
     
+    
+    
+    
     var body: some View {
-        List(items, id: \.self) { item in
-            HStack{
-                Image("Image_Not_Available")
-                    .resizable()
-                    .scaledToFit()
-                Spacer()
-                VStack {
-                    Text(item)
-                        .foregroundColor(.white)
-                        .frame(width: 175, alignment: .topLeading)
-                        .font(.body.bold())
-                    Spacer()
+        
+        List {
+//            Section {
+                
+                ForEach(items, id: \.self) { item in
+                    HStack{
+                        Image("Image_Not_Available")
+                            .resizable()
+                            .scaledToFit()
+                        Spacer()
+                        VStack {
+                            Text(item)
+                                .foregroundColor(.white)
+                                .frame(width: 175, alignment: .topLeading)
+                                .font(.body.bold())
+
+                            Spacer()
+                        }
+                    }
+                    .padding(.top, 10)
                 }
-            }
+
+                
+                
+//            } header: {
+//               Text("Local Objects")
+//            }
+            
+//            Section {
+//
+//            } header: {
+//                Text("Online objects")
+//            }
+
             
             .listRowSeparator(.visible)
             .listRowSeparatorTint(.white)
             .listRowBackground(Color.clear)
+            .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 10))
+            
         }
         .padding(.leading, -50)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Mon titre")
+        .navigationTitle("Local Library")
+//        .toolbar {
+//            Button {
+//
+//            } label: {
+//                Text("+")
+//                    .foregroundColor(.white)
+//            }
+//
+//        }
+        
+  
         
     }
 }
@@ -139,8 +176,10 @@ struct ARItemsMenu : View {
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
+            NavigationView {
             LocalLibraryListView()
                 .previewInterfaceOrientation(.portrait)
+            }
         }
     }
 }
@@ -151,8 +190,10 @@ extension UINavigationController {
     open override func viewDidLoad() {
         let standardAppearance = UINavigationBarAppearance()
         standardAppearance.configureWithTransparentBackground()
-        standardAppearance.backgroundColor = .clear
-        
+        standardAppearance.backgroundColor = .black
+        standardAppearance.titleTextAttributes = [
+            .foregroundColor : UIColor.white
+        ]
         
         navigationBar.standardAppearance = standardAppearance
         
