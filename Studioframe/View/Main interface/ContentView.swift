@@ -72,7 +72,6 @@ struct ARViewContainer: UIViewRepresentable {
 
 struct ARItemsMenu : View {
     
-    let width : CGFloat
     let menuOpened : Bool
     
     

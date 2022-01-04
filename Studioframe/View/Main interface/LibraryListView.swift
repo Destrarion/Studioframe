@@ -21,31 +21,30 @@ struct LocalLibraryListView: View {
         UINavigationBar.appearance().tintColor = .white
     }
     
-    
-    
-    
     var body: some View {
         
         List {
-                
-                ForEach(items, id: \.self) { item in
-                    HStack{
-                        Image("Image_Not_Available")
-                            .resizable()
-                            .scaledToFit()
+            
+            ForEach(items, id: \.self) { item in
+                HStack{
+                    Image("Image_Not_Available")
+                        .resizable()
+                        .scaledToFit()
+                    Spacer()
+                    VStack {
+                        Text(item)
+                            .foregroundColor(.white)
+                            .frame(width: 175, alignment: .topLeading)
+                            .font(.body.bold())
+                        
                         Spacer()
-                        VStack {
-                            Text(item)
-                                .foregroundColor(.white)
-                                .frame(width: 175, alignment: .topLeading)
-                                .font(.body.bold())
-
-                            Spacer()
-                        }
+                        FileDownloadedView()
                     }
-                    .padding(.top, 10)
+                    
                 }
-
+                .padding(.top, 10)
+            }
+            
             
             .listRowSeparator(.visible)
             .listRowSeparatorTint(.white)
@@ -61,13 +60,16 @@ struct LocalLibraryListView: View {
 }
 
 
+
+
+
 #if DEBUG
 struct LibraryListView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-            LocalLibraryListView()
-                .previewInterfaceOrientation(.portrait)
+                LocalLibraryListView()
+                    .previewInterfaceOrientation(.portrait)
             }
         }
     }
@@ -75,19 +77,4 @@ struct LibraryListView_Previews : PreviewProvider {
 #endif
 
 
-extension UINavigationController {
-    open override func viewDidLoad() {
-        let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.configureWithTransparentBackground()
-        standardAppearance.backgroundColor = .black
-       standardAppearance.titleTextAttributes = [
-           .foregroundColor : UIColor.white
-       ]
-        
-        
-        navigationBar.standardAppearance = standardAppearance
-        
-        
-        
-    }
-}
+
