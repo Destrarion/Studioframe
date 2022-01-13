@@ -15,6 +15,8 @@
 		5F1E5F4B2755992F00AD6B62 /* StudioframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F4A2755992F00AD6B62 /* StudioframeTests.swift */; };
 		5F1E5F552755992F00AD6B62 /* StudioframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */; };
 		5F1E5F572755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */; };
+		5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */; };
+		5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8574702786E791004503B1 /* StudioFrameExperience.swift */; };
 		5F94D50A275E71BF00941292 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5F94D509275E71BE00941292 /* AirForce.usdz */; };
 		5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB358082772076A00CA03CF /* LibraryListView.swift */; };
 		5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */; };
@@ -57,6 +59,8 @@
 		5F1E5F502755992F00AD6B62 /* StudioframeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudioframeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITests.swift; sourceTree = "<group>"; };
 		5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectFileManager.swift; sourceTree = "<group>"; };
+		5F8574702786E791004503B1 /* StudioFrameExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameExperience.swift; sourceTree = "<group>"; };
 		5F94D509275E71BE00941292 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		5FB358082772076A00CA03CF /* LibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListView.swift; sourceTree = "<group>"; };
 		5FB3581027745E5300CA03CF /* CoredataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -154,6 +158,14 @@
 			path = StudioframeUITests;
 			sourceTree = "<group>";
 		};
+		5F85746D2786E0AC004503B1 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
 		5F94D508275E71A700941292 /* Usdz files */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +177,7 @@
 		5FB3580B27745C2600CA03CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5F8574702786E791004503B1 /* StudioFrameExperience.swift */,
 				5FB358842774702800CA03CF /* InitialSetup */,
 				5FB3587927746E8C00CA03CF /* Main interface */,
 			);
@@ -174,6 +187,7 @@
 		5FB3580C27745C2F00CA03CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F85746D2786E0AC004503B1 /* FileManager */,
 				5FB3580E27745E2300CA03CF /* Network  */,
 				5FB3580D27745E1B00CA03CF /* CoreData */,
 			);
@@ -361,8 +375,10 @@
 				5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */,
 				5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */,
 				5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */,
+				5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */,
 				5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */,
 				5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */,
+				5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */,
 				5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */,
 				5FB3586F2774697000CA03CF /* CoreDataContextProvider.swift in Sources */,
 				5F1E5F3A2755992D00AD6B62 /* ContentView.swift in Sources */,

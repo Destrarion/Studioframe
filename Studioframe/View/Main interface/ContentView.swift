@@ -12,6 +12,10 @@ struct ContentView: View {
     
     @State private var isItemsMenuOpen : Bool = false
     
+    @State private var studioFrameExperience = StudioFrameExperience()
+    
+
+    
     
     var body: some View {
         
@@ -21,11 +25,14 @@ struct ContentView: View {
             ZStack {
                 
                 
-                ARViewContainer().edgesIgnoringSafeArea(.all)
+                ARViewContainer(experience: studioFrameExperience)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     Spacer()
                     HStack {
-                        
+                        Button("Test Add") {
+                            studioFrameExperience.addUsdzObject(usdzResourceName: "AirForce")
+                        }
                         
                         NavigationLink {
                             LocalLibraryListView()
@@ -52,15 +59,25 @@ struct ContentView: View {
 
 struct ARViewContainer: UIViewRepresentable {
     
+    init(experience: StudioFrameExperience) {
+        self.experience = experience
+    }
+    
+
+    var experience: StudioFrameExperience?
+    
+    
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
         
+        
         // Load the "Box" scene from the "Experience" Reality File
-        let boxAnchor = try! Experience.loadBox()
+        
+        let scene = try! experience!.loadExperience()
         
         // Add the box anchor to the scene
-        arView.scene.anchors.append(boxAnchor)
+        arView.scene.anchors.append(scene)
         
         return arView
         
