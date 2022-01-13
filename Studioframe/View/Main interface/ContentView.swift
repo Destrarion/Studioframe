@@ -39,7 +39,6 @@ struct ContentView: View {
                         .rotationEffect(isItemsMenuOpen ? .degrees(90) : .degrees(0))
                         .animation(.easeIn(duration: 0.5), value: isItemsMenuOpen)
                         
-                        
                         Spacer()
                     }
                 }
@@ -47,54 +46,6 @@ struct ContentView: View {
             
         }
         
-        
-    }
-}
-
-
-
-struct LocalLibraryListView: View {
-    
-    let items: [String] = [
-        "Black wooden Chair",
-        "Stool",
-        "Slate",
-        "Black wooden Chaird",
-        "Stoolf",
-        "Slate",
-        "Black wooden Chairg",
-        "Stoolh",
-        "Slatea"
-    ]
-    
-    init() {
-        UITableView.appearance().backgroundColor = .white
-        
-    }
-    
-    var body: some View {
-        List(items, id: \.self) { item in
-            HStack{
-                Image("Image_Not_Available")
-                    .resizable()
-                    .scaledToFit()
-                Spacer()
-                VStack {
-                    Text(item)
-                        .foregroundColor(.white)
-                        .frame(width: 175, alignment: .topLeading)
-                        .font(.body.bold())
-                    Spacer()
-                }
-            }
-            
-            .listRowSeparator(.visible)
-            .listRowSeparatorTint(.white)
-            .listRowBackground(Color.clear)
-        }
-        .padding(.leading, -50)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Mon titre")
         
     }
 }
@@ -121,7 +72,6 @@ struct ARViewContainer: UIViewRepresentable {
 
 struct ARItemsMenu : View {
     
-    let width : CGFloat
     let menuOpened : Bool
     
     
@@ -139,24 +89,13 @@ struct ARItemsMenu : View {
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            LocalLibraryListView()
+            NavigationView {
+            ContentView()
                 .previewInterfaceOrientation(.portrait)
+            }
         }
     }
 }
 #endif
 
 
-extension UINavigationController {
-    open override func viewDidLoad() {
-        let standardAppearance = UINavigationBarAppearance()
-        standardAppearance.configureWithTransparentBackground()
-        standardAppearance.backgroundColor = .clear
-        
-        
-        navigationBar.standardAppearance = standardAppearance
-        
-        
-        
-    }
-}
