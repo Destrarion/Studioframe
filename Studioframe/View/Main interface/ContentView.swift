@@ -70,6 +70,7 @@ struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
+        experience?.arView = arView
         
         
         // Load the "Box" scene from the "Experience" Reality File

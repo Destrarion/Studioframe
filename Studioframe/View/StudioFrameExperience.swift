@@ -9,12 +9,14 @@ import Foundation
 import RealityKit
 import simd
 import Combine
+import SwiftUI
 
 @available(iOS 13.0, macOS 10.15, *)
 class StudioFrameExperience {
 
     private static var streams = [AnyCancellable]()
     
+    var arView: ARView!
     var scene: StudioFrameScene?
 
     /// Load the object into the Experience file into the scene "Main scene"
@@ -32,11 +34,39 @@ class StudioFrameExperience {
     
     func addUsdzObject(usdzResourceName: String) {
         let usdzUrl = Bundle.main.url(forResource: usdzResourceName, withExtension: ".usdz")!
-        let entity = try! Entity.load(contentsOf: usdzUrl)
-        entity.generateCollisionShapes(recursive: true)
+
+        ModelEntity.loadModelAsync(contentsOf: usdzUrl)
+            .receive(on: RunLoop.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let failure):
+                    return
+                case .finished:
+                    return
+                }
+            } receiveValue: { [weak self] loadedModelEntity in
+                loadedModelEntity.generateCollisionShapes(recursive: true)
+                self?.arView.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
+                self?.scene?.addChild(loadedModelEntity)
+            }
+            .store(in: &subscriptions)
+
         
-        scene?.addChild(entity)
-        print("it is named 📑:", scene?.children.first)
+        
+  
+        
+        
+        
+       
+        //print("it is named 📑:", scene?.children.first)
+    }
+    
+    
+    private var subscriptions: Set<AnyCancellable> = []
+    
+    
+    func getEntityWith(name: String) -> Entity? {
+        scene?.findEntity(named: name)
     }
 
 
