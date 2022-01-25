@@ -12,19 +12,11 @@ struct ContentView: View {
     
     @State private var isItemsMenuOpen : Bool = false
     
-    @State private var studioFrameExperience = StudioFrameExperience()
-    
+    @StateObject private var studioFrameExperience = StudioFrameExperience()
 
-    
-    
     var body: some View {
-        
-        
         NavigationView{
-            
             ZStack {
-                
-                
                 ARViewContainer(experience: studioFrameExperience)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
@@ -33,6 +25,11 @@ struct ContentView: View {
                         Button("Test Add") {
                             studioFrameExperience.addUsdzObject(usdzResourceName: "AirForce")
                         }
+                        
+                        Button("Remove") {
+                            studioFrameExperience.removeSelectedEntity()
+                        }
+                        
                         
                         NavigationLink {
                             LocalLibraryListView()
@@ -50,10 +47,7 @@ struct ContentView: View {
                     }
                 }
             }
-            
         }
-        
-        
     }
 }
 
@@ -63,18 +57,19 @@ struct ARViewContainer: UIViewRepresentable {
         self.experience = experience
     }
     
-
     var experience: StudioFrameExperience?
-    
     
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
         experience?.arView = arView
         
+        // Must have LiDAR avaible
+        ///https://developer.apple.com/videos/play/wwdc2020/10612/
+        arView.environment.sceneUnderstanding.options.insert(.occlusion)
+        arView.environment.sceneUnderstanding.options.insert(.receivesLighting)
         
         // Load the "Box" scene from the "Experience" Reality File
-        
         let scene = try! experience!.loadExperience()
         
         // Add the box anchor to the scene
@@ -88,32 +83,17 @@ struct ARViewContainer: UIViewRepresentable {
     
 }
 
-struct ARItemsMenu : View {
-    
-    let menuOpened : Bool
-    
-    
-    var body: some View {
-        HStack{
-            
-        }
-        
-    }
-    
-    
-}
-
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        Group {
-            NavigationView {
-            ContentView()
-                .previewInterfaceOrientation(.portrait)
-            }
-        }
-    }
-}
-#endif
+//#if DEBUG
+//struct ContentView_Previews : PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            NavigationView {
+//            ContentView()
+//                .previewInterfaceOrientation(.portrait)
+//            }
+//        }
+//    }
+//}
+//#endif
 
 
