@@ -11,6 +11,7 @@ import RealityKit
 struct ContentView: View {
     
     @State private var isItemsMenuOpen : Bool = false
+    @State var textConsolePrint : String = ""
     
     @StateObject private var studioFrameExperience = StudioFrameExperience()
 
@@ -24,12 +25,14 @@ struct ContentView: View {
                     HStack {
                         Button("Test Add") {
                             studioFrameExperience.addUsdzObject(usdzResourceName: "AirForce")
+                            textConsolePrint = studioFrameExperience.textConsolePrint
                         }
                         
                         Button("Remove") {
                             studioFrameExperience.removeSelectedEntity()
+                            textConsolePrint = studioFrameExperience.textConsolePrint
                         }
-                        
+                        Text(textConsolePrint)
                         
                         NavigationLink {
                             LocalLibraryListView()
@@ -46,6 +49,8 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
+            }.onTapGesture {
+                textConsolePrint = studioFrameExperience.textConsolePrint
             }
         }
     }

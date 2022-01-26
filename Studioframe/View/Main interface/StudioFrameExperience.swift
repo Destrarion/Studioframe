@@ -13,7 +13,9 @@ import SwiftUI
 
 @available(iOS 13.0, macOS 10.15, *)
 class StudioFrameExperience: ObservableObject {
-
+    
+    var textConsolePrint = ""
+    
     private static var streams = [AnyCancellable]()
     
     var arView: ARView!
@@ -21,6 +23,7 @@ class StudioFrameExperience: ObservableObject {
     var selectedEntity: Entity? {
         didSet {
             if selectedEntity == nil {
+                textConsolePrint = "SET TO NIL ENTITY"
                 print("SET TO NIL ENTITY")
                 print()
             }
@@ -43,6 +46,7 @@ class StudioFrameExperience: ObservableObject {
     
     func removeSelectedEntity() {
         guard let selectedEntity = selectedEntity else {
+            textConsolePrint = "Selected entity is nil "
             print("Selected entity is nil ")
             print()
             return
@@ -71,6 +75,7 @@ class StudioFrameExperience: ObservableObject {
             
                 self?.arView.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
                 self?.scene?.addChild(loadedModelEntity)
+                self?.textConsolePrint = "\(loadedModelEntity.name) created"
             }
             .store(in: &subscriptions)
             
@@ -92,14 +97,14 @@ class StudioFrameExperience: ObservableObject {
         return airForceScene
     }
     
-    
-    
-    
+    #warning("Multiple confict between touch, including TapGesture but moving the screen result to a drag non recognized. Or that the touch is not selecting")
+    // SOLUTIONS : - https://www.hackingwithswift.com/books/ios-swiftui/how-to-use-gestures-in-swiftui
     private func enablePlacement() {
         let longGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handletap(recognizer:)))
         arView.addGestureRecognizer(longGestureRecognizer)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handletap(panRecognizer:)))
         arView.addGestureRecognizer(panGestureRecognizer)
+        
     }
     
     @objc func handletap(recognizer: UITapGestureRecognizer) {
@@ -107,6 +112,7 @@ class StudioFrameExperience: ObservableObject {
         
         if let entity = arView.entity(at: location) {
             selectedEntity = entity
+            textConsolePrint = "\(entity.name) selected"
         }
         
         
