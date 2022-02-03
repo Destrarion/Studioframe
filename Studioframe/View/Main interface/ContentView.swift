@@ -11,7 +11,6 @@ import RealityKit
 struct ContentView: View {
     
     @State private var isItemsMenuOpen : Bool = false
-    @State var textConsolePrint : String = ""
     
     @StateObject private var studioFrameExperience = StudioFrameExperience()
 
@@ -25,21 +24,31 @@ struct ContentView: View {
                     HStack {
                         Button("Test Add") {
                             studioFrameExperience.addUsdzObject(usdzResourceName: "AirForce")
-                            textConsolePrint = studioFrameExperience.textConsolePrint
                         }
                         
                         Button("Remove") {
                             studioFrameExperience.removeSelectedEntity()
-                            textConsolePrint = studioFrameExperience.textConsolePrint
                         }
-                        Text(textConsolePrint)
+                        Text(studioFrameExperience.textConsolePrint)
                         
                         NavigationLink {
                             LocalLibraryListView()
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus.circle")
                                 .resizable()
                                 .frame(width: 45, height: 45, alignment: .bottomLeading)
+                        }
+                        
+                        Button {
+                            self.isItemsMenuOpen.toggle()
+                            if isItemsMenuOpen == true {
+                                ARIEntityMenu()
+                            }
+                        } label: {
+                            Image(systemName: self.isItemsMenuOpen ? "plus.circle" : "plus.circle.fill")
+                                      .resizable()
+                                      .frame(width: 45, height: 45, alignment: .bottomLeading)
+                            
                         }
                         .padding(10)
                         .cornerRadius(100)
@@ -49,11 +58,10 @@ struct ContentView: View {
                         Spacer()
                     }
                 }
-            }.onTapGesture {
-                textConsolePrint = studioFrameExperience.textConsolePrint
             }
         }
     }
+    
 }
 
 struct ARViewContainer: UIViewRepresentable {
@@ -88,17 +96,31 @@ struct ARViewContainer: UIViewRepresentable {
     
 }
 
-//#if DEBUG
-//struct ContentView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            NavigationView {
-//            ContentView()
-//                .previewInterfaceOrientation(.portrait)
-//            }
-//        }
-//    }
-//}
-//#endif
+
+struct ARIEntityMenu : View {
+
+
+    var body: some View {
+        HStack{
+            Text("A")
+            Text("B")
+            Text("C")
+        }
+
+    }
+}
+
+#if DEBUG
+struct ContentView_Previews : PreviewProvider {
+    static var previews: some View {
+        Group {
+            NavigationView {
+            ContentView()
+                .previewInterfaceOrientation(.portrait)
+            }
+        }
+    }
+}
+#endif
 
 

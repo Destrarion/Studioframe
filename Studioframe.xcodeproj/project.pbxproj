@@ -15,6 +15,9 @@
 		5F1E5F4B2755992F00AD6B62 /* StudioframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F4A2755992F00AD6B62 /* StudioframeTests.swift */; };
 		5F1E5F552755992F00AD6B62 /* StudioframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */; };
 		5F1E5F572755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */; };
+		5F4FFFE027AA081E00690A77 /* tv_retro.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDD27AA081D00690A77 /* tv_retro.usdz */; };
+		5F4FFFE127AA081E00690A77 /* hab.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDE27AA081E00690A77 /* hab.reality */; };
+		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
 		5F69F48127987F6500AF358B /* ARItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F69F48027987F6500AF358B /* ARItemMenu.swift */; };
 		5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */; };
 		5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8574702786E791004503B1 /* StudioFrameExperience.swift */; };
@@ -60,6 +63,9 @@
 		5F1E5F502755992F00AD6B62 /* StudioframeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudioframeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITests.swift; sourceTree = "<group>"; };
 		5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5F4FFFDD27AA081D00690A77 /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
+		5F4FFFDE27AA081E00690A77 /* hab.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = hab.reality; sourceTree = "<group>"; };
+		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
 		5F69F48027987F6500AF358B /* ARItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARItemMenu.swift; sourceTree = "<group>"; };
 		5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectFileManager.swift; sourceTree = "<group>"; };
 		5F8574702786E791004503B1 /* StudioFrameExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameExperience.swift; sourceTree = "<group>"; };
@@ -172,6 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				5F94D509275E71BE00941292 /* AirForce.usdz */,
+				5F4FFFDE27AA081E00690A77 /* hab.reality */,
+				5F4FFFDF27AA081E00690A77 /* LunarRover.reality */,
+				5F4FFFDD27AA081D00690A77 /* tv_retro.usdz */,
 			);
 			path = "Usdz files";
 			sourceTree = "<group>";
@@ -350,7 +359,10 @@
 			files = (
 				5F1E5F412755992F00AD6B62 /* Preview Assets.xcassets in Resources */,
 				5F1E5F3E2755992F00AD6B62 /* Assets.xcassets in Resources */,
+				5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */,
+				5F4FFFE027AA081E00690A77 /* tv_retro.usdz in Resources */,
 				5F94D50A275E71BF00941292 /* AirForce.usdz in Resources */,
+				5F4FFFE127AA081E00690A77 /* hab.reality in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
