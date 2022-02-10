@@ -7,62 +7,137 @@
 
 import SwiftUI
 import RealityKit
+import QuickLookThumbnailing
 
 struct ContentView: View {
+    
+    
     
     @State private var isItemsMenuOpen : Bool = false
     
     @StateObject private var studioFrameExperience = StudioFrameExperience()
-
+    
     var body: some View {
         NavigationView{
-            ZStack {
+            ZStack(alignment: .trailing) {
                 ARViewContainer(experience: studioFrameExperience)
                     .edgesIgnoringSafeArea(.all)
-                VStack {
-                    Spacer()
-                    HStack {
-                        Button("Test Add") {
-                            studioFrameExperience.addUsdzObject(usdzResourceName: "AirForce")
-                        }
-                        
-                        Button("Remove") {
-                            studioFrameExperience.removeSelectedEntity()
-                        }
-                        Text(studioFrameExperience.textConsolePrint)
-                        
-                        NavigationLink {
-                            LocalLibraryListView()
-                        } label: {
-                            Image(systemName: "plus.circle")
-                                .resizable()
-                                .frame(width: 45, height: 45, alignment: .bottomLeading)
-                        }
-                        
-                        Button {
-                            self.isItemsMenuOpen.toggle()
-                            if isItemsMenuOpen == true {
-                                ARIEntityMenu()
-                            }
-                        } label: {
-                            Image(systemName: self.isItemsMenuOpen ? "plus.circle" : "plus.circle.fill")
-                                      .resizable()
-                                      .frame(width: 45, height: 45, alignment: .bottomLeading)
-                            
-                        }
-                        .padding(10)
-                        .cornerRadius(100)
-                        .rotationEffect(isItemsMenuOpen ? .degrees(90) : .degrees(0))
-                        .animation(.easeIn(duration: 0.5), value: isItemsMenuOpen)
-                        
+                    
+                    VStack {
                         Spacer()
+                        HStack{
+                        Spacer()
+                        if isItemsMenuOpen {
+                            objectLibraryView
+                                .frame(width: 80, alignment: .bottomTrailing)
+                        }
+                        }
+                        HStack {
+                            
+                            NavigationLink {
+                                LocalLibraryListView()
+                            } label: {
+                                Image(systemName: "gearshape.fill")
+                                    .resizable()
+                                    .frame(width: 45, height: 45)
+                                    .foregroundColor(.gray)
+                            }
+                            
+                            Spacer()
+                            
+                            Button("Remove") {
+                                studioFrameExperience.removeSelectedEntity()
+                            }
+                            Text(studioFrameExperience.textConsolePrint)
+                            
+                            Spacer()
+                            
+                            Button {
+                                self.isItemsMenuOpen.toggle()
+
+                            } label: {
+                                Image(systemName: self.isItemsMenuOpen ? "plus.circle" : "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 45, height: 45, alignment: .bottomLeading)
+                                
+                            }
+                            .padding(10)
+                            .cornerRadius(100)
+                            .rotationEffect(isItemsMenuOpen ? .degrees(90) : .degrees(0))
+                            .animation(.easeIn(duration: 0.5), value: isItemsMenuOpen)
+                        }
                     }
-                }
             }
+            .navigationBarHidden(true)
+        }
+    }
+    
+    
+    
+    
+    @State var usdzObjectContainers: [UsdzObjectContainer] = [
+        .init(fileName: "tv_retro", image: Image(systemName: "square.and.arrow.up")),
+        .init(fileName: "AirForce", image: Image(systemName: "circle")),
+        .init(fileName: "tv_retro", image: Image(systemName: "square.and.arrow.up")),
+        .init(fileName: "AirForce", image: Image(systemName: "circle")),
+        .init(fileName: "tv_retro", image: Image(systemName: "square.and.arrow.up")),
+        .init(fileName: "AirForce", image: Image(systemName: "circle"))
+        
+    ]
+    
+    @ObservedObject var thumbnailGenerator = ThumbnailGenerator()
+    
+    
+    @ViewBuilder
+    var objectLibraryView: some View {
+        
+        
+        List(usdzObjectContainers, id : \.id) { usdzObjectContainer in
+            
+            HStack {
+                Button {
+                    print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
+                    studioFrameExperience.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
+                    thumbnailGenerator.generateThumbnail(for: usdzObjectContainer.fileName, size: CGSize(width: 400, height: 400))
+                    
+                } label: {
+                    imageButton()
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50)
+                        .cornerRadius(100)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                
+                
+                
+            }
+            .listRowSeparator(.hidden)
+            .listSectionSeparator(.hidden)
+            .listRowBackground(Color.clear)
+        }
+        .frame(width: 100, alignment: .bottomTrailing)
+        
+        
+    }
+    
+    func imageButton() -> Image {
+        
+        if thumbnailGenerator.thumbnailImage != nil{
+           return thumbnailGenerator.thumbnailImage!
+        }else {
+            return Image(systemName: "circle")
         }
     }
     
 }
+
+struct UsdzObjectContainer : Identifiable {
+    let id = UUID()
+    var fileName: String
+    let image: Image
+}
+
 
 struct ARViewContainer: UIViewRepresentable {
     
@@ -98,15 +173,15 @@ struct ARViewContainer: UIViewRepresentable {
 
 
 struct ARIEntityMenu : View {
-
-
+    
+    
     var body: some View {
         HStack{
             Text("A")
             Text("B")
             Text("C")
         }
-
+        
     }
 }
 
@@ -115,8 +190,8 @@ struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-            ContentView()
-                .previewInterfaceOrientation(.portrait)
+                ContentView()
+                    .previewInterfaceOrientation(.portrait)
             }
         }
     }

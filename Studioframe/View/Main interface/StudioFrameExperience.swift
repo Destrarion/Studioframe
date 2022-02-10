@@ -105,7 +105,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
         return airForceScene
     }
     
-    #warning("Multiple confict between touch, including TapGesture but moving the screen result to a drag non recognized. Or that the touch is not selecting")
+    //#warning("Multiple confict between touch, including TapGesture but moving the screen result to a drag non recognized. Or that the touch is not selecting")
     // SOLUTIONS : - https://www.hackingwithswift.com/books/ios-swiftui/how-to-use-gestures-in-swiftui
     //private func enablePlacement() {
         //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))

@@ -32,6 +32,7 @@
 		5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */; };
 		5FB3588127746FFE00CA03CF /* NavigationBarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3588027746FFE00CA03CF /* NavigationBarConfigurator.swift */; };
 		5FB358832774701C00CA03CF /* InitialSetupConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB358822774701C00CA03CF /* InitialSetupConfigurator.swift */; };
+		5FE7B02527B441000032EF6E /* ThumbnailUSDZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailUSDZ.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadedView.swift; sourceTree = "<group>"; };
 		5FB3588027746FFE00CA03CF /* NavigationBarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarConfigurator.swift; sourceTree = "<group>"; };
 		5FB358822774701C00CA03CF /* InitialSetupConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSetupConfigurator.swift; sourceTree = "<group>"; };
+		5FE7B02427B441000032EF6E /* ThumbnailUSDZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailUSDZ.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 				5F1E5F392755992D00AD6B62 /* ContentView.swift */,
 				5F8574702786E791004503B1 /* StudioFrameExperience.swift */,
 				5F69F48027987F6500AF358B /* ARItemMenu.swift */,
+				5FE7B02427B441000032EF6E /* ThumbnailUSDZ.swift */,
 				5FB3587827746E7500CA03CF /* Library */,
 			);
 			path = "Main interface";
@@ -388,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */,
+				5FE7B02527B441000032EF6E /* ThumbnailUSDZ.swift in Sources */,
 				5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */,
 				5F69F48127987F6500AF358B /* ARItemMenu.swift in Sources */,
 				5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */,

@@ -15,7 +15,7 @@ struct LocalLibraryListView: View {
     ]
     
     init() {
-        UITableView.appearance().backgroundColor = .black
+        UITableView.appearance().backgroundColor = .clear
         UITableView.appearance().contentInset.top = -45
         
         UINavigationBar.appearance().tintColor = .white
