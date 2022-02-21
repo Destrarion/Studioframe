@@ -16,12 +16,12 @@ final class NavigationBarConfigurator {
         
         let appeareance = UINavigationBarAppearance()
         appeareance.configureWithOpaqueBackground()
-        appeareance.backgroundColor = .black
+        appeareance.backgroundColor = .clear
         
-        appeareance.largeTitleTextAttributes = [
+        //appeareance.largeTitleTextAttributes = [
             //.font : UIFont.systemFont(ofSize: 18),
-            .foregroundColor : UIColor.white
-        ]
+            //.foregroundColor : UIColor.white
+        //]
         
         appeareance.titleTextAttributes = [
             //.font : UIFont.systemFont(ofSize: 6),

@@ -110,8 +110,8 @@ struct LocalLibraryListView: View {
             
             
             .listRowSeparator(.visible)
-            .listRowSeparatorTint(.white)
-            .listRowBackground(Color.black)
+            .listRowSeparatorTint(Color("ListRowColor"))
+            .listRowBackground(Color.clear)
             //.listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 10))
             
         }
