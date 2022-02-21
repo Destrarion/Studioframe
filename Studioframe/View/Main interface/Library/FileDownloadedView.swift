@@ -4,27 +4,36 @@ import SwiftUI
 
 struct FileDownloadedView: View {
     
+    @ObservedObject var viewModel: LocalLibraryObjectViewModel
+    
     var body: some View {
         HStack {
             Button {
-                print("selected")
+                viewModel.didSelect()
             } label: {
                 Text("Select")
                     .foregroundColor(.white)
+                    .lineLimit(1)
             }
+            
+            Spacer()
             Button {
-                print("removed")
+                viewModel.didRemove()
             } label: {
                 Text("Remove")
                     .foregroundColor(.white)
+                    .lineLimit(1)
             }
+            Spacer()
             Button {
-                print("favorited")
+                viewModel.didFavorite()
             } label: {
                 Text("Favorite")
                     .foregroundColor(.white)
+                    .lineLimit(1)
             }
 
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }

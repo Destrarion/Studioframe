@@ -7,11 +7,13 @@
 
 import SwiftUI
 import RealityKit
-import QuickLookThumbnailing
+
 
 struct ContentView: View {
     
-    
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
     
     @State private var isItemsMenuOpen : Bool = false
     
@@ -37,12 +39,12 @@ struct ContentView: View {
                             NavigationLink {
                                 LocalLibraryListView()
                             } label: {
-                                Image(systemName: "gearshape.fill")
+                                Image(systemName: "text.book.closed.fill")
                                     .resizable()
                                     .frame(width: 45, height: 45)
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(.orange)
                             }
-                            
+                            .padding(.leading, 20)
                             Spacer()
                             
                             Button("Remove") {
@@ -61,7 +63,7 @@ struct ContentView: View {
                                     .frame(width: 45, height: 45, alignment: .bottomLeading)
                                 
                             }
-                            .padding(10)
+                            .padding(20)
                             .cornerRadius(100)
                             .rotationEffect(isItemsMenuOpen ? .degrees(90) : .degrees(0))
                             .animation(.easeIn(duration: 0.5), value: isItemsMenuOpen)
@@ -75,17 +77,22 @@ struct ContentView: View {
     
     
     
-    @State var usdzObjectContainers: [UsdzObjectContainer] = [
-        .init(fileName: "tv_retro", image: Image(systemName: "square.and.arrow.up")),
-        .init(fileName: "AirForce", image: Image(systemName: "circle")),
-        .init(fileName: "tv_retro", image: Image(systemName: "square.and.arrow.up")),
-        .init(fileName: "AirForce", image: Image(systemName: "circle")),
-        .init(fileName: "tv_retro", image: Image(systemName: "square.and.arrow.up")),
-        .init(fileName: "AirForce", image: Image(systemName: "circle"))
-        
+    let usdzObjectContainers: [UsdzObjectContainer] = [
+        .init(fileName: "tv_retro"),
+        .init(fileName: "AirForce"),
+        .init(fileName: "tv_retro"),
+        .init(fileName: "AirForce"),
+        .init(fileName: "tv_retro"),
+        .init(fileName: "tv_retro"),
+        .init(fileName: "AirForce"),
+        .init(fileName: "tv_retro"),
+        .init(fileName: "AirForce"),
+        .init(fileName: "tv_retro"),
+        .init(fileName: "AirForce"),
+        .init(fileName: "AirForce")
     ]
     
-    @ObservedObject var thumbnailGenerator = ThumbnailGenerator()
+    //@ObservedObject var thumbnailGenerator = ThumbnailGenerator()
     
     
     @ViewBuilder
@@ -98,14 +105,10 @@ struct ContentView: View {
                 Button {
                     print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
                     studioFrameExperience.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
-                    thumbnailGenerator.generateThumbnail(for: usdzObjectContainer.fileName, size: CGSize(width: 400, height: 400))
                     
                 } label: {
-                    imageButton()
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 50)
-                        .cornerRadius(100)
+                    LocalLibraryObjectAddButton(viewModel: usdzObjectContainer)
+                    
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 
@@ -120,22 +123,58 @@ struct ContentView: View {
         
         
     }
-    
-    func imageButton() -> Image {
-        
-        if thumbnailGenerator.thumbnailImage != nil{
-           return thumbnailGenerator.thumbnailImage!
-        }else {
-            return Image(systemName: "circle")
-        }
-    }
+ 
     
 }
 
-struct UsdzObjectContainer : Identifiable {
+
+struct LocalLibraryObjectAddButton: View {
+    
+    @ObservedObject var viewModel: UsdzObjectContainer
+    
+    var body: some View {
+        ZStack {
+            (viewModel.image ?? Image(systemName: "circle"))
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            if viewModel.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+            }
+        }
+        .frame(width: 50)
+        .cornerRadius(100)
+    }
+}
+
+@MainActor
+class UsdzObjectContainer: ObservableObject, Identifiable {
+    private let thumbnailGenerator = ThumbnailGenerator.shared
+    
+    init(fileName: String) {
+        self.fileName = fileName
+        
+        loadThumbnailImage()
+    }
+    
+    private func loadThumbnailImage() {
+        Task {
+            isLoading.toggle()
+            _ = try await Task.sleep(nanoseconds: 3_000_000_000)
+            self.image = await thumbnailGenerator.generateThumbnail(for: fileName, size: CGSize(width: 400, height: 400))
+            isLoading.toggle()
+        }
+    }
+    
     let id = UUID()
-    var fileName: String
-    let image: Image
+    
+    let fileName: String
+   
+    @Published var image: Image?
+    @Published var isLoading = false
+    
+    
+    
 }
 
 
@@ -153,10 +192,13 @@ struct ARViewContainer: UIViewRepresentable {
         experience?.arView = arView
         
         // Must have LiDAR avaible
-        ///https://developer.apple.com/videos/play/wwdc2020/10612/
+        /// https://developer.apple.com/videos/play/wwdc2020/10612/
+        arView.environment.sceneUnderstanding.options = []
         arView.environment.sceneUnderstanding.options.insert(.occlusion)
         arView.environment.sceneUnderstanding.options.insert(.receivesLighting)
-        
+        arView.environment.sceneUnderstanding.options.insert(.physics)
+        arView.environment.sceneUnderstanding.options.insert(.collision)
+
         // Load the "Box" scene from the "Experience" Reality File
         let scene = try! experience!.loadExperience()
         
@@ -172,18 +214,9 @@ struct ARViewContainer: UIViewRepresentable {
 }
 
 
-struct ARIEntityMenu : View {
-    
-    
-    var body: some View {
-        HStack{
-            Text("A")
-            Text("B")
-            Text("C")
-        }
-        
-    }
-}
+
+
+
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {

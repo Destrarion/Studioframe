@@ -12,31 +12,42 @@ import Combine
 
 class ThumbnailGenerator: ObservableObject {
     
-    @Published var thumbnailImage : Image?
+    static let shared = ThumbnailGenerator()
     
-    func generateThumbnail(for ressource: String, withExtension : String = "usdz", size: CGSize){
+    
+    // MARK: Other version
+    
+    func generateThumbnail(for ressource: String, withExtension : String = "usdz", size: CGSize) async -> Image? {
         guard let url = Bundle.main.url(forResource: ressource, withExtension: withExtension) else {
             print("Unable to create URL for ressource.")
-            return
+            return nil
         }
         
-        let scale = UIScreen.main.scale
+        let scale = await UIScreen.main.scale
         
         let request = QLThumbnailGenerator.Request(fileAt: url, size: size, scale: scale, representationTypes: .all)
         
         let generator = QLThumbnailGenerator.shared
-    
-        generator.generateRepresentations(for: request) { (thumbnail, type, error)  in
-            DispatchQueue.main.async {
+        
+        
+        
+        return await withCheckedContinuation { continuation in
+            generator.generateBestRepresentation(for: request) { (thumbnail, error)  in
+                
                 if thumbnail == nil || error != nil {
                     print("Error generating thumbnail: \(error?.localizedDescription ?? "Error generating thumbnail")")
+                    continuation.resume(returning: nil)
                     return
                 }
                 else {
-                    self.thumbnailImage = Image(uiImage: thumbnail!.uiImage)
+                    continuation.resume(returning: Image(uiImage: thumbnail!.uiImage))
+                    return
                 }
+                
             }
         }
+        
+       
     }
     
 }
