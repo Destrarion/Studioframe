@@ -10,38 +10,102 @@ import SwiftUI
 //}
 
 
+
+
+struct UsdzObject: Decodable {
+    let title: String
+    let objectUrlString: String
+}
+
+
+@MainActor
 final class LocalLibraryListViewModel: ObservableObject {
     
     
     
-    lazy var localLibraryObjectViewModels: [LocalLibraryObjectViewModel] = [
-        .init(
-            name: "Black wooden Chair",
-            imageName: "",
-            onSelect: { [weak self] objectName in self?.onSelectItem(name: objectName) },
-            onRemove: { [weak self] objectName in self?.onRemoveItem(name: objectName) },
-            onFavorite: { [weak self] objectName in self?.onFavoriteItem(name: objectName) }
-        ),
-        .init(
-            name: "Stool",
-            imageName: "",
-            onSelect: { [weak self] objectName in self?.onSelectItem(name: objectName) },
-            onRemove: { [weak self] objectName in self?.onRemoveItem(name: objectName) },
-            onFavorite: { [weak self] objectName in self?.onFavoriteItem(name: objectName) }
-        )
-    ]
+    private let networkManager = NetworkManager.shared
     
-    
-    private func onSelectItem(name: String) {
-        print("Item selected with name: \(name)")
+    func fetchObjects() {
+        Task {
+            let url = URL(string: "http://127.0.0.1:8080/usdz-objects")!
+            let urlRequest = URLRequest(url: url)
+            
+            let usdzObjects: [UsdzObject] = try await networkManager.fetch(urlRequest: urlRequest)
+            
+            self.localLibraryObjectViewModels = usdzObjects.map {
+                LocalLibraryObjectViewModel(
+                    usdzObject: $0,
+                    onSelect: { [weak self] usdzObject in self?.onSelectItem(usdzObject: usdzObject) },
+                    onRemove: { [weak self] usdzObject in self?.onRemoveItem(usdzObject: usdzObject) },
+                    onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObject) }
+                )
+            }
+        }
     }
     
-    private func onRemoveItem(name: String) {
-        print("Item removed with name: \(name)")
+    
+    
+    @Published var localLibraryObjectViewModels: [LocalLibraryObjectViewModel] = []
+    
+    
+    private func onSelectItem(usdzObject: UsdzObject) {
+        Task {
+            print("Item selected with name: \(usdzObject.title)")
+            
+            let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString)!
+            let urlRequest = URLRequest(url: url)
+            
+            let usdzObjectLocalFileUrl: URL = try await networkManager.fetchFile(urlRequest: urlRequest)
+//            let usdzObjecctData: Data = try await networkManager.fetchData(urlRequest: urlRequest)
+            
+            print(usdzObjectLocalFileUrl.absoluteString)
+            
+            let newLocationUrl = getDocumentsDirectory().appendingPathComponent(usdzObject.objectUrlString)
+            
+            print(newLocationUrl.absoluteString)
+            
+//            do {
+//                try usdzObjecctData.write(to: newLocationUrl)
+//            } catch {
+//                print("FAILED TO WRAITE")
+//                print(error)
+//                return
+//            }
+            
+//
+            do {
+                try FileManager.default.copyItem(at: usdzObjectLocalFileUrl, to: newLocationUrl)
+                //try FileManager.default.copyItem(atPath: usdzObjectLocalFileUrl.absoluteString, toPath: newLocationUrl.absoluteString)
+
+            } catch {
+                print("FAILED TO COPY USDZ FILE")
+                print(error)
+                return
+            }
+//
+            
+            NotificationCenter.default.post(name: .shouldAddUsdzObject, object: newLocationUrl)
+            
+        }
+        
+        
+        
+        
+        //networkManager.fetchData(urlRequest: )
     }
     
-    private func onFavoriteItem(name: String) {
-        print("Item favorited with name: \(name)")
+    private func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths[0]
+    }
+    
+    private func onRemoveItem(usdzObject: UsdzObject) {
+        print("Item removed with name: \(usdzObject.title)")
+    }
+    
+    private func onFavoriteItem(usdzObject: UsdzObject) {
+        print("Item favorited with name: \(usdzObject.title)")
     }
 }
 
@@ -63,7 +127,6 @@ struct LocalLibraryObjectView: View {
             Spacer()
             VStack {
                 Text(viewModel.name)
-                    .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.body.bold())
                 
@@ -79,27 +142,12 @@ struct LocalLibraryObjectView: View {
 struct LocalLibraryListView: View {
     
     @StateObject var viewModel = LocalLibraryListViewModel()
-    //
-    //let items: [String] = [
-    //    "Black wooden Chair",
-    //    "Stool",
-    //    "Slate",
-    //    "Black wooden Chaird",
-    //    "Stoolf",
-    //    "Slate",
-    //    "Black wooden Chairg",
-    //    "Stoolh",
-    //    "Slatea"
-    //]
     
     init() {
-        //UITableView.appearance().contentInset.top = -45
         
         UINavigationBar.appearance().tintColor = .white
     }
-    
-    // image height = 100
-    // => image width = 80
+
     var body: some View {
         
         List {
@@ -114,6 +162,9 @@ struct LocalLibraryListView: View {
             .listRowBackground(Color.clear)
             //.listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 15, trailing: 10))
             
+        }
+        .task {
+            viewModel.fetchObjects()
         }
         .listStyle(PlainListStyle())
         //.padding(.leading, -50)

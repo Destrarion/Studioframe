@@ -19,6 +19,7 @@
 		5F4FFFE027AA081E00690A77 /* tv_retro.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDD27AA081D00690A77 /* tv_retro.usdz */; };
 		5F4FFFE127AA081E00690A77 /* hab.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDE27AA081E00690A77 /* hab.reality */; };
 		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
+		5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F51C6F127C7939200FE8356 /* NetworkManager.swift */; };
 		5F69F48127987F6500AF358B /* ARItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F69F48027987F6500AF358B /* ARItemMenu.swift */; };
 		5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */; };
 		5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8574702786E791004503B1 /* StudioFrameExperience.swift */; };
@@ -31,8 +32,6 @@
 		5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */; };
 		5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */; };
 		5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */; };
-		5FB3588127746FFE00CA03CF /* NavigationBarConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3588027746FFE00CA03CF /* NavigationBarConfigurator.swift */; };
-		5FB358832774701C00CA03CF /* InitialSetupConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB358822774701C00CA03CF /* InitialSetupConfigurator.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailUSDZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailUSDZ.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +68,7 @@
 		5F4FFFDD27AA081D00690A77 /* tv_retro.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = tv_retro.usdz; sourceTree = "<group>"; };
 		5F4FFFDE27AA081E00690A77 /* hab.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = hab.reality; sourceTree = "<group>"; };
 		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
+		5F51C6F127C7939200FE8356 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5F69F48027987F6500AF358B /* ARItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARItemMenu.swift; sourceTree = "<group>"; };
 		5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectFileManager.swift; sourceTree = "<group>"; };
 		5F8574702786E791004503B1 /* StudioFrameExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameExperience.swift; sourceTree = "<group>"; };
@@ -81,8 +81,6 @@
 		5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotDowloadedView.swift; sourceTree = "<group>"; };
 		5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadedView.swift; sourceTree = "<group>"; };
-		5FB3588027746FFE00CA03CF /* NavigationBarConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarConfigurator.swift; sourceTree = "<group>"; };
-		5FB358822774701C00CA03CF /* InitialSetupConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSetupConfigurator.swift; sourceTree = "<group>"; };
 		5FE7B02427B441000032EF6E /* ThumbnailUSDZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailUSDZ.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,7 +190,6 @@
 		5FB3580B27745C2600CA03CF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5FB358842774702800CA03CF /* InitialSetup */,
 				5FB3587927746E8C00CA03CF /* Main interface */,
 			);
 			path = View;
@@ -223,6 +220,7 @@
 		5FB3580E27745E2300CA03CF /* Network  */ = {
 			isa = PBXGroup;
 			children = (
+				5F51C6F127C7939200FE8356 /* NetworkManager.swift */,
 			);
 			path = "Network ";
 			sourceTree = "<group>";
@@ -248,15 +246,6 @@
 				5FB3587827746E7500CA03CF /* Library */,
 			);
 			path = "Main interface";
-			sourceTree = "<group>";
-		};
-		5FB358842774702800CA03CF /* InitialSetup */ = {
-			isa = PBXGroup;
-			children = (
-				5FB3588027746FFE00CA03CF /* NavigationBarConfigurator.swift */,
-				5FB358822774701C00CA03CF /* InitialSetupConfigurator.swift */,
-			);
-			path = InitialSetup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,13 +392,12 @@
 				5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */,
 				5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */,
 				5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */,
+				5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */,
 				5FB3586F2774697000CA03CF /* CoreDataContextProvider.swift in Sources */,
 				5F1E5F3A2755992D00AD6B62 /* ContentView.swift in Sources */,
 				5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */,
 				5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */,
 				5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */,
-				5FB3588127746FFE00CA03CF /* NavigationBarConfigurator.swift in Sources */,
-				5FB358832774701C00CA03CF /* InitialSetupConfigurator.swift in Sources */,
 				5F00358E27C406EB00BF5A0F /* LocalLibraryObjectViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

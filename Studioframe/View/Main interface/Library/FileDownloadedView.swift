@@ -12,7 +12,6 @@ struct FileDownloadedView: View {
                 viewModel.didSelect()
             } label: {
                 Text("Select")
-                    .foregroundColor(.white)
                     .lineLimit(1)
             }
             
@@ -21,7 +20,6 @@ struct FileDownloadedView: View {
                 viewModel.didRemove()
             } label: {
                 Text("Remove")
-                    .foregroundColor(.white)
                     .lineLimit(1)
             }
             Spacer()
@@ -29,7 +27,6 @@ struct FileDownloadedView: View {
                 viewModel.didFavorite()
             } label: {
                 Text("Favorite")
-                    .foregroundColor(.white)
                     .lineLimit(1)
             }
 

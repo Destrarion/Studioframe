@@ -8,7 +8,6 @@
 import SwiftUI
 import RealityKit
 
-
 struct ContentView: View {
     
     init() {
@@ -75,8 +74,6 @@ struct ContentView: View {
     }
     
     
-    
-    
     let usdzObjectContainers: [UsdzObjectContainer] = [
         .init(fileName: "tv_retro"),
         .init(fileName: "AirForce"),
@@ -92,12 +89,8 @@ struct ContentView: View {
         .init(fileName: "AirForce")
     ]
     
-    //@ObservedObject var thumbnailGenerator = ThumbnailGenerator()
-    
-    
     @ViewBuilder
     var objectLibraryView: some View {
-        
         
         List(usdzObjectContainers, id : \.id) { usdzObjectContainer in
             
@@ -112,8 +105,6 @@ struct ContentView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 
-                
-                
             }
             .listRowSeparator(.hidden)
             .listSectionSeparator(.hidden)
@@ -121,9 +112,7 @@ struct ContentView: View {
         }
         .frame(width: 100, alignment: .bottomTrailing)
         
-        
     }
- 
     
 }
 
@@ -167,13 +156,10 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
     }
     
     let id = UUID()
-    
     let fileName: String
    
     @Published var image: Image?
     @Published var isLoading = false
-    
-    
     
 }
 
@@ -212,10 +198,6 @@ struct ARViewContainer: UIViewRepresentable {
     func updateUIView(_ uiView: ARView, context: Context) {}
     
 }
-
-
-
-
 
 
 #if DEBUG

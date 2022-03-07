@@ -11,8 +11,26 @@ import simd
 import Combine
 import SwiftUI
 
+
+extension NSNotification.Name {
+    static let shouldAddUsdzObject: NSNotification.Name = .init("shouldAddUsdzObject")
+}
+
 @available(iOS 13.0, macOS 10.15, *)
 class StudioFrameExperience: NSObject, ObservableObject {
+    
+    override init() {
+        super.init()
+        NotificationCenter.default.addObserver(
+            forName: .shouldAddUsdzObject,
+            object: nil,
+            queue: .main
+        ) { [weak self ] notification in
+            let objectUrl = notification.object as! URL
+            
+            self?.addUsdzObject(usdzResourceUrl: objectUrl)
+            }
+    }
     
     var textConsolePrint: String {
         selectedEntity == nil ?
@@ -63,8 +81,11 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     func addUsdzObject(usdzResourceName: String) {
         let usdzUrl = Bundle.main.url(forResource: usdzResourceName, withExtension: ".usdz")!
-
-        ModelEntity.loadModelAsync(contentsOf: usdzUrl)
+        addUsdzObject(usdzResourceUrl: usdzUrl)
+    }
+    
+    func addUsdzObject(usdzResourceUrl: URL) {
+        ModelEntity.loadModelAsync(contentsOf: usdzResourceUrl)
             .receive(on: RunLoop.main)
             .sink { completion in
                 switch completion {
@@ -86,7 +107,6 @@ class StudioFrameExperience: NSObject, ObservableObject {
                 // self?.textConsolePrint = "\(loadedModelEntity.name) created"
             }
             .store(in: &subscriptions)
-            
     }
     
     

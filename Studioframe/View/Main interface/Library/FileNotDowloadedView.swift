@@ -9,7 +9,6 @@ struct FileNotDowloadedView : View {
                 print("Downloading")
             } label: {
                 Text("Download")
-                    .foregroundColor(.white)
             }
         }
     }

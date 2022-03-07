@@ -9,35 +9,37 @@ import Foundation
 
 final class LocalLibraryObjectViewModel: ObservableObject {
     init(
-        name: String,
-        imageName: String,
-        onSelect: @escaping (String) -> Void,
-        onRemove: @escaping (String) -> Void,
-        onFavorite: @escaping (String) -> Void
+        usdzObject: UsdzObject,
+        onSelect: @escaping (UsdzObject) -> Void,
+        onRemove: @escaping (UsdzObject) -> Void,
+        onFavorite: @escaping (UsdzObject) -> Void
     ) {
-        self.name = name
-        self.imageName = imageName
+        self.usdzObject = usdzObject
         self.onSelect = onSelect
         self.onRemove = onRemove
         self.onFavorite = onFavorite
     }
     
-    let name: String
-    @Published var imageName: String
+    var name: String {
+        usdzObject.title
+    }
     
-    private let onSelect: (String) -> Void
-    private let onRemove: (String) -> Void
-    private let onFavorite: (String) -> Void
+    @Published var imageName: String = ""
+    let usdzObject: UsdzObject
+    
+    private let onSelect: (UsdzObject) -> Void
+    private let onRemove: (UsdzObject) -> Void
+    private let onFavorite: (UsdzObject) -> Void
     
     func didSelect() {
-        onSelect(name)
+        onSelect(usdzObject)
     }
     
     func didRemove() {
-        onRemove(name)
+        onRemove(usdzObject)
     }
     
     func didFavorite() {
-        onFavorite(name)
+        onFavorite(usdzObject)
     }
 }
