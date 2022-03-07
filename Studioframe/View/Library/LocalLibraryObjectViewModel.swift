@@ -1,10 +1,3 @@
-//
-//  LocalLibraryObjectViewModel.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 21/02/2022.
-//
-
 import Foundation
 
 final class LocalLibraryObjectViewModel: ObservableObject {
