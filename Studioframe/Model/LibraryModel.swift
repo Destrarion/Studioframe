@@ -14,7 +14,8 @@ final class Library: ObservableObject {
     
     func fetchObjects() {
         Task {
-            let url = URL(string: "http://127.0.0.1:8080/usdz-objects")!
+            // let url = URL(string: "http://127.0.0.1:8080/usdz-objects")! (local configuration)
+            let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
             let urlRequest = URLRequest(url: url)
             
             let usdzObjects: [UsdzObject] = try await networkManager.fetch(urlRequest: urlRequest)
@@ -36,8 +37,8 @@ final class Library: ObservableObject {
     func onSelectItem(usdzObject: UsdzObject) {
         Task {
             print("Item selected with name: \(usdzObject.title)")
-            
-            let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString)!
+            // let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString)! (local configuration)
+            let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
             let urlRequest = URLRequest(url: url)
             
             let usdzObjectLocalFileUrl: URL = try await networkManager.fetchFile(urlRequest: urlRequest)
