@@ -10,30 +10,39 @@ import SwiftUI
 import RealityKit
 
 @MainActor
-struct USDZScrollingMenu : View {
+final class USDZScrollingMenuViewModel: ObservableObject {
+    
+    let usdzObjectContainers: [UsdzObjectContainer] = [
+        .init(fileName: "AirForce")
+    ]
+    
+}
 
+
+
+@MainActor
+struct USDZScrollingMenu: View {
+    
     init(experience: StudioFrameExperience) {
         self.experience = experience
     }
     
     var experience: StudioFrameExperience?
     
-    let usdzObjectContainers: [UsdzObjectContainer] = [
-        .init(fileName: "tv_retro"),
-        .init(fileName: "AirForce")
-    ]
+    @StateObject var viewModel = USDZScrollingMenuViewModel()
 
+    
     var body: some View {
         
         objectLibraryView
         
     }
-
+    
     
     @ViewBuilder
     var objectLibraryView: some View {
         
-        List(usdzObjectContainers, id : \.id) { usdzObjectContainer in
+        List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
             
             HStack {
                 Button {

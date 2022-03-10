@@ -22,8 +22,7 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
     private func loadThumbnailImage() {
         Task {
             isLoading.toggle()
-            _ = try await Task.sleep(nanoseconds: 3_000_000_000)
-            self.image = await thumbnailGenerator.generateThumbnail(for: fileName, size: CGSize(width: 400, height: 400))
+            self.image = await thumbnailGenerator.getThumbnail(for: fileName, size: CGSize(width: 400, height: 400))
             isLoading.toggle()
         }
     }
@@ -35,3 +34,4 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
     @Published var isLoading = false
     
 }
+
