@@ -19,7 +19,7 @@ struct ARViewInterface: View {
         HStack {
             
             NavigationLink {
-                LocalLibraryListView()
+                LibraryListView()
             } label: {
                 Image(systemName: "text.book.closed.fill")
                     .resizable()

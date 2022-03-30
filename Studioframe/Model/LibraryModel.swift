@@ -7,78 +7,43 @@
 
 import Foundation
 
+
+
+
+
+
 @MainActor
-final class Library: ObservableObject {
+final class LibraryViewModel: ObservableObject {
     
-    private let networkManager = NetworkManager.shared
+
+    // MARK: - INTERNAL
+    
+    // MARK: Internal - Properties
+    
+    @Published var localLibraryObjectViewModels: [LibraryObjectViewModel] = []
+   
+    // MARK: Internal - Methods
     
     func fetchObjects() {
         Task {
-            // let url = URL(string: "http://127.0.0.1:8080/usdz-objects")! (local configuration)
-            let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
-            let urlRequest = URLRequest(url: url)
+            let usdzObjects = try await usdzLibraryService.fetchUsdzObjects()
             
-            let usdzObjects: [UsdzObject] = try await networkManager.fetch(urlRequest: urlRequest)
-            
-            self.localLibraryObjectViewModels = usdzObjects.map {
-                LocalLibraryObjectViewModel(
+            let localLibraryObjectViewModels = usdzObjects.map {
+                LibraryObjectViewModel(
                     usdzObject: $0,
                     onSelect: { [weak self] usdzObject in self?.onSelectItem(usdzObject: usdzObject)},
                     onRemove: { [weak self] usdzObject in self?.onRemoveItem(usdzObject: usdzObject) },
                     onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObject) }
                 )
             }
+            
+            self.localLibraryObjectViewModels = localLibraryObjectViewModels
+            
         }
     }
-    
-    @Published var localLibraryObjectViewModels: [LocalLibraryObjectViewModel] = []
-    
-    
-    func onSelectItem(usdzObject: UsdzObject) {
-        Task {
-            print("Item selected with name: \(usdzObject.title)")
-            // let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString)! (local configuration)
-            let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
-            let urlRequest = URLRequest(url: url)
-            
-            let usdzObjectLocalFileUrl: URL = try await networkManager.fetchFile(urlRequest: urlRequest)
-//            let usdzObjecctData: Data = try await networkManager.fetchData(urlRequest: urlRequest)
-            
-            print(usdzObjectLocalFileUrl.absoluteString)
-            
-            let newLocationUrl = getDocumentsDirectory().appendingPathComponent(usdzObject.objectUrlString)
-            
-            print(newLocationUrl.absoluteString)
-            
-//            do {
-//                try usdzObjecctData.write(to: newLocationUrl)
-//            } catch {
-//                print("FAILED TO WRITE")
-//                print(error)
-//                return
-//            }
-            
-//
-            do {
-                try FileManager.default.copyItem(at: usdzObjectLocalFileUrl, to: newLocationUrl)
-                //try FileManager.default.copyItem(atPath: usdzObjectLocalFileUrl.absoluteString, toPath: newLocationUrl.absoluteString)
 
-            } catch {
-                print("FAILED TO COPY USDZ FILE")
-                print(error)
-                return
-            }
-            NotificationCenter.default.post(name: .shouldAddUsdzObject, object: newLocationUrl)
-            
-        }
-        
-    }
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        
-        return paths[0]
-    }
+
     
     func onRemoveItem(usdzObject: UsdzObject) {
         print("Item removed with name: \(usdzObject.title)")
@@ -89,10 +54,33 @@ final class Library: ObservableObject {
     }
     
     
+    
+    
+    
+    
+    // MARK: - PRIVATE
+    
+    // MARK: Private - Properties
+    
+    
+    private let usdzLibraryService = UsdzLibraryService.shared
+    
+    
+    // MARK: Private - Methods
+    
+    private func onSelectItem(usdzObject: UsdzObject) {
+        Task {
+            print("Item selected with name: \(usdzObject.title)")
+            let donwloadedUsdzObjectUrl = try await usdzLibraryService.downloadUsdzObject(usdzObject: usdzObject)
+            NotificationCenter.default.post(name: .shouldAddUsdzObject, object: donwloadedUsdzObjectUrl)
+            
+        }
+        
+    }
+    
 }
-struct UsdzObject: Decodable {
-    let title: String
-    let objectUrlString: String
-}
+
+
+
 
 

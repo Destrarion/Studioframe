@@ -46,17 +46,13 @@ class NetworkManager: NSObject {
         return data
         
     }
-    
-    
-    func fetchFile() {
-        //URLSession.shared.downloadTask
-    }
+
 }
 
-extension NetworkManager: URLSessionTaskDelegate {
-    
-   
-}
+//extension NetworkManager: URLSessionTaskDelegate {
+//
+//
+//}
 
 extension NetworkManager: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
@@ -67,7 +63,7 @@ extension NetworkManager: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         print("❌❌❌ERROR DOWNLOAD")
-        print(error)
+        print(error ?? "error occured")
     }
     
     

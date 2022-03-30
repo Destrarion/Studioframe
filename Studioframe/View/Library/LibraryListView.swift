@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct LocalLibraryListView: View {
-    @StateObject var viewModel = Library()
+struct LibraryListView: View {
+    @StateObject var viewModel = LibraryViewModel()
     init() {
         UINavigationBar.appearance().tintColor = UIColor(named: "ListRowColor")
     }
@@ -9,7 +9,7 @@ struct LocalLibraryListView: View {
     var body: some View {
         List {
             ForEach(viewModel.localLibraryObjectViewModels, id: \.name) { localLibraryObjectViewModel in
-                LocalLibraryObjectView(viewModel: localLibraryObjectViewModel)
+                LibraryObjectView(viewModel: localLibraryObjectViewModel)
             }
             .listRowSeparator(.visible)
             .listRowSeparatorTint(Color("ListRowColor"))

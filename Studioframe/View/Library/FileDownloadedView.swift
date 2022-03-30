@@ -4,7 +4,7 @@ import SwiftUI
 
 struct FileDownloadedView: View {
     
-    @ObservedObject var viewModel: LocalLibraryObjectViewModel
+    @ObservedObject var viewModel: LibraryObjectViewModel
     
     var body: some View {
         HStack {

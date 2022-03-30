@@ -1,6 +1,6 @@
 import Foundation
 
-final class LocalLibraryObjectViewModel: ObservableObject {
+final class LibraryObjectViewModel: ObservableObject {
     init(
         usdzObject: UsdzObject,
         onSelect: @escaping (UsdzObject) -> Void,

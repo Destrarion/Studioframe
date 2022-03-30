@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct LocalLibraryObjectView: View {
-    @ObservedObject var viewModel: LocalLibraryObjectViewModel
+struct LibraryObjectView: View {
+    @ObservedObject var viewModel: LibraryObjectViewModel
     
     var body: some View {
         HStack {

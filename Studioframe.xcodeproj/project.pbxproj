@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F00358E27C406EB00BF5A0F /* LocalLibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00358D27C406EB00BF5A0F /* LocalLibraryObjectViewModel.swift */; };
+		5F00358E27C406EB00BF5A0F /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00358D27C406EB00BF5A0F /* LibraryObjectViewModel.swift */; };
+		5F06178327F3427E00644DF4 /* URLComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F06178227F3427E00644DF4 /* URLComponent.swift */; };
 		5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07670E27D600EB00F2EF52 /* ARViewContainer.swift */; };
 		5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671227D606B900F2EF52 /* UsdzObjectContainer.swift */; };
 		5F07671527D607C800F2EF52 /* ARViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671427D607C800F2EF52 /* ARViewInterface.swift */; };
 		5F07671727D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671627D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift */; };
 		5F07671D27D61B5900F2EF52 /* LibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671C27D61B5900F2EF52 /* LibraryModel.swift */; };
-		5F07672027D6200700F2EF52 /* LocalLibraryObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671F27D6200700F2EF52 /* LocalLibraryObjectView.swift */; };
+		5F07672027D6200700F2EF52 /* LibraryObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671F27D6200700F2EF52 /* LibraryObjectView.swift */; };
 		5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F372755992D00AD6B62 /* AppDelegate.swift */; };
 		5F1E5F3A2755992D00AD6B62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F392755992D00AD6B62 /* ContentView.swift */; };
 		5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F3B2755992D00AD6B62 /* Experience.rcproject */; };
@@ -26,6 +27,10 @@
 		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
 		5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F51C6F127C7939200FE8356 /* NetworkManager.swift */; };
 		5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */; };
+		5F716BC227EC57E2005C88B8 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC127EC57E2005C88B8 /* LibraryViewModel.swift */; };
+		5F716BC427EC68EC005C88B8 /* UsdzObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC327EC68EC005C88B8 /* UsdzObject.swift */; };
+		5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */; };
+		5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */; };
 		5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */; };
 		5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8574702786E791004503B1 /* StudioFrameExperience.swift */; };
 		5F94D50A275E71BF00941292 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5F94D509275E71BE00941292 /* AirForce.usdz */; };
@@ -58,13 +63,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F00358D27C406EB00BF5A0F /* LocalLibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryObjectViewModel.swift; sourceTree = "<group>"; };
+		5F00358D27C406EB00BF5A0F /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
+		5F06178227F3427E00644DF4 /* URLComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponent.swift; sourceTree = "<group>"; };
 		5F07670E27D600EB00F2EF52 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		5F07671227D606B900F2EF52 /* UsdzObjectContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectContainer.swift; sourceTree = "<group>"; };
 		5F07671427D607C800F2EF52 /* ARViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewInterface.swift; sourceTree = "<group>"; };
 		5F07671627D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailUsdzAddButton.swift; sourceTree = "<group>"; };
 		5F07671C27D61B5900F2EF52 /* LibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryModel.swift; sourceTree = "<group>"; };
-		5F07671F27D6200700F2EF52 /* LocalLibraryObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLibraryObjectView.swift; sourceTree = "<group>"; };
+		5F07671F27D6200700F2EF52 /* LibraryObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectView.swift; sourceTree = "<group>"; };
 		5F1E5F342755992D00AD6B62 /* Studioframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studioframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1E5F372755992D00AD6B62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F1E5F392755992D00AD6B62 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +86,10 @@
 		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
 		5F51C6F127C7939200FE8356 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZScrollingMenu.swift; sourceTree = "<group>"; };
+		5F716BC127EC57E2005C88B8 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
+		5F716BC327EC68EC005C88B8 /* UsdzObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObject.swift; sourceTree = "<group>"; };
+		5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryService.swift; sourceTree = "<group>"; };
+		5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryServiceError.swift; sourceTree = "<group>"; };
 		5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectFileManager.swift; sourceTree = "<group>"; };
 		5F8574702786E791004503B1 /* StudioFrameExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameExperience.swift; sourceTree = "<group>"; };
 		5F94D509275E71BE00941292 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
@@ -183,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB3580C27745C2F00CA03CF /* Model */,
+				5F716BBE27EBDFAC005C88B8 /* ViewModel */,
 				5FB3580B27745C2600CA03CF /* View */,
 				5F07671B27D6180600F2EF52 /* Files - Supporting Files */,
 			);
@@ -212,6 +223,24 @@
 				5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */,
 			);
 			path = StudioframeUITests;
+			sourceTree = "<group>";
+		};
+		5F716BBE27EBDFAC005C88B8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5F00358D27C406EB00BF5A0F /* LibraryObjectViewModel.swift */,
+				5F716BC127EC57E2005C88B8 /* LibraryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5F716BC727EC6923005C88B8 /* UsdzLibraryService */ = {
+			isa = PBXGroup;
+			children = (
+				5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */,
+				5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */,
+			);
+			path = UsdzLibraryService;
 			sourceTree = "<group>";
 		};
 		5F85746D2786E0AC004503B1 /* FileManager */ = {
@@ -244,10 +273,12 @@
 		5FB3580C27745C2F00CA03CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F716BC727EC6923005C88B8 /* UsdzLibraryService */,
 				5F07671C27D61B5900F2EF52 /* LibraryModel.swift */,
 				5F85746D2786E0AC004503B1 /* FileManager */,
 				5FB3580E27745E2300CA03CF /* Network  */,
 				5FB3580D27745E1B00CA03CF /* CoreData */,
+				5F716BC327EC68EC005C88B8 /* UsdzObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				5F51C6F127C7939200FE8356 /* NetworkManager.swift */,
+				5F06178227F3427E00644DF4 /* URLComponent.swift */,
 			);
 			path = "Network ";
 			sourceTree = "<group>";
@@ -276,8 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				5FB358082772076A00CA03CF /* LibraryListView.swift */,
-				5F07671F27D6200700F2EF52 /* LocalLibraryObjectView.swift */,
-				5F00358D27C406EB00BF5A0F /* LocalLibraryObjectViewModel.swift */,
+				5F07671F27D6200700F2EF52 /* LibraryObjectView.swift */,
 				5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */,
 				5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */,
 			);
@@ -429,17 +460,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */,
-				5F07672027D6200700F2EF52 /* LocalLibraryObjectView.swift in Sources */,
+				5F07672027D6200700F2EF52 /* LibraryObjectView.swift in Sources */,
 				5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */,
 				5F07671D27D61B5900F2EF52 /* LibraryModel.swift in Sources */,
 				5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */,
+				5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */,
 				5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */,
 				5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */,
 				5F07671727D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift in Sources */,
 				5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */,
 				5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */,
+				5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */,
+				5F716BC227EC57E2005C88B8 /* LibraryViewModel.swift in Sources */,
 				5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */,
 				5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */,
+				5F06178327F3427E00644DF4 /* URLComponent.swift in Sources */,
 				5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */,
 				5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */,
 				5F07671527D607C800F2EF52 /* ARViewInterface.swift in Sources */,
@@ -450,7 +485,8 @@
 				5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */,
 				5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */,
 				5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */,
-				5F00358E27C406EB00BF5A0F /* LocalLibraryObjectViewModel.swift in Sources */,
+				5F00358E27C406EB00BF5A0F /* LibraryObjectViewModel.swift in Sources */,
+				5F716BC427EC68EC005C88B8 /* UsdzObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
