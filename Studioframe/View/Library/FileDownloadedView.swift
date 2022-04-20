@@ -9,7 +9,7 @@ struct FileDownloadedView: View {
     var body: some View {
         HStack {
             Button {
-                viewModel.didSelect()
+                viewModel.didTapSelect()
             } label: {
                 Text("Select")
                     .lineLimit(1)
@@ -17,14 +17,14 @@ struct FileDownloadedView: View {
             
             Spacer()
             Button {
-                viewModel.didRemove()
+                viewModel.didTapRemove()
             } label: {
                 Text("Remove")
                     .lineLimit(1)
             }
             Spacer()
             Button {
-                viewModel.didFavorite()
+                viewModel.didTapFavorite()
             } label: {
                 Text("Favorite")
                     .lineLimit(1)

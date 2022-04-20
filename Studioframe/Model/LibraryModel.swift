@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 
@@ -15,28 +16,34 @@ import Foundation
 @MainActor
 final class LibraryViewModel: ObservableObject {
     
-
+    
     // MARK: - INTERNAL
     
     // MARK: Internal - Properties
     
+    @Published var isAlertPresented = false
     @Published var localLibraryObjectViewModels: [LibraryObjectViewModel] = []
-   
+    @Published var isLoadingList: Bool = true
     // MARK: Internal - Methods
     
     func fetchObjects() {
         Task {
             let usdzObjects = try await usdzLibraryService.fetchUsdzObjects()
             
+            
             let localLibraryObjectViewModels = usdzObjects.map {
                 LibraryObjectViewModel(
                     usdzObject: $0,
                     onSelect: { [weak self] usdzObject in self?.onSelectItem(usdzObject: usdzObject)},
                     onRemove: { [weak self] usdzObject in self?.onRemoveItem(usdzObject: usdzObject) },
-                    onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObject) }
+                    onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObject) },
+                    didProduceError: { [weak self] error in
+                        self?.isAlertPresented = true
+                        
+                    }
                 )
             }
-            
+            isLoadingList.toggle()
             self.localLibraryObjectViewModels = localLibraryObjectViewModels
             
         }
@@ -69,17 +76,11 @@ final class LibraryViewModel: ObservableObject {
     // MARK: Private - Methods
     
     private func onSelectItem(usdzObject: UsdzObject) {
-        Task {
-            print("Item selected with name: \(usdzObject.title)")
-            let donwloadedUsdzObjectUrl = try await usdzLibraryService.downloadUsdzObject(usdzObject: usdzObject)
-            NotificationCenter.default.post(name: .shouldAddUsdzObject, object: donwloadedUsdzObjectUrl)
-            
-        }
         
     }
     
-}
 
+}
 
 
 

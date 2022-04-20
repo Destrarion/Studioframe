@@ -9,10 +9,11 @@ import Foundation
 import SwiftUI
 import RealityKit
 
+
 @MainActor
 final class USDZScrollingMenuViewModel: ObservableObject {
     
-    let usdzObjectContainers: [UsdzObjectContainer] = [
+    lazy var usdzObjectContainers: [UsdzObjectContainer] = [
         .init(fileName: "AirForce")
     ]
     
@@ -20,17 +21,19 @@ final class USDZScrollingMenuViewModel: ObservableObject {
 
 
 
-@MainActor
+
 struct USDZScrollingMenu: View {
     
     init(experience: StudioFrameExperience) {
         self.experience = experience
+        
+        self._viewModel = StateObject(wrappedValue: USDZScrollingMenuViewModel())
+
     }
     
     var experience: StudioFrameExperience?
     
-    @StateObject var viewModel = USDZScrollingMenuViewModel()
-
+    @StateObject var viewModel: USDZScrollingMenuViewModel
     
     var body: some View {
         

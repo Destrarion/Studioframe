@@ -27,7 +27,6 @@
 		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
 		5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F51C6F127C7939200FE8356 /* NetworkManager.swift */; };
 		5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */; };
-		5F716BC227EC57E2005C88B8 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC127EC57E2005C88B8 /* LibraryViewModel.swift */; };
 		5F716BC427EC68EC005C88B8 /* UsdzObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC327EC68EC005C88B8 /* UsdzObject.swift */; };
 		5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */; };
 		5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */; };
@@ -86,7 +85,6 @@
 		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
 		5F51C6F127C7939200FE8356 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZScrollingMenu.swift; sourceTree = "<group>"; };
-		5F716BC127EC57E2005C88B8 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		5F716BC327EC68EC005C88B8 /* UsdzObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObject.swift; sourceTree = "<group>"; };
 		5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryService.swift; sourceTree = "<group>"; };
 		5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryServiceError.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				5F00358D27C406EB00BF5A0F /* LibraryObjectViewModel.swift */,
-				5F716BC127EC57E2005C88B8 /* LibraryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -471,7 +468,6 @@
 				5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */,
 				5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */,
 				5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */,
-				5F716BC227EC57E2005C88B8 /* LibraryViewModel.swift in Sources */,
 				5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */,
 				5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */,
 				5F06178327F3427E00644DF4 /* URLComponent.swift in Sources */,

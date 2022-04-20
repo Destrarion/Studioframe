@@ -85,27 +85,27 @@ class StudioFrameExperience: NSObject, ObservableObject {
     }
     
     func addUsdzObject(usdzResourceUrl: URL) {
-        ModelEntity.loadModelAsync(contentsOf: usdzResourceUrl)
-            .receive(on: RunLoop.main)
-            .sink { completion in
-                switch completion {
-                case .failure(_):
-                    return
-                case .finished:
-                    return
-                }
-            } receiveValue: { [weak self] loadedModelEntity in
-                loadedModelEntity.generateCollisionShapes(recursive: true)
-            
-                self?.arView.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
-                if let gestureRecognizers = self?.arView.gestureRecognizers {
-                    for gestureRecognizer in gestureRecognizers {
-                        gestureRecognizer.delegate = self
-                    }
-                }
-                self?.scene?.addChild(loadedModelEntity)
-            }
-            .store(in: &subscriptions)
+//        ModelEntity.loadModelAsync(contentsOf: usdzResourceUrl)
+//            .receive(on: RunLoop.main)
+//            .sink { completion in
+//                switch completion {
+//                case .failure(_):
+//                    return
+//                case .finished:
+//                    return
+//                }
+//            } receiveValue: { [weak self] loadedModelEntity in
+//                loadedModelEntity.generateCollisionShapes(recursive: true)
+//
+//                self?.arView.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
+//                if let gestureRecognizers = self?.arView.gestureRecognizers {
+//                    for gestureRecognizer in gestureRecognizers {
+//                        gestureRecognizer.delegate = self
+//                    }
+//                }
+//                self?.scene?.addChild(loadedModelEntity)
+//            }
+//            .store(in: &subscriptions)
     }
     
     
