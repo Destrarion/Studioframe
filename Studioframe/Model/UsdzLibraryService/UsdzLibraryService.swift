@@ -9,26 +9,43 @@ import Foundation
 import SwiftUI
 
 
+struct UsdzObjectWrapper {
+    let usdzObject: UsdzObject
+    let isDownloaded: Bool
+}
+
+
 final class UsdzLibraryService {
     
     static let shared = UsdzLibraryService()
     let urlProvider = StudioframeUrlProvider()
     
     var downloadedUsdzObjects: [String : Bool] = [:]
+    var urlPathUsdzObjects: [String : URL] = [:]
     
-    func fetchUsdzObjects() async throws -> [UsdzObject] {
+    func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
         //let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
         guard let url = urlProvider.createUsdzListRequestUrl() else { return [] }
         let urlRequest = URLRequest(url: url)
         
         let usdzObjects: [UsdzObject] = try await networkManager.fetch(urlRequest: urlRequest)
         
-        usdzObjects.forEach { object in
-            downloadedUsdzObjects[object.title] = false
-            print(downloadedUsdzObjects)
-        }
         
-        return usdzObjects
+        let allLocalFilesTitles = studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
+        
+        let newobejcts = usdzObjects.map {
+            UsdzObjectWrapper
+            object.isDownloaded = allLocalFilesTitles.contains(object.objectUrlString)
+        }
+//
+//        usdzObjects.forEach { object in
+//
+//
+//            downloadedUsdzObjects[object.title] = false
+//            print(downloadedUsdzObjects)
+//        }
+        
+        return newobejcts
     }
     
     
@@ -36,6 +53,7 @@ final class UsdzLibraryService {
     /// - Parameter usdzObject: Object containing the url pointing to the file web location
     /// - Returns: The local URL of the downloaded USDZ object
     func downloadUsdzObject(usdzObject: UsdzObject, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> URL {
+        
         
         // let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString)! (local configuration)
         let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
@@ -49,33 +67,38 @@ final class UsdzLibraryService {
                     continuation.resume(throwing: UsdzLibraryServiceError.failedToDownloadUsdzObject)
                     return
                 }
-                let newLocationUrl = self.getDocumentsDirectory().appendingPathComponent(usdzObject.objectUrlString)
-
+                
+                
                 do {
-                   // FileManager.default.replaceItemAt(, withItemAt: )
-                    try FileManager.default.removeItem(at: newLocationUrl)
-
-                    try FileManager.default.copyItem(at: usdzObjectLocalFileUrl, to: newLocationUrl)
+                    let newLocationUrl = try self.studioFrameFileManager.moveFile(at: usdzObjectLocalFileUrl, fileName: usdzObject.objectUrlString)
+                    
+                    //self.urlPathUsdzObjects ["\(usdzObject.title)"] = newLocationUrl
+                    print("New Location : \(newLocationUrl)")
                     print("⚠️ Successfuly stored USDZ")
+                    continuation.resume(returning: newLocationUrl)
+                    return
                 } catch {
                     print("FAILED TO COPY USDZ FILE")
                     print(error)
-                    //throw UsdzLibraryServiceError.failedToDownloadUsdzObject
                     continuation.resume(throwing: UsdzLibraryServiceError.failedToDownloadUsdzObject)
                     return
                 }
                 
-                continuation.resume(returning: newLocationUrl)
+                
             }
         }
         
-        
-        
-//        let usdzObjectLocalFileUrl: URL = try await networkManager.fetchFile(urlRequest: urlRequest)
-       
-    
     }
     
+    func removeUsdzObject(locationUrl: URL) {
+        do {
+            try studioFrameFileManager.removeFile(at: locationUrl)
+            print("try to remove item at \(locationUrl)")
+        } catch {
+            print(error)
+            print("Error removing item \(locationUrl)")
+        }
+    }
     
     
     
@@ -84,15 +107,9 @@ final class UsdzLibraryService {
     }
     
     
-    
-    
     /// Singleton of the network manager
     private let networkManager = NetworkManager.shared
+    private let studioFrameFileManager = StudioFrameFileManager.shared
     
-    
-    private func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        
-        return paths[0]
-    }
+
 }

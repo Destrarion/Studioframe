@@ -72,7 +72,12 @@ final class LibraryObjectViewModel: ObservableObject {
         downloadState = .notDownloaded
     }
     
-
+    func isDownloadedUsdz(usdzObject: UsdzObject) -> Bool{
+        if usdzLibraryService.downloadedUsdzObjects[usdzObject.title] == true {
+            return true
+        }
+        return false
+    }
     
     
     

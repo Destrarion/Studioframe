@@ -12,10 +12,10 @@ struct LibraryListView: View{
     
     var body: some View {
         List {
-//            if viewModel.isLoadingList {
-//                ProgressView()
-//                    .progressViewStyle(.linear)
-//            }
+           if viewModel.isLoadingList {
+               ProgressView()
+                   .progressViewStyle(.linear)
+           }
             ForEach(viewModel.localLibraryObjectViewModels, id: \.name) { localLibraryObjectViewModel in
                 LibraryObjectView(viewModel: localLibraryObjectViewModel)
             }

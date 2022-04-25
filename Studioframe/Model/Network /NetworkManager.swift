@@ -82,13 +82,11 @@ class NetworkManager: NSObject {
     
 }
 
-//extension NetworkManager: URLSessionTaskDelegate {
-//
-//
-//}
-
 extension NetworkManager: URLSessionDelegate {
-    
+    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
+        print("❌didBecomeInvalidWithError DOWNLOAD")
+        print(error ?? "ERROR IS NIL")
+    }
 }
 
 extension NetworkManager: URLSessionDownloadDelegate {
@@ -101,8 +99,8 @@ extension NetworkManager: URLSessionDownloadDelegate {
     
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print("❌❌❌ERROR DOWNLOAD")
-        print(error ?? "error occured")
+        print("❌❌❌didCompleteWithError DOWNLOAD")
+        print(error ?? "ERROR IS NIL")
     }
     
     
@@ -115,14 +113,10 @@ extension NetworkManager: URLSessionDownloadDelegate {
         totalBytesExpectedToWrite: Int64
     ) {
         
-        
-        
         let downloadCompletionPercentage = Int((Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)) * 100.0)
         print("🍅 \(downloadCompletionPercentage)%")
         
         onDownloadProgressChanged?(downloadCompletionPercentage)
-        
-        
         
     }
     

@@ -11,6 +11,7 @@ import Foundation
 struct UsdzObject: Decodable {
     let title: String
     let objectUrlString: String
+    //var isDownloaded: Bool?
 }
 
 

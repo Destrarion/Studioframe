@@ -53,6 +53,9 @@ final class LibraryViewModel: ObservableObject {
 
     
     func onRemoveItem(usdzObject: UsdzObject) {
+        guard let url = usdzLibraryService.urlPathUsdzObjects[usdzObject.title] else { return print("Error finding url for removing")}
+        usdzLibraryService.removeUsdzObject(locationUrl: url)
+        usdzLibraryService.downloadedUsdzObjects[usdzObject.title]?.toggle()
         print("Item removed with name: \(usdzObject.title)")
     }
     
