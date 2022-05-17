@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F00358E27C406EB00BF5A0F /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00358D27C406EB00BF5A0F /* LibraryObjectViewModel.swift */; };
+		5F00358E27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */; };
 		5F06178327F3427E00644DF4 /* URLComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F06178227F3427E00644DF4 /* URLComponent.swift */; };
 		5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07670E27D600EB00F2EF52 /* ARViewContainer.swift */; };
 		5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671227D606B900F2EF52 /* UsdzObjectContainer.swift */; };
@@ -30,7 +30,6 @@
 		5F716BC427EC68EC005C88B8 /* UsdzObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC327EC68EC005C88B8 /* UsdzObject.swift */; };
 		5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */; };
 		5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */; };
-		5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */; };
 		5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8574702786E791004503B1 /* StudioFrameExperience.swift */; };
 		5F90E16F281144340071E799 /* StudioFrameFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F90E16E281144340071E799 /* StudioFrameFileManager.swift */; };
 		5F94D50A275E71BF00941292 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5F94D509275E71BE00941292 /* AirForce.usdz */; };
@@ -43,6 +42,9 @@
 		5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */; };
 		5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */; };
+		F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52274032819586500F3648A /* LibraryObjectViewModel.swift */; };
+		F57139D8281840D10056FA8D /* UsdzObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */; };
+		F57139DA2818557B0056FA8D /* FileDownloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D92818557B0056FA8D /* FileDownloadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F00358D27C406EB00BF5A0F /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
+		5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectDownloadedViewModel.swift; sourceTree = "<group>"; };
 		5F06178227F3427E00644DF4 /* URLComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponent.swift; sourceTree = "<group>"; };
 		5F07670E27D600EB00F2EF52 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		5F07671227D606B900F2EF52 /* UsdzObjectContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectContainer.swift; sourceTree = "<group>"; };
@@ -89,7 +91,6 @@
 		5F716BC327EC68EC005C88B8 /* UsdzObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObject.swift; sourceTree = "<group>"; };
 		5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryService.swift; sourceTree = "<group>"; };
 		5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryServiceError.swift; sourceTree = "<group>"; };
-		5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectFileManager.swift; sourceTree = "<group>"; };
 		5F8574702786E791004503B1 /* StudioFrameExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameExperience.swift; sourceTree = "<group>"; };
 		5F90E16E281144340071E799 /* StudioFrameFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameFileManager.swift; sourceTree = "<group>"; };
 		5F94D509275E71BE00941292 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
@@ -101,7 +102,11 @@
 		5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotDowloadedView.swift; sourceTree = "<group>"; };
 		5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadedView.swift; sourceTree = "<group>"; };
+		5FC01FE6282CEC6F00BB3C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
+		F52274032819586500F3648A /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
+		F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectWrapper.swift; sourceTree = "<group>"; };
+		F57139D92818557B0056FA8D /* FileDownloadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +197,7 @@
 		5F1E5F362755992D00AD6B62 /* Studioframe */ = {
 			isa = PBXGroup;
 			children = (
+				5FC01FE6282CEC6F00BB3C06 /* Info.plist */,
 				5FB3580C27745C2F00CA03CF /* Model */,
 				5F716BBE27EBDFAC005C88B8 /* ViewModel */,
 				5FB3580B27745C2600CA03CF /* View */,
@@ -228,7 +234,9 @@
 		5F716BBE27EBDFAC005C88B8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				5F00358D27C406EB00BF5A0F /* LibraryObjectViewModel.swift */,
+				5F07671C27D61B5900F2EF52 /* LibraryViewModel.swift */,
+				5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */,
+				F52274032819586500F3648A /* LibraryObjectViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */,
+				F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */,
 				5F716BC827EC693D005C88B8 /* UsdzLibraryServiceError.swift */,
 			);
 			path = UsdzLibraryService;
@@ -245,7 +254,7 @@
 		5F85746D2786E0AC004503B1 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
-				5F85746E2786E0BD004503B1 /* ARObjectFileManager.swift */,
+				5F90E16E281144340071E799 /* StudioFrameFileManager.swift */,
 			);
 			path = FileManager;
 			sourceTree = "<group>";
@@ -272,13 +281,11 @@
 		5FB3580C27745C2F00CA03CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5F716BC327EC68EC005C88B8 /* UsdzObject.swift */,
 				5F716BC727EC6923005C88B8 /* UsdzLibraryService */,
-				5F07671C27D61B5900F2EF52 /* LibraryViewModel.swift */,
 				5F85746D2786E0AC004503B1 /* FileManager */,
 				5FB3580E27745E2300CA03CF /* Network  */,
 				5FB3580D27745E1B00CA03CF /* CoreData */,
-				5F716BC327EC68EC005C88B8 /* UsdzObject.swift */,
-				5F90E16E281144340071E799 /* StudioFrameFileManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,7 +308,8 @@
 				5F51C6F127C7939200FE8356 /* NetworkManager.swift */,
 				5F06178227F3427E00644DF4 /* URLComponent.swift */,
 			);
-			path = "Network ";
+			name = "Network ";
+			path = Network;
 			sourceTree = "<group>";
 		};
 		5FB3587827746E7500CA03CF /* Library */ = {
@@ -309,6 +317,7 @@
 			children = (
 				5FB358082772076A00CA03CF /* LibraryListView.swift */,
 				5F07671F27D6200700F2EF52 /* LibraryObjectView.swift */,
+				F57139D92818557B0056FA8D /* FileDownloadingView.swift */,
 				5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */,
 				5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */,
 			);
@@ -459,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F57139D8281840D10056FA8D /* UsdzObjectWrapper.swift in Sources */,
 				5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */,
 				5F07672027D6200700F2EF52 /* LibraryObjectView.swift in Sources */,
 				5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */,
@@ -469,7 +479,6 @@
 				5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */,
 				5F07671727D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift in Sources */,
 				5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */,
-				5F85746F2786E0BD004503B1 /* ARObjectFileManager.swift in Sources */,
 				5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */,
 				5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */,
 				5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */,
@@ -481,11 +490,13 @@
 				5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */,
 				5FB3586F2774697000CA03CF /* CoreDataContextProvider.swift in Sources */,
 				5F1E5F3A2755992D00AD6B62 /* ContentView.swift in Sources */,
+				F57139DA2818557B0056FA8D /* FileDownloadingView.swift in Sources */,
 				5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */,
+				F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */,
 				5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */,
 				5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */,
 				5F90E16F281144340071E799 /* StudioFrameFileManager.swift in Sources */,
-				5F00358E27C406EB00BF5A0F /* LibraryObjectViewModel.swift in Sources */,
+				5F00358E27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift in Sources */,
 				5F716BC427EC68EC005C88B8 /* UsdzObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +661,7 @@
 				DEVELOPMENT_TEAM = 578R27WKR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Studioframe/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -683,6 +695,7 @@
 				DEVELOPMENT_TEAM = 578R27WKR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Studioframe/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -8,46 +8,41 @@
 import Foundation
 import SwiftUI
 
-
-struct UsdzObjectWrapper {
-    let usdzObject: UsdzObject
-    let isDownloaded: Bool
-}
-
-
 final class UsdzLibraryService {
     
     static let shared = UsdzLibraryService()
     let urlProvider = StudioframeUrlProvider()
     
-    var downloadedUsdzObjects: [String : Bool] = [:]
-    var urlPathUsdzObjects: [String : URL] = [:]
+    //var downloadedUsdzObjects: [String : Bool] = [:]
+    //var urlPathUsdzObjects: [String : URL] = [:]
     
     func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
         //let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
-        guard let url = urlProvider.createUsdzListRequestUrl() else { return [] }
+        /// Choose here between local or heroku server for the request
+        guard let url = urlProvider.createLocalUsdzListRequestUrl() else { return [] }
         let urlRequest = URLRequest(url: url)
         
         let usdzObjects: [UsdzObject] = try await networkManager.fetch(urlRequest: urlRequest)
         
         
-        let allLocalFilesTitles = studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
+        let allLocalFilesTitles = try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
         
-        let newobejcts = usdzObjects.map {
-            UsdzObjectWrapper
-            object.isDownloaded = allLocalFilesTitles.contains(object.objectUrlString)
+        let newObject : [UsdzObjectWrapper] = usdzObjects.map {
+            print(allLocalFilesTitles.description.contains($0.objectUrlString))
+            return UsdzObjectWrapper(usdzObject: $0, isDownloaded: allLocalFilesTitles.description.contains($0.objectUrlString) )
+            
         }
-//
+        print("the new object is : \(newObject)")
+        
 //        usdzObjects.forEach { object in
-//
-//
 //            downloadedUsdzObjects[object.title] = false
 //            print(downloadedUsdzObjects)
 //        }
         
-        return newobejcts
+        return newObject
     }
     
+
     
     /// Download the specified usdz object and store it locally
     /// - Parameter usdzObject: Object containing the url pointing to the file web location
@@ -67,7 +62,6 @@ final class UsdzLibraryService {
                     continuation.resume(throwing: UsdzLibraryServiceError.failedToDownloadUsdzObject)
                     return
                 }
-                
                 
                 do {
                     let newLocationUrl = try self.studioFrameFileManager.moveFile(at: usdzObjectLocalFileUrl, fileName: usdzObject.objectUrlString)
@@ -90,16 +84,32 @@ final class UsdzLibraryService {
         
     }
     
-    func removeUsdzObject(locationUrl: URL) {
+    func remove(usdzObject: UsdzObject) {
+        
         do {
-            try studioFrameFileManager.removeFile(at: locationUrl)
-            print("try to remove item at \(locationUrl)")
+            try studioFrameFileManager.removeFileFromDocumentsDirectiory(fileName:  usdzObject.objectUrlString)
+            print("try to remove item at \(usdzObject.objectUrlString)")
         } catch {
             print(error)
-            print("Error removing item \(locationUrl)")
+            print("Error removing item \(usdzObject.objectUrlString)")
         }
     }
     
+    func getIsDownload(usdzObject: UsdzObject) -> Bool {
+        guard let allFileTitles = try? studioFrameFileManager.getAllFileTitlesInDocumentsDirectory() else {
+            return false
+        }
+        
+        
+        
+        // FIXME: should not work like that
+        let isDownloaded = allFileTitles.contains { url in
+            url.absoluteString.contains(usdzObject.objectUrlString)
+        }
+        
+        
+        return isDownloaded
+    }
     
     
     private func getHostUrl() -> URL {

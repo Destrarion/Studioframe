@@ -45,9 +45,10 @@ final class StudioframeUrlProvider: StudioframeUrlProviderProtocol {
         
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
-        urlComponents.host = "127.0.0.1:8080"
+        urlComponents.host = "127.0.0.1"
+        urlComponents.port = 8080
         urlComponents.path = "/usdz-objects"
-        urlComponents.queryItems = []
+        urlComponents.queryItems = nil
         
         return urlComponents.url
     }

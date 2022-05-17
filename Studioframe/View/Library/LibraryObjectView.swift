@@ -1,14 +1,28 @@
 import SwiftUI
 
+
+
+
 struct LibraryObjectView: View {
     @ObservedObject var viewModel: LibraryObjectViewModel
     
     var body: some View {
         HStack {
-            Image("Image_Not_Available")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 160, height: 175, alignment: .leading)
+            AsyncImage(
+                url: viewModel.thumbnailImageUrl,
+                content: { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 160, height: 175, alignment: .leading)
+                    
+                },
+                placeholder: {
+                    ProgressView()
+                }
+            )
+            //Image("Image_Not_Available")
+                
             Spacer()
             VStack {
                 Text(viewModel.name)
@@ -34,17 +48,3 @@ struct LibraryObjectView: View {
 }
 
 
-struct FileDownloadingView: View {
-    
-    @ObservedObject var viewModel: LibraryObjectViewModel
-    
-    var body: some View {
-        VStack {
-            ProgressView(value: Double(viewModel.downloadProgress) / 100.0)
-                .progressViewStyle(.linear)
-            Button("Stop") {
-                viewModel.didTapStopDownload()
-            }
-        }
-    }
-}

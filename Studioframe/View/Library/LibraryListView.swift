@@ -11,24 +11,28 @@ struct LibraryListView: View{
     
     
     var body: some View {
-        List {
-           if viewModel.isLoadingList {
-               ProgressView()
-                   .progressViewStyle(.linear)
-           }
-            ForEach(viewModel.localLibraryObjectViewModels, id: \.name) { localLibraryObjectViewModel in
-                LibraryObjectView(viewModel: localLibraryObjectViewModel)
+        Group {
+            if viewModel.isLoadingList {
+                ProgressView()
+                    .progressViewStyle(.circular)
+            } else {
+                List {
+                    
+                    ForEach(viewModel.localLibraryObjectViewModels, id: \.name) { viewModel in
+                        LibraryObjectView(viewModel: viewModel)
+                    }
+                    .listRowSeparator(.visible)
+                    .listRowSeparatorTint(Color("ListRowColor"))
+                    .listRowBackground(Color.clear)
+                }
+                .alert("Error", isPresented: $viewModel.isAlertPresented, actions: {})
+                .listStyle(PlainListStyle())
             }
-            .listRowSeparator(.visible)
-            .listRowSeparatorTint(Color("ListRowColor"))
-            .listRowBackground(Color.clear)
         }
-        .alert("Error", isPresented: $viewModel.isAlertPresented, actions: {})
         .task {
             viewModel.fetchObjects()
             
         }
-        .listStyle(PlainListStyle())
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Local Library")
         
