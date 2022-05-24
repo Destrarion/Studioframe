@@ -41,6 +41,8 @@
 		5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */; };
 		5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */; };
 		5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */; };
+		5FBC171B28362B420060FE95 /* QuickLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171A28362B420060FE95 /* QuickLookViewController.swift */; };
+		5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171D28362B940060FE95 /* QuickLookView.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */; };
 		F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52274032819586500F3648A /* LibraryObjectViewModel.swift */; };
 		F57139D8281840D10056FA8D /* UsdzObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */; };
@@ -102,6 +104,8 @@
 		5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotDowloadedView.swift; sourceTree = "<group>"; };
 		5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadedView.swift; sourceTree = "<group>"; };
+		5FBC171A28362B420060FE95 /* QuickLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookViewController.swift; sourceTree = "<group>"; };
+		5FBC171D28362B940060FE95 /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
 		5FC01FE6282CEC6F00BB3C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		F52274032819586500F3648A /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 		5FB3580B27745C2600CA03CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5FBC171C28362B7F0060FE95 /* QuickLook */,
 				5FB3587927746E8C00CA03CF /* ARView */,
 				5FB3587827746E7500CA03CF /* Library */,
 			);
@@ -333,6 +338,23 @@
 				5F07671827D616AA00F2EF52 /* USDZScrollingMenu */,
 			);
 			path = ARView;
+			sourceTree = "<group>";
+		};
+		5FBC171928362B2A0060FE95 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				5FBC171A28362B420060FE95 /* QuickLookViewController.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		5FBC171C28362B7F0060FE95 /* QuickLook */ = {
+			isa = PBXGroup;
+			children = (
+				5FBC171928362B2A0060FE95 /* UIKit */,
+				5FBC171D28362B940060FE95 /* QuickLookView.swift */,
+			);
+			path = QuickLook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,9 +513,11 @@
 				5FB3586F2774697000CA03CF /* CoreDataContextProvider.swift in Sources */,
 				5F1E5F3A2755992D00AD6B62 /* ContentView.swift in Sources */,
 				F57139DA2818557B0056FA8D /* FileDownloadingView.swift in Sources */,
+				5FBC171B28362B420060FE95 /* QuickLookViewController.swift in Sources */,
 				5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */,
 				F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */,
 				5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */,
+				5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */,
 				5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */,
 				5F90E16F281144340071E799 /* StudioFrameFileManager.swift in Sources */,
 				5F00358E27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift in Sources */,

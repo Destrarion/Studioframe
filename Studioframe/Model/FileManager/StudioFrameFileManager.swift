@@ -30,6 +30,11 @@ final class StudioFrameFileManager {
     }
     
     
+    func getFileUrl(fileName: String) throws -> URL {
+        let fileLocationURL = getDocumentsDirectory().appendingPathComponent(fileName)
+        return fileLocationURL
+    }
+    
     func getAllFileTitlesInDocumentsDirectory() throws -> [URL] {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {

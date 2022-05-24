@@ -4,6 +4,10 @@ struct LibraryListView: View{
     
     @StateObject var viewModel: LibraryViewModel
     
+
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+    
     init() {
         UINavigationBar.appearance().tintColor = UIColor(named: "ListRowColor")
         self._viewModel = StateObject(wrappedValue: LibraryViewModel())
@@ -18,6 +22,19 @@ struct LibraryListView: View{
             } else {
                 List {
                     
+                    VStack {
+//                        Button("Test Dismiss Dismiss") {
+//                            dismiss()
+//                        }
+                        
+                        
+                        Button("Test Dismiss Presentation Mode") {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        
+                    }
+                    
+                    
                     ForEach(viewModel.localLibraryObjectViewModels, id: \.name) { viewModel in
                         LibraryObjectView(viewModel: viewModel)
                     }
@@ -29,6 +46,10 @@ struct LibraryListView: View{
                 .listStyle(PlainListStyle())
             }
         }
+        .onReceive(viewModel.$shouldDismiss, perform: { shouldDismiss in
+            guard shouldDismiss else { return }
+            dismiss()
+        })
         .task {
             viewModel.fetchObjects()
             

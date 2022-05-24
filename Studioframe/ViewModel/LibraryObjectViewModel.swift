@@ -19,14 +19,15 @@ final class LibraryObjectViewModel: ObservableObject {
     
     init(
         usdzObjectWrapper: UsdzObjectWrapper,
-        onSelect: @escaping (UsdzObject) -> Void,
         onFavorite: @escaping (UsdzObject) -> Void,
-        didProduceError: @escaping (Error) -> Void
+        didProduceError: @escaping (Error) -> Void,
+        onDismiss: @escaping () -> Void
     ) {
         self.usdzObjectWrapper = usdzObjectWrapper
-        self.onSelect = onSelect
         self.onFavorite = onFavorite
         self.didProduceError = didProduceError
+        self.onDismiss = onDismiss
+        
         self.updateDownloadState()
     }
     
@@ -50,21 +51,24 @@ final class LibraryObjectViewModel: ObservableObject {
     @Published var downloadProgress: Int = 0
     
     
+    @Published var isQuickLookPresented = false
+    
+    
     
     
     let usdzObjectWrapper: UsdzObjectWrapper
     
-    private let onSelect: (UsdzObject) -> Void
     
     private let onFavorite: (UsdzObject) -> Void
     private let didProduceError: (Error) -> Void
-    
-    
+    private let onDismiss: () -> Void
     
     
     
     func didTapSelect() {
-        onSelect(usdzObjectWrapper.usdzObject)
+        guard let donwloadedUsdzObjectUrl = donwloadedUsdzObjectUrl else { return }
+        NotificationCenter.default.post(name: .shouldAddUsdzObject, object: donwloadedUsdzObjectUrl)
+        onDismiss()
     }
     
     func didTapFavorite() {
@@ -86,22 +90,24 @@ final class LibraryObjectViewModel: ObservableObject {
         downloadState = .notDownloaded
     }
     
-    func isDownloadedUsdz(usdzObject: UsdzObject) -> Bool{
-        if usdzObjectWrapper.isDownloaded {
-            downloadState = .downloaded
-            return true
-        }
-        return false
-    }
-    
+//    func isDownloadedUsdz(usdzObject: UsdzObject) -> Bool{
+//        if usdzObjectWrapper.isDownloaded {
+//            downloadState = .downloaded
+//            return true
+//        }
+//        return false
+//    }
+//
     
     private let usdzLibraryService = UsdzLibraryService.shared
+    
+    private let studioFrameFileManager = StudioFrameFileManager.shared
     
 
     private func downloadItem(usdzObject: UsdzObject) {
         Task {
             print("Item selected with name: \(usdzObject.title)")
-            guard let donwloadedUsdzObjectUrl = try? await usdzLibraryService.downloadUsdzObject(
+            guard let _ = try? await usdzLibraryService.downloadUsdzObject(
                 usdzObject: usdzObject,
                 onDownloadProgressChanged: { [weak self] downloadProgress in self?.downloadProgress = downloadProgress }
             ) else {
@@ -109,10 +115,15 @@ final class LibraryObjectViewModel: ObservableObject {
                 updateDownloadState()
                 return
             }
+           
             updateDownloadState()
-            NotificationCenter.default.post(name: .shouldAddUsdzObject, object: donwloadedUsdzObjectUrl)
             
         }
+    }
+    
+    var donwloadedUsdzObjectUrl: URL? {
+        guard downloadState == .downloaded else { return nil }
+        return try? studioFrameFileManager.getFileUrl(fileName: usdzObjectWrapper.usdzObject.objectUrlString)
     }
     
     

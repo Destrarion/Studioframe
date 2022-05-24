@@ -5,22 +5,31 @@ import SwiftUI
 
 struct LibraryObjectView: View {
     @ObservedObject var viewModel: LibraryObjectViewModel
+
     
     var body: some View {
         HStack {
-            AsyncImage(
-                url: viewModel.thumbnailImageUrl,
-                content: { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 160, height: 175, alignment: .leading)
-                    
-                },
-                placeholder: {
-                    ProgressView()
+            Button {
+                if viewModel.donwloadedUsdzObjectUrl != nil {
+                    viewModel.isQuickLookPresented = true
                 }
-            )
+            } label: {
+                AsyncImage(
+                    url: viewModel.thumbnailImageUrl,
+                    content: { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 160, height: 175, alignment: .leading)
+                        
+                    },
+                    placeholder: {
+                        ProgressView()
+                    }
+                )
+            }
+
+           
             //Image("Image_Not_Available")
                 
             Spacer()
@@ -44,6 +53,9 @@ struct LibraryObjectView: View {
         }
         .padding(.vertical, 10)
         .frame(height: 200)
+        .sheet(isPresented: $viewModel.isQuickLookPresented) {
+            QuickLookView(objectUrl: viewModel.donwloadedUsdzObjectUrl!)
+        }
     }
 }
 

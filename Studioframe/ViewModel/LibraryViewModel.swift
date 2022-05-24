@@ -20,6 +20,9 @@ final class LibraryViewModel: ObservableObject {
     @Published var isAlertPresented = false
     @Published var localLibraryObjectViewModels: [LibraryObjectViewModel] = []
     @Published var isLoadingList: Bool = false
+    @Published var shouldDismiss = false
+    
+    
     // MARK: Internal - Methods
     
     func fetchObjects() {
@@ -62,21 +65,19 @@ final class LibraryViewModel: ObservableObject {
             
             LibraryObjectViewModel(
                 usdzObjectWrapper: usdzObjectWrapper,
-                onSelect: { [weak self] usdzObject in self?.onSelectItem(usdzObject: usdzObject)},
                 onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObject) },
                 didProduceError: { [weak self] error in
                     self?.isAlertPresented = true
                     
+                },
+                onDismiss: { [weak self] in
+                    self?.shouldDismiss = true
                 }
             )
         
         }
         isLoadingList.toggle()
         self.localLibraryObjectViewModels = localLibraryObjectViewModels
-        
-    }
-    
-    private func onSelectItem(usdzObject: UsdzObject) {
         
     }
     

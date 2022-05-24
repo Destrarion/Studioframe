@@ -43,15 +43,23 @@ class NetworkManager: NSObject {
     func fetchFile(
         urlRequest: URLRequest,
         onDownloadProgressChanged: @escaping (Int) -> Void,
-        completionHandler: @escaping (URL) -> Void)
-    {
+        completionHandler: @escaping (URL) -> Void
+    ) {
         
-        self.onDownloadProgressChanged = onDownloadProgressChanged
+        onDownloadProgressChanged(0)
         
-        let downloadTask = session.downloadTask(with: urlRequest)
-        downloadTask.resume()
+        // #if DEBUG
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
+            self?.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
+        }
+        //
         
-        self.downloadTaskCompletionHandler = completionHandler
+        
+        // TODO: Handle configurations
+        // #if PRODUCTION
+        // self?.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
+        //
+        
         
         // let (downloadedFileLocationUrl, response) = try await session.download(for: urlRequest, delegate: self)
         
@@ -61,6 +69,20 @@ class NetworkManager: NSObject {
         print("⚠️⚠️⚠️⚠️⚠️")
         //print((response as? HTTPURLResponse)?.statusCode ?? "-1")
         
+        
+    }
+    
+    private func triggerFileDownload(
+        urlRequest: URLRequest,
+        onDownloadProgressChanged: @escaping (Int) -> Void,
+        completionHandler: @escaping (URL) -> Void
+    ) {
+        self.onDownloadProgressChanged = onDownloadProgressChanged
+        
+        let downloadTask = session.downloadTask(with: urlRequest)
+        downloadTask.resume()
+        
+        downloadTaskCompletionHandler = completionHandler
         
     }
     
@@ -99,8 +121,7 @@ extension NetworkManager: URLSessionDownloadDelegate {
     
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print("❌❌❌didCompleteWithError DOWNLOAD")
-        print(error ?? "ERROR IS NIL")
+        print( error ?? "ERROR IS NIL")
     }
     
     
