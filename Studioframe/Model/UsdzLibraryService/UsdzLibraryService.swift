@@ -19,7 +19,7 @@ final class UsdzLibraryService {
     func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
         //let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
         /// Choose here between local or heroku server for the request
-        guard let url = urlProvider.createLocalUsdzListRequestUrl() else { return [] }
+        guard let url = urlProvider.createUsdzListRequestUrl() else { return [] }
         let urlRequest = URLRequest(url: url)
         
         let usdzObjects: [UsdzObject] = try await networkManager.fetch(urlRequest: urlRequest)

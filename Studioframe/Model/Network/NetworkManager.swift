@@ -48,22 +48,22 @@ class NetworkManager: NSObject {
         
         onDownloadProgressChanged(0)
         
-        // #if DEBUG
+#if local
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
             self?.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
         }
-        //
+        
         
         
         // TODO: Handle configurations
-        // #if PRODUCTION
-        // self?.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
+         #elseif Heroku
+        self.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
         //
         
         
         // let (downloadedFileLocationUrl, response) = try await session.download(for: urlRequest, delegate: self)
         
-        
+        #endif
         
         
         print("⚠️⚠️⚠️⚠️⚠️")
