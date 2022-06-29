@@ -45,7 +45,7 @@ final class LibraryObjectViewModel: ObservableObject {
     @Published var downloadState: LibraryObjectDownloadState = .notDownloaded
     
     var thumbnailImageUrl: URL? {
-        URL(string: "http://127.0.0.1:8080/" + usdzObjectWrapper.usdzObject.thumbnailImageUrlString)
+        configurationService.configurationType.schemeWithHostAndPort.appendingPathComponent(usdzObjectWrapper.usdzObject.thumbnailImageUrlString)
     }
     
     @Published var downloadProgress: Int = 0
@@ -100,8 +100,8 @@ final class LibraryObjectViewModel: ObservableObject {
 //
     
     private let usdzLibraryService = UsdzLibraryService.shared
-    
     private let studioFrameFileManager = StudioFrameFileManager.shared
+    private let configurationService = ConfigurationService.shared
     
 
     private func downloadItem(usdzObject: UsdzObject) {

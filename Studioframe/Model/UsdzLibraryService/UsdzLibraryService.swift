@@ -42,8 +42,6 @@ final class UsdzLibraryService {
         return newObject
     }
     
-
-    
     /// Download the specified usdz object and store it locally
     /// - Parameter usdzObject: Object containing the url pointing to the file web location
     /// - Returns: The local URL of the downloaded USDZ object

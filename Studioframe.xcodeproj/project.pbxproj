@@ -33,6 +33,8 @@
 		5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8574702786E791004503B1 /* StudioFrameExperience.swift */; };
 		5F90E16F281144340071E799 /* StudioFrameFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F90E16E281144340071E799 /* StudioFrameFileManager.swift */; };
 		5F94D50A275E71BF00941292 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5F94D509275E71BE00941292 /* AirForce.usdz */; };
+		5FA12D14286BDF0F00020A5E /* ConfigurationTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA12D13286BDF0F00020A5E /* ConfigurationTypeEnum.swift */; };
+		5FA12D16286BDF3A00020A5E /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA12D15286BDF3900020A5E /* ConfigurationService.swift */; };
 		5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB358082772076A00CA03CF /* LibraryListView.swift */; };
 		5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */; };
 		5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586C2774694600CA03CF /* CoreDataManager.swift */; };
@@ -96,6 +98,8 @@
 		5F8574702786E791004503B1 /* StudioFrameExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameExperience.swift; sourceTree = "<group>"; };
 		5F90E16E281144340071E799 /* StudioFrameFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameFileManager.swift; sourceTree = "<group>"; };
 		5F94D509275E71BE00941292 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
+		5FA12D13286BDF0F00020A5E /* ConfigurationTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTypeEnum.swift; sourceTree = "<group>"; };
+		5FA12D15286BDF3900020A5E /* ConfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		5FB358082772076A00CA03CF /* LibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListView.swift; sourceTree = "<group>"; };
 		5FB3581027745E5300CA03CF /* CoredataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataModel.xcdatamodel; sourceTree = "<group>"; };
 		5FB3586C2774694600CA03CF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -167,15 +171,17 @@
 			path = ARView;
 			sourceTree = "<group>";
 		};
-		5F07671B27D6180600F2EF52 /* Files - Supporting Files */ = {
+		5F07671B27D6180600F2EF52 /* Configuration Files - Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FA12D15286BDF3900020A5E /* ConfigurationService.swift */,
+				5FA12D13286BDF0F00020A5E /* ConfigurationTypeEnum.swift */,
 				5F1E5F372755992D00AD6B62 /* AppDelegate.swift */,
 				5F1E5F3D2755992F00AD6B62 /* Assets.xcassets */,
 				5F1E5F3F2755992F00AD6B62 /* Preview Content */,
 				5F94D508275E71A700941292 /* Usdz files */,
 			);
-			path = "Files - Supporting Files";
+			path = "Configuration Files - Supporting Files";
 			sourceTree = "<group>";
 		};
 		5F1E5F2B2755992D00AD6B62 = {
@@ -205,7 +211,7 @@
 				5FB3580C27745C2F00CA03CF /* Model */,
 				5F716BBE27EBDFAC005C88B8 /* ViewModel */,
 				5FB3580B27745C2600CA03CF /* View */,
-				5F07671B27D6180600F2EF52 /* Files - Supporting Files */,
+				5F07671B27D6180600F2EF52 /* Configuration Files - Supporting Files */,
 			);
 			path = Studioframe;
 			sourceTree = "<group>";
@@ -496,6 +502,7 @@
 				5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */,
 				5F07671D27D61B5900F2EF52 /* LibraryViewModel.swift in Sources */,
 				5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */,
+				5FA12D14286BDF0F00020A5E /* ConfigurationTypeEnum.swift in Sources */,
 				5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */,
 				5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */,
 				5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */,
@@ -503,6 +510,7 @@
 				5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */,
 				5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */,
 				5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */,
+				5FA12D16286BDF3A00020A5E /* ConfigurationService.swift in Sources */,
 				5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */,
 				5F06178327F3427E00644DF4 /* URLComponent.swift in Sources */,
 				5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */,

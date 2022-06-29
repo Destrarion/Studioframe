@@ -13,8 +13,13 @@ import RealityKit
 @MainActor
 final class USDZScrollingMenuViewModel: ObservableObject {
     
+    init() {
+        //let usdzObjects = try await usdzLibraryService.fetchUsdzObjects()
+        //fetch
+    }
+    
     lazy var usdzObjectContainers: [UsdzObjectContainer] = [
-        .init(fileName: "AirForce")
+        //.init(fileName: "AirForce")
     ]
     
 }
