@@ -90,14 +90,6 @@ final class LibraryObjectViewModel: ObservableObject {
         downloadState = .notDownloaded
     }
     
-//    func isDownloadedUsdz(usdzObject: UsdzObject) -> Bool{
-//        if usdzObjectWrapper.isDownloaded {
-//            downloadState = .downloaded
-//            return true
-//        }
-//        return false
-//    }
-//
     
     private let usdzLibraryService = UsdzLibraryService.shared
     private let studioFrameFileManager = StudioFrameFileManager.shared

@@ -79,10 +79,12 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     
     
-    func addUsdzObject(usdzResourceName: String) {
-        let usdzUrl = Bundle.main.url(forResource: usdzResourceName, withExtension: ".usdz")!
-        addUsdzObject(usdzResourceUrl: usdzUrl)
-    }
+  func addUsdzObject(usdzResourceName: String) {
+      var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+      url.appendPathComponent(usdzResourceName + ".usdz")
+      //let usdzUrl = Bundle.main.url(forResource: usdzResourceName, withExtension: ".usdz")!
+      addUsdzObject(usdzResourceUrl: url)
+  }
     
     func addUsdzObject(usdzResourceUrl: URL) {
         ModelEntity.loadModelAsync(contentsOf: usdzResourceUrl)

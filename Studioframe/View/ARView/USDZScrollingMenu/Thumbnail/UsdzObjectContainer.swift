@@ -19,6 +19,11 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
         loadThumbnailImage()
     }
     
+    @Published var image: Image?
+    @Published var isLoading = false
+    let id = UUID()
+    let fileName: String
+    
     private func loadThumbnailImage() {
         Task {
             isLoading.toggle()
@@ -27,11 +32,6 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
         }
     }
     
-    let id = UUID()
-    let fileName: String
    
-    @Published var image: Image?
-    @Published var isLoading = false
-    
 }
 

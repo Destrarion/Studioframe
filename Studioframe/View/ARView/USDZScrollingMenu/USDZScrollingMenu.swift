@@ -10,29 +10,12 @@ import SwiftUI
 import RealityKit
 
 
-@MainActor
-final class USDZScrollingMenuViewModel: ObservableObject {
-    
-    init() {
-        //let usdzObjects = try await usdzLibraryService.fetchUsdzObjects()
-        //fetch
-    }
-    
-    lazy var usdzObjectContainers: [UsdzObjectContainer] = [
-        //.init(fileName: "AirForce")
-    ]
-    
-}
-
-
-
-
 struct USDZScrollingMenu: View {
     
-    init(experience: StudioFrameExperience) {
+    init(experience: StudioFrameExperience) throws {
         self.experience = experience
         
-        self._viewModel = StateObject(wrappedValue: USDZScrollingMenuViewModel())
+        self._viewModel = StateObject(wrappedValue: try! USDZScrollingMenuViewModel())
 
     }
     
@@ -55,6 +38,7 @@ struct USDZScrollingMenu: View {
             HStack {
                 Button {
                     print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
+                    //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
                     experience!.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
                     
                 } label: {

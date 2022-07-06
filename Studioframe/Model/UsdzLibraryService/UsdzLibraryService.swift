@@ -13,8 +13,7 @@ final class UsdzLibraryService {
     static let shared = UsdzLibraryService()
     let urlProvider = StudioframeUrlProvider()
     
-    //var downloadedUsdzObjects: [String : Bool] = [:]
-    //var urlPathUsdzObjects: [String : URL] = [:]
+    
     
     func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
         //let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
@@ -24,7 +23,7 @@ final class UsdzLibraryService {
         
         let usdzObjects: [UsdzObject] = try await networkManager.fetch(urlRequest: urlRequest)
         
-        
+        /// check if we already downloaded the usdz for the view
         let allLocalFilesTitles = try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
         
         let newObject : [UsdzObjectWrapper] = usdzObjects.map {
@@ -34,13 +33,33 @@ final class UsdzLibraryService {
         }
         print("the new object is : \(newObject)")
         
-//        usdzObjects.forEach { object in
-//            downloadedUsdzObjects[object.title] = false
-//            print(downloadedUsdzObjects)
-//        }
-        
         return newObject
     }
+    
+    func getLocalObjectsTest() throws -> [UsdzObject] {
+        let allLocalFilesUrls = try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
+        let usddObjects = allLocalFilesUrls.map { url -> UsdzObject in
+            let title = url.pathComponents.last!.split(separator: ".").first!.description
+            let object = UsdzObject(
+                title: title,
+                objectUrlString: url.absoluteString,
+                thumbnailImageUrlString: "somethumbnail"
+            )
+            return object
+        }
+        
+        return usddObjects
+    }
+    
+    func fetchAllLocalObjects() throws -> UsdzObject {
+    /// "file:///private/var/mobile/Containers/Data/Application/C06C2D29-7F85-43FC-8C71-1DC6F05494B6/Documents/tv_retro.usdz"
+        let allLocalFilesTitles =  try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
+        print("🎱 \(allLocalFilesTitles)")
+        let usdz: UsdzObject = UsdzObject(title: "tv_retro", objectUrlString: allLocalFilesTitles.description, thumbnailImageUrlString: "somethumbnail")
+    
+        return usdz
+    }
+    
     
     /// Download the specified usdz object and store it locally
     /// - Parameter usdzObject: Object containing the url pointing to the file web location

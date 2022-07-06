@@ -11,11 +11,16 @@ import Foundation
 
 final class StudioFrameFileManager {
     
+    init() {
+        try? saveSeed()
+    }
+    
     static let shared = StudioFrameFileManager()
     
     func moveFile(at originUrlPath: URL, fileName: String) throws -> URL {
         let newLocationUrl = getDocumentsDirectory().appendingPathComponent(fileName)
         try FileManager.default.copyItem(at: originUrlPath, to: newLocationUrl)
+        
         return newLocationUrl
     }
     
@@ -49,6 +54,12 @@ final class StudioFrameFileManager {
         
         return []
     }
+    
+    /// moving the Airforce from the Bundle.main to file
+    private func saveSeed() throws {
+        try moveFile(at: Bundle.main.url(forResource: "AirForce", withExtension: ".usdz")!,fileName: "AirForce.usdz")
+    }
+    
     
     
     

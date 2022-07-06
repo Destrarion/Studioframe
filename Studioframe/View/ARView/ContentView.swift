@@ -29,7 +29,7 @@ struct ContentView: View {
                     HStack{
                         Spacer()
                         if isScrollingUSDZMenuOpen {
-                            USDZScrollingMenu(experience: studioFrameExperience)
+                            try! USDZScrollingMenu(experience: studioFrameExperience)
                                 .frame(width: 80, alignment: .bottomTrailing)
                         }
                     }

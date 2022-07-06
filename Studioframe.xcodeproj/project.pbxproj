@@ -35,6 +35,7 @@
 		5F94D50A275E71BF00941292 /* AirForce.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5F94D509275E71BE00941292 /* AirForce.usdz */; };
 		5FA12D14286BDF0F00020A5E /* ConfigurationTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA12D13286BDF0F00020A5E /* ConfigurationTypeEnum.swift */; };
 		5FA12D16286BDF3A00020A5E /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA12D15286BDF3900020A5E /* ConfigurationService.swift */; };
+		5FA12D18286D3C8300020A5E /* USDZScrollingMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */; };
 		5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB358082772076A00CA03CF /* LibraryListView.swift */; };
 		5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */; };
 		5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586C2774694600CA03CF /* CoreDataManager.swift */; };
@@ -100,6 +101,7 @@
 		5F94D509275E71BE00941292 /* AirForce.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AirForce.usdz; sourceTree = "<group>"; };
 		5FA12D13286BDF0F00020A5E /* ConfigurationTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTypeEnum.swift; sourceTree = "<group>"; };
 		5FA12D15286BDF3900020A5E /* ConfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
+		5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZScrollingMenuViewModel.swift; sourceTree = "<group>"; };
 		5FB358082772076A00CA03CF /* LibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListView.swift; sourceTree = "<group>"; };
 		5FB3581027745E5300CA03CF /* CoredataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataModel.xcdatamodel; sourceTree = "<group>"; };
 		5FB3586C2774694600CA03CF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				5F07671C27D61B5900F2EF52 /* LibraryViewModel.swift */,
 				5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */,
 				F52274032819586500F3648A /* LibraryObjectViewModel.swift */,
+				5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */,
 				F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */,
 				5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */,
+				5FA12D18286D3C8300020A5E /* USDZScrollingMenuViewModel.swift in Sources */,
 				5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */,
 				5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */,
 				5F90E16F281144340071E799 /* StudioFrameFileManager.swift in Sources */,
@@ -689,7 +693,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Files - Supporting Files\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Configuration Files - Supporting Files\"";
 				DEVELOPMENT_TEAM = 578R27WKR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -723,7 +727,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Files - Supporting Files\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Configuration Files - Supporting Files\"";
 				DEVELOPMENT_TEAM = 578R27WKR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -914,7 +918,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Files - Supporting Files\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Configuration Files - Supporting Files\"";
 				DEVELOPMENT_TEAM = 578R27WKR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1057,7 +1061,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Files - Supporting Files\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Studioframe/Configuration Files - Supporting Files\"";
 				DEVELOPMENT_TEAM = 578R27WKR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
