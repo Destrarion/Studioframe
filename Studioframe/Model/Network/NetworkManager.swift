@@ -27,6 +27,19 @@ class NetworkManager: NSObject {
     }()
     
     
+    private func cleanDownload(url: URL) {
+        let key = url.absoluteString
+        onDownloadProgressChangedContainer.removeValue(forKey: key)
+        downloadTaskCompletionHandlerContainer.removeValue(forKey: key)
+        downloadTaskContainer.removeValue(forKey: key)
+    }
+    
+    func stopDownload(url: URL) {
+        let key = url.absoluteString
+        downloadTaskContainer[key]?.cancel()
+        cleanDownload(url: url)
+    }
+    
     func fetch<T: Decodable>(urlRequest: URLRequest) async throws -> T {
         let (data, response) = try await session.data(for: urlRequest, delegate: self)
         
@@ -77,12 +90,14 @@ class NetworkManager: NSObject {
         onDownloadProgressChanged: @escaping (Int) -> Void,
         completionHandler: @escaping (URL) -> Void
     ) {
-        self.onDownloadProgressChanged = onDownloadProgressChanged
+        let key = urlRequest.url?.absoluteString ?? ""
+        onDownloadProgressChangedContainer[key] = onDownloadProgressChanged
         
         let downloadTask = session.downloadTask(with: urlRequest)
+        downloadTaskContainer[key] = downloadTask
         downloadTask.resume()
         
-        downloadTaskCompletionHandler = completionHandler
+        downloadTaskCompletionHandlerContainer[key] = completionHandler
         
     }
     
@@ -98,9 +113,9 @@ class NetworkManager: NSObject {
     }
     
     
-    private var onDownloadProgressChanged: ((Int) -> Void)?
-    
-    private var downloadTaskCompletionHandler: ((URL) -> Void)?
+    private var onDownloadProgressChangedContainer: [String: ((Int) -> Void)] = [:]
+    private var downloadTaskCompletionHandlerContainer: [String: ((URL) -> Void)] = [:]
+    private var downloadTaskContainer: [String: URLSessionDownloadTask] = [:]
     
 }
 
@@ -116,7 +131,11 @@ extension NetworkManager: URLSessionDownloadDelegate {
         print("✅✅FINISHED DOWNLOAD AT URL")
         print(location.absoluteString)
         
-        downloadTaskCompletionHandler?(location)
+        guard let downloadUrl = downloadTask.originalRequest?.url else { return }
+        
+        let key = downloadUrl.absoluteString
+        downloadTaskCompletionHandlerContainer[key]?(location)
+        cleanDownload(url: downloadUrl)
     }
     
     
@@ -137,7 +156,8 @@ extension NetworkManager: URLSessionDownloadDelegate {
         let downloadCompletionPercentage = Int((Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)) * 100.0)
         print("🍅 \(downloadCompletionPercentage)%")
         
-        onDownloadProgressChanged?(downloadCompletionPercentage)
+        let key = downloadTask.originalRequest?.url?.absoluteString ?? ""
+        onDownloadProgressChangedContainer[key]?(downloadCompletionPercentage)
         
     }
     

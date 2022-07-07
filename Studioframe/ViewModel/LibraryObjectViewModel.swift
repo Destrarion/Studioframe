@@ -88,6 +88,7 @@ final class LibraryObjectViewModel: ObservableObject {
     
     func didTapStopDownload() {
         downloadState = .notDownloaded
+        usdzLibraryService.stopDownload(usdzObject: usdzObjectWrapper.usdzObject)
     }
     
     

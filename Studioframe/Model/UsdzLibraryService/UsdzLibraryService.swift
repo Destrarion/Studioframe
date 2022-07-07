@@ -13,6 +13,10 @@ final class UsdzLibraryService {
     static let shared = UsdzLibraryService()
     let urlProvider = StudioframeUrlProvider()
     
+    func stopDownload(usdzObject: UsdzObject) {
+        let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
+        networkManager.stopDownload(url: url)
+    }
     
     
     func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
