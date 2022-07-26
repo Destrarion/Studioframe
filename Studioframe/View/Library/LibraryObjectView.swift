@@ -24,13 +24,18 @@ struct LibraryObjectView: View {
                         
                     },
                     placeholder: {
-                        ProgressView()
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                
+                            .frame(width: 160, height: 175, alignment: .leading)
                     }
                 )
             }
 
-           
-            //Image("Image_Not_Available")
+
                 
             Spacer()
             VStack {
@@ -54,7 +59,16 @@ struct LibraryObjectView: View {
         .padding(.vertical, 10)
         .frame(height: 200)
         .sheet(isPresented: $viewModel.isQuickLookPresented) {
-            QuickLookView(objectUrl: viewModel.donwloadedUsdzObjectUrl!)
+            NavigationView {
+                QuickLookView(objectUrl: viewModel.donwloadedUsdzObjectUrl!)
+                    .toolbar {
+                        Button("Close") {
+                            print("Should close")
+                            viewModel.isQuickLookPresented = false
+                        }
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 }

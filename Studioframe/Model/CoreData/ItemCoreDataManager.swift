@@ -10,6 +10,8 @@ protocol ItemCoreDataManagerProtocol {
 
 class ItemCoreDataManager: ItemCoreDataManagerProtocol {
     
+    static let shared = ItemCoreDataManager()
+    
     init(coreDataContextProvider: CoreDataContextProviderProtocol =  CoreDataContextProvider.shared) {
         self.coreDataContextProvider = coreDataContextProvider
     }

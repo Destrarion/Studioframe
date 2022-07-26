@@ -16,7 +16,7 @@ struct FileDownloadedView: View {
                 //dismiss()
                 //presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Select")
+                Text("Add to scene")
                     .lineLimit(1)
                     .frame( maxWidth: 600, maxHeight: 30)
                     .overlay(

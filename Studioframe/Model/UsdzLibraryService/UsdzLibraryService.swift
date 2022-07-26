@@ -133,6 +133,15 @@ final class UsdzLibraryService {
     }
     
     
+    // TODO: replace ITEM by UsdzObject
+    
+    func getFavoriteObjects() -> [Item] {
+        return itemCoreDataManager.getItems()
+    }
+    
+    func addFavorite() {
+    }
+    
     private func getHostUrl() -> URL {
         return URL(string: "")!
     }
@@ -141,6 +150,7 @@ final class UsdzLibraryService {
     /// Singleton of the network manager
     private let networkManager = NetworkManager.shared
     private let studioFrameFileManager = StudioFrameFileManager.shared
+    private let itemCoreDataManager = ItemCoreDataManager.shared
     
 
 }

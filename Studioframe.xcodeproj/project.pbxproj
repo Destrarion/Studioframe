@@ -38,7 +38,7 @@
 		5FA12D18286D3C8300020A5E /* USDZScrollingMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */; };
 		5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB358082772076A00CA03CF /* LibraryListView.swift */; };
 		5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */; };
-		5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586C2774694600CA03CF /* CoreDataManager.swift */; };
+		5FB3586D2774694600CA03CF /* ItemCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586C2774694600CA03CF /* ItemCoreDataManager.swift */; };
 		5FB3586F2774697000CA03CF /* CoreDataContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586E2774697000CA03CF /* CoreDataContextProvider.swift */; };
 		5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587427746C2700CA03CF /* ItemEntity+CoreDataClass.swift */; };
 		5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */; };
@@ -104,7 +104,7 @@
 		5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZScrollingMenuViewModel.swift; sourceTree = "<group>"; };
 		5FB358082772076A00CA03CF /* LibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListView.swift; sourceTree = "<group>"; };
 		5FB3581027745E5300CA03CF /* CoredataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataModel.xcdatamodel; sourceTree = "<group>"; };
-		5FB3586C2774694600CA03CF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		5FB3586C2774694600CA03CF /* ItemCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoreDataManager.swift; sourceTree = "<group>"; };
 		5FB3586E2774697000CA03CF /* CoreDataContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContextProvider.swift; sourceTree = "<group>"; };
 		5FB3587427746C2700CA03CF /* ItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 				5FB3587427746C2700CA03CF /* ItemEntity+CoreDataClass.swift */,
 				5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */,
 				5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */,
-				5FB3586C2774694600CA03CF /* CoreDataManager.swift */,
+				5FB3586C2774694600CA03CF /* ItemCoreDataManager.swift */,
 				5FB3586E2774697000CA03CF /* CoreDataContextProvider.swift */,
 			);
 			path = CoreData;
@@ -508,7 +508,7 @@
 				5FA12D14286BDF0F00020A5E /* ConfigurationTypeEnum.swift in Sources */,
 				5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */,
 				5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */,
-				5FB3586D2774694600CA03CF /* CoreDataManager.swift in Sources */,
+				5FB3586D2774694600CA03CF /* ItemCoreDataManager.swift in Sources */,
 				5F07671727D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift in Sources */,
 				5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */,
 				5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */,
