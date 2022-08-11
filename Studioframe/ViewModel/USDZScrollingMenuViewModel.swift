@@ -5,28 +5,18 @@ final class USDZScrollingMenuViewModel: ObservableObject {
     var usdzLibraryService = UsdzLibraryService.shared
     
    init() throws {
-       //let usdzObjects = try await usdzLibraryService.fetchUsdzObjects()
-       //fetch
+
        
-       usdzObjectContainers = try usdzLibraryService.getLocalObjectsTest().map {
-           UsdzObjectContainer(fileName: $0.title)
+       usdzObjectContainers = try usdzLibraryService.getLocalObjects().map {
+           UsdzObjectContainer(fileName: $0.title, fileUrl: $0.objectUrlString)
        }
        
-       // usdzObjectContainers = [
-       // .init(
-       //     fileName: try usdzLibraryService.fetchAllLocalObjects().objectUrlString
-       // )
-       //]
+
    }
     
     lazy var usdzObjectContainers: [UsdzObjectContainer] = []
     
-    
-    
-    
-    
-    
-    
+ 
     
     // MARK: TEST Seed
   //

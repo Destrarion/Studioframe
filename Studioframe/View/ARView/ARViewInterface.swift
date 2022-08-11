@@ -9,17 +9,18 @@ import SwiftUI
 
 struct ARViewInterface: View {
     
-    init(experience: StudioFrameExperience) {
-        self.experience = experience
-    }
+    @ObservedObject var experience: StudioFrameExperience
+    @Binding var isScrollingUSDZMenuOpen: Bool
     
-    var experience: StudioFrameExperience?
+    @State var isLibraryPresented = false
     
     var body: some View {
         HStack {
+          
             
-            NavigationLink {
-                LibraryListView()
+            Button {
+                isScrollingUSDZMenuOpen = false
+                isLibraryPresented = true
             } label: {
                 Image(systemName: "text.book.closed.fill")
                     .resizable()
@@ -27,12 +28,20 @@ struct ARViewInterface: View {
                     .foregroundColor(.orange)
             }
             .padding(.leading, 20)
+
+            
+            NavigationLink(destination: LibraryListView(), isActive: $isLibraryPresented) {
+                EmptyView()
+            }
+            
+        
+           
             Spacer()
             
             Button("Remove") {
-                experience!.removeSelectedEntity()
+                experience.removeSelectedEntity()
             }
-            Text(experience!.textConsolePrint)
+            Text(experience.textConsolePrint)
             
             Spacer()
 

@@ -13,12 +13,14 @@ final class UsdzLibraryService {
     static let shared = UsdzLibraryService()
     let urlProvider = StudioframeUrlProvider()
     
+    
+    ///function to stop the dowload of the usdz
     func stopDownload(usdzObject: UsdzObject) {
         let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
         networkManager.stopDownload(url: url)
     }
     
-    
+    /// fetch usdz on the server and rethrieve all usdz info (not downloaded yet)
     func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
         //let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
         /// Choose here between local or heroku server for the request
@@ -40,14 +42,15 @@ final class UsdzLibraryService {
         return newObject
     }
     
-    func getLocalObjectsTest() throws -> [UsdzObject] {
+    /// get all the local usdz in the file
+    func getLocalObjects() throws -> [UsdzObject] {
         let allLocalFilesUrls = try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
         let usddObjects = allLocalFilesUrls.map { url -> UsdzObject in
             let title = url.pathComponents.last!.split(separator: ".").first!.description
             let object = UsdzObject(
                 title: title,
                 objectUrlString: url.absoluteString,
-                thumbnailImageUrlString: "somethumbnail"
+                thumbnailImageUrlString: ""
             )
             return object
         }

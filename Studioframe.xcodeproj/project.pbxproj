@@ -243,12 +243,20 @@
 			path = StudioframeUITests;
 			sourceTree = "<group>";
 		};
-		5F716BBE27EBDFAC005C88B8 /* ViewModel */ = {
+		5F6FFA1A2891821B0027A120 /* LibraryViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				5F07671C27D61B5900F2EF52 /* LibraryViewModel.swift */,
 				5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */,
 				F52274032819586500F3648A /* LibraryObjectViewModel.swift */,
+			);
+			path = LibraryViewModel;
+			sourceTree = "<group>";
+		};
+		5F716BBE27EBDFAC005C88B8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5F6FFA1A2891821B0027A120 /* LibraryViewModel */,
 				5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */,
 			);
 			path = ViewModel;
