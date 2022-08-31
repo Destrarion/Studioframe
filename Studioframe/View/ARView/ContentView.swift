@@ -8,95 +8,109 @@
 import SwiftUI
 import RealityKit
 
+
+struct MainView: View {
+    @StateObject private var studioFrameExperience = StudioFrameExperience()
+    @State private var isScrollingUSDZMenuOpen: Bool = false
+    @State var isLibraryPresented = false
+    
+    var body: some View {
+        TabView {
+            NavigationView{
+                ZStack(alignment: .trailing) {
+                    ARViewContainer(experience: studioFrameExperience)
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    VStack {
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            if isScrollingUSDZMenuOpen {
+                                try! USDZScrollingMenu(experience: studioFrameExperience)
+                                    .frame(width: 80, alignment: .bottomTrailing)
+                            }
+                        }
+                        HStack {
+                            
+                            ARViewInterface(experience: studioFrameExperience, isScrollingUSDZMenuOpen: $isScrollingUSDZMenuOpen)
+                            Button {
+                                self.isScrollingUSDZMenuOpen.toggle()
+                                
+                            } label: {
+                                Image(systemName: self.isScrollingUSDZMenuOpen ? "plus.circle" : "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 45, height: 45, alignment: .bottomLeading)
+                                
+                            }
+                            .padding(20)
+                            .cornerRadius(100)
+                            .rotationEffect(isScrollingUSDZMenuOpen ? .degrees(90) : .degrees(0))
+                            .animation(.easeIn(duration: 0.5), value: isScrollingUSDZMenuOpen)
+                        }
+                    }
+                }
+                .navigationBarHidden(true)
+                .onDisappear(perform: {
+                    isScrollingUSDZMenuOpen = false
+                })
+            }
+      
+            .tabItem {
+                Image(systemName: "camera.fill")
+                Text("AR")
+            }
+            .navigationViewStyle(.stack)
+            
+      
+            NavigationView() {
+                LibraryListView()
+            }
+            .tabItem {
+                Button {
+                    isScrollingUSDZMenuOpen = false
+                    isLibraryPresented = true
+                } label: {
+                    Image(systemName: "text.book.closed.fill")
+                        .resizable()
+                        .frame(width: 45, height: 45)
+                }
+                Text("Library")
+            }
+            
+            
+            NavigationView {
+                Text("Une liste avec les options / réglages / imprint / text juridique, très simple")
+            }
+            .tabItem {
+                Image(systemName: "gearshape.fill")
+                Text("Settings")
+            }
+            
+            
+        }
+    }
+}
+
 struct ContentView: View {
     
+    @State private var hasSeenOnboarding = false
+
     init() {
         UITableView.appearance().backgroundColor = .clear
     }
     
-    @State private var isScrollingUSDZMenuOpen: Bool = false
-    
-    @StateObject private var studioFrameExperience = StudioFrameExperience()
-    
-    @State private var hasSeenOnboarding = false
-    @State private var selectedOnboardingTag = 0
-    
     var body: some View {
         if hasSeenOnboarding {
-            TabView {
-                NavigationView{
-                    ZStack(alignment: .trailing) {
-                        ARViewContainer(experience: studioFrameExperience)
-                            .edgesIgnoringSafeArea(.all)
-                        
-                        VStack {
-                            Spacer()
-                            HStack{
-                                Spacer()
-                                if isScrollingUSDZMenuOpen {
-                                    try! USDZScrollingMenu(experience: studioFrameExperience)
-                                        .frame(width: 80, alignment: .bottomTrailing)
-                                }
-                            }
-                            HStack {
-                                
-                                ARViewInterface(experience: studioFrameExperience, isScrollingUSDZMenuOpen: $isScrollingUSDZMenuOpen)
-                                Button {
-                                    self.isScrollingUSDZMenuOpen.toggle()
-                                    
-                                } label: {
-                                    Image(systemName: self.isScrollingUSDZMenuOpen ? "plus.circle" : "plus.circle.fill")
-                                        .resizable()
-                                        .frame(width: 45, height: 45, alignment: .bottomLeading)
-                                    
-                                }
-                                .padding(20)
-                                .cornerRadius(100)
-                                .rotationEffect(isScrollingUSDZMenuOpen ? .degrees(90) : .degrees(0))
-                                .animation(.easeIn(duration: 0.5), value: isScrollingUSDZMenuOpen)
-                            }
-                        }
-                    }
-                    .navigationBarHidden(true)
-                }
-                .tabItem {
-                    Text("AR")
-                }
-                
-                NavigationView {
-                    Text("Une liste avec les options / réglages / imprint / text juridique, très simple")
-                }
-                .tabItem {
-                    Text("Settings")
-                }
-                
-                
-            }
+            MainView()
         } else {
-            TabView(selection: $selectedOnboardingTag) {
-                VStack {
-                    Text("Onboarding step 1")
-                    Button("Start") {
-                        selectedOnboardingTag = 1
-                    }
-                }
-                .tag(0)
-                VStack {
-                    Text("Onboarding step 2")
-                    Button("Start") {
-                        hasSeenOnboarding = true
-                    }
-                }
-                .tag(1)
-                
-            }
-            .tabViewStyle(.page)
-            
+            OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
         }
     }
     
     
 }
+
+
 
 
 

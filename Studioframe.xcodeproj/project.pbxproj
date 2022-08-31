@@ -26,6 +26,7 @@
 		5F4FFFE127AA081E00690A77 /* hab.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDE27AA081E00690A77 /* hab.reality */; };
 		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
 		5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F51C6F127C7939200FE8356 /* NetworkManager.swift */; };
+		5F6259ED28AE08C7006751BA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6259EC28AE08C6006751BA /* OnboardingView.swift */; };
 		5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */; };
 		5F716BC427EC68EC005C88B8 /* UsdzObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC327EC68EC005C88B8 /* UsdzObject.swift */; };
 		5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */; };
@@ -92,6 +93,7 @@
 		5F4FFFDE27AA081E00690A77 /* hab.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = hab.reality; sourceTree = "<group>"; };
 		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
 		5F51C6F127C7939200FE8356 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5F6259EC28AE08C6006751BA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZScrollingMenu.swift; sourceTree = "<group>"; };
 		5F716BC327EC68EC005C88B8 /* UsdzObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObject.swift; sourceTree = "<group>"; };
 		5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryService.swift; sourceTree = "<group>"; };
@@ -243,6 +245,14 @@
 			path = StudioframeUITests;
 			sourceTree = "<group>";
 		};
+		5F6259EB28AE08B2006751BA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5F6259EC28AE08C6006751BA /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		5F6FFA1A2891821B0027A120 /* LibraryViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +303,7 @@
 		5FB3580B27745C2600CA03CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5F6259EB28AE08B2006751BA /* Onboarding */,
 				5FBC171C28362B7F0060FE95 /* QuickLook */,
 				5FB3587927746E8C00CA03CF /* ARView */,
 				5FB3587827746E7500CA03CF /* Library */,
@@ -528,6 +539,7 @@
 				5F8574712786E791004503B1 /* StudioFrameExperience.swift in Sources */,
 				5F07671527D607C800F2EF52 /* ARViewInterface.swift in Sources */,
 				5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */,
+				5F6259ED28AE08C7006751BA /* OnboardingView.swift in Sources */,
 				5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */,
 				5FB3586F2774697000CA03CF /* CoreDataContextProvider.swift in Sources */,
 				5F1E5F3A2755992D00AD6B62 /* ContentView.swift in Sources */,
@@ -711,9 +723,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -745,9 +757,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -936,9 +948,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1079,9 +1091,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

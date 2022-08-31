@@ -10,7 +10,7 @@ struct LibraryObjectView: View {
     var body: some View {
         HStack {
             Button {
-                if viewModel.donwloadedUsdzObjectUrl != nil {
+                if viewModel.downloadedUsdzObjectUrl != nil {
                     viewModel.isQuickLookPresented = true
                 }
             } label: {
@@ -60,7 +60,7 @@ struct LibraryObjectView: View {
         .frame(height: 200)
         .sheet(isPresented: $viewModel.isQuickLookPresented) {
             NavigationView {
-                QuickLookView(objectUrl: viewModel.donwloadedUsdzObjectUrl!)
+                QuickLookView(objectUrl: viewModel.downloadedUsdzObjectUrl!)
                     .toolbar {
                         Button("Close") {
                             print("Should close")
@@ -68,6 +68,7 @@ struct LibraryObjectView: View {
                         }
                     }
                     .navigationBarTitleDisplayMode(.inline)
+                    .navigationTitle(viewModel.usdzObjectWrapper.usdzObject.title)
             }
         }
     }

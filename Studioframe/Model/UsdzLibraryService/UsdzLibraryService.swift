@@ -34,7 +34,11 @@ final class UsdzLibraryService {
         
         let newObject : [UsdzObjectWrapper] = usdzObjects.map {
             print(allLocalFilesTitles.description.contains($0.objectUrlString))
-            return UsdzObjectWrapper(usdzObject: $0, isDownloaded: allLocalFilesTitles.description.contains($0.objectUrlString) )
+            return UsdzObjectWrapper(
+                usdzObject: $0,
+                isDownloaded: allLocalFilesTitles.description.contains($0.objectUrlString),
+                isFavorited: Int.random(in: 0...1) == 0 // TODO: should handle favoriting
+            )
             
         }
         print("the new object is : \(newObject)")

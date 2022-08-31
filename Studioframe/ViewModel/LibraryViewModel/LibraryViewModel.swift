@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+enum LibraryFilterOption {
+    case all, favorited, downloaded
+}
 
 @MainActor
 final class LibraryViewModel: ObservableObject {
@@ -18,7 +21,43 @@ final class LibraryViewModel: ObservableObject {
     // MARK: Internal - Properties
     
     @Published var isAlertPresented = false
+    
+    @Published var searchText = ""
+    
+    @Published var currentLibraryFilterOption: LibraryFilterOption = .all
+    
+    var filteredLocalLibraryObjectViewModels: [LibraryObjectViewModel] {
+        let libaryObjectViewModelsFilterdOption = getLibraryObjectViewModelsAfterFilterOption()
+        guard !searchText.isEmpty else {
+            return libaryObjectViewModelsFilterdOption
+        }
+        
+        
+        let searchTextFiltered = libaryObjectViewModelsFilterdOption.filter { viewModel in
+            viewModel.name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).contains(searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
+        }
+        
+        return searchTextFiltered
+    }
+    
+    private func getLibraryObjectViewModelsAfterFilterOption() -> [LibraryObjectViewModel] {
+        switch currentLibraryFilterOption {
+        case .all:
+            return localLibraryObjectViewModels
+        case .favorited:
+            return localLibraryObjectViewModels.filter { viewModel in
+                return viewModel.isFavorited
+            }
+        case .downloaded:
+            return localLibraryObjectViewModels.filter { viewModel in
+                viewModel.downloadState == .downloaded
+            }
+        }
+    }
+
+    
     @Published var localLibraryObjectViewModels: [LibraryObjectViewModel] = []
+    
     @Published var isLoadingList: Bool = false
     @Published var shouldDismiss = false
     

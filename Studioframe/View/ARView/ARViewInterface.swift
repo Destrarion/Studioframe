@@ -16,31 +16,19 @@ struct ARViewInterface: View {
     
     var body: some View {
         HStack {
-          
             
             Button {
-                isScrollingUSDZMenuOpen = false
-                isLibraryPresented = true
+                experience.removeSelectedEntity()
             } label: {
-                Image(systemName: "text.book.closed.fill")
+                Image(systemName: "trash.fill")
                     .resizable()
                     .frame(width: 45, height: 45)
-                    .foregroundColor(.orange)
+                    .foregroundColor(.gray)
             }
             .padding(.leading, 20)
 
-            
-            NavigationLink(destination: LibraryListView(), isActive: $isLibraryPresented) {
-                EmptyView()
-            }
-            
-        
-           
             Spacer()
             
-            Button("Remove") {
-                experience.removeSelectedEntity()
-            }
             Text(experience.textConsolePrint)
             
             Spacer()

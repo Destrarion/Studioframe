@@ -53,6 +53,9 @@ final class LibraryObjectViewModel: ObservableObject {
     
     @Published var isQuickLookPresented = false
     
+    var isFavorited: Bool {
+        usdzObjectWrapper.isFavorited
+    }
     
     
     
@@ -66,8 +69,8 @@ final class LibraryObjectViewModel: ObservableObject {
     
     
     func didTapSelect() {
-        guard let donwloadedUsdzObjectUrl = donwloadedUsdzObjectUrl else { return }
-        NotificationCenter.default.post(name: .shouldAddUsdzObject, object: donwloadedUsdzObjectUrl)
+        guard let downloadedUsdzObjectUrl = downloadedUsdzObjectUrl else { return }
+        NotificationCenter.default.post(name: .shouldAddUsdzObject, object: downloadedUsdzObjectUrl)
         onDismiss()
     }
     
@@ -114,7 +117,7 @@ final class LibraryObjectViewModel: ObservableObject {
         }
     }
     
-    var donwloadedUsdzObjectUrl: URL? {
+    var downloadedUsdzObjectUrl: URL? {
         guard downloadState == .downloaded else { return nil }
         return try? studioFrameFileManager.getFileUrl(fileName: usdzObjectWrapper.usdzObject.objectUrlString)
     }

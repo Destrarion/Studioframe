@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ItemEntity" representedClassName="ItemEntity" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="title" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="ItemEntity" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="ItemEntity" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>
