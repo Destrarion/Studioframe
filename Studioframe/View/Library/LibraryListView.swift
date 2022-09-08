@@ -37,7 +37,6 @@ struct LibraryListView: View{
                         
                         // set selection if downloaded or favorite or not downloaded or all
                         
-                        
                         ForEach(viewModel.filteredLocalLibraryObjectViewModels, id: \.name) { viewModel in
                             LibraryObjectView(viewModel: viewModel)
                         }

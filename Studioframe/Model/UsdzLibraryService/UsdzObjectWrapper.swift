@@ -10,6 +10,6 @@ import Foundation
 struct UsdzObjectWrapper {
     let usdzObject: UsdzObject
     let isDownloaded: Bool
-    let isFavorited: Bool
+    var isFavorited: Bool
     
 }

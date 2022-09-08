@@ -6,12 +6,10 @@ final class USDZScrollingMenuViewModel: ObservableObject {
     
    init() throws {
 
-       
-       usdzObjectContainers = try usdzLibraryService.getLocalObjects().map {
+       usdzObjectContainers = usdzLibraryService.getFavoriteObjects().map {
            UsdzObjectContainer(fileName: $0.title, fileUrl: $0.objectUrlString)
        }
        
-
    }
     
     lazy var usdzObjectContainers: [UsdzObjectContainer] = []

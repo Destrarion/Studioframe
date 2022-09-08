@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F00358E27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */; };
 		5F06178327F3427E00644DF4 /* URLComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F06178227F3427E00644DF4 /* URLComponent.swift */; };
 		5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07670E27D600EB00F2EF52 /* ARViewContainer.swift */; };
 		5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671227D606B900F2EF52 /* UsdzObjectContainer.swift */; };
@@ -39,7 +38,7 @@
 		5FA12D18286D3C8300020A5E /* USDZScrollingMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */; };
 		5FB358092772076A00CA03CF /* LibraryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB358082772076A00CA03CF /* LibraryListView.swift */; };
 		5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */; };
-		5FB3586D2774694600CA03CF /* ItemCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586C2774694600CA03CF /* ItemCoreDataManager.swift */; };
+		5FB3586D2774694600CA03CF /* UsdzCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586C2774694600CA03CF /* UsdzCoreDataManager.swift */; };
 		5FB3586F2774697000CA03CF /* CoreDataContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3586E2774697000CA03CF /* CoreDataContextProvider.swift */; };
 		5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587427746C2700CA03CF /* ItemEntity+CoreDataClass.swift */; };
 		5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */; };
@@ -71,7 +70,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectDownloadedViewModel.swift; sourceTree = "<group>"; };
 		5F06178227F3427E00644DF4 /* URLComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponent.swift; sourceTree = "<group>"; };
 		5F07670E27D600EB00F2EF52 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		5F07671227D606B900F2EF52 /* UsdzObjectContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectContainer.swift; sourceTree = "<group>"; };
@@ -106,7 +104,7 @@
 		5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZScrollingMenuViewModel.swift; sourceTree = "<group>"; };
 		5FB358082772076A00CA03CF /* LibraryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListView.swift; sourceTree = "<group>"; };
 		5FB3581027745E5300CA03CF /* CoredataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoredataModel.xcdatamodel; sourceTree = "<group>"; };
-		5FB3586C2774694600CA03CF /* ItemCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoreDataManager.swift; sourceTree = "<group>"; };
+		5FB3586C2774694600CA03CF /* UsdzCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzCoreDataManager.swift; sourceTree = "<group>"; };
 		5FB3586E2774697000CA03CF /* CoreDataContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContextProvider.swift; sourceTree = "<group>"; };
 		5FB3587427746C2700CA03CF /* ItemEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				5F07671C27D61B5900F2EF52 /* LibraryViewModel.swift */,
-				5F00358D27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift */,
 				F52274032819586500F3648A /* LibraryObjectViewModel.swift */,
 			);
 			path = LibraryViewModel;
@@ -329,7 +326,7 @@
 				5FB3587427746C2700CA03CF /* ItemEntity+CoreDataClass.swift */,
 				5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */,
 				5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */,
-				5FB3586C2774694600CA03CF /* ItemCoreDataManager.swift */,
+				5FB3586C2774694600CA03CF /* UsdzCoreDataManager.swift */,
 				5FB3586E2774697000CA03CF /* CoreDataContextProvider.swift */,
 			);
 			path = CoreData;
@@ -527,7 +524,7 @@
 				5FA12D14286BDF0F00020A5E /* ConfigurationTypeEnum.swift in Sources */,
 				5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */,
 				5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */,
-				5FB3586D2774694600CA03CF /* ItemCoreDataManager.swift in Sources */,
+				5FB3586D2774694600CA03CF /* UsdzCoreDataManager.swift in Sources */,
 				5F07671727D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift in Sources */,
 				5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */,
 				5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */,
@@ -552,7 +549,6 @@
 				5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */,
 				5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */,
 				5F90E16F281144340071E799 /* StudioFrameFileManager.swift in Sources */,
-				5F00358E27C406EB00BF5A0F /* LibraryObjectDownloadedViewModel.swift in Sources */,
 				5F716BC427EC68EC005C88B8 /* UsdzObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

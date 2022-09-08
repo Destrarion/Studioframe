@@ -26,6 +26,7 @@ struct ARViewInterface: View {
                     .foregroundColor(.gray)
             }
             .padding(.leading, 20)
+            .opacity(experience.selectedEntity != nil ? 1.0 : 0.0)
 
             Spacer()
             

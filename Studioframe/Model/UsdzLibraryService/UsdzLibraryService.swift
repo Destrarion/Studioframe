@@ -12,6 +12,7 @@ final class UsdzLibraryService {
     
     static let shared = UsdzLibraryService()
     let urlProvider = StudioframeUrlProvider()
+    var coreDataManager = UsdzCoreDataManager.shared
     
     
     ///function to stop the dowload of the usdz
@@ -32,18 +33,23 @@ final class UsdzLibraryService {
         /// check if we already downloaded the usdz for the view
         let allLocalFilesTitles = try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
         
-        let newObject : [UsdzObjectWrapper] = usdzObjects.map {
-            print(allLocalFilesTitles.description.contains($0.objectUrlString))
+        
+        let newObjects : [UsdzObjectWrapper] = usdzObjects.map { newObject in
+            print(allLocalFilesTitles.description.contains(newObject.objectUrlString))
+            
+            
+            let isFavorited = checkFavorite(usdzobject: newObject)
+            
             return UsdzObjectWrapper(
-                usdzObject: $0,
-                isDownloaded: allLocalFilesTitles.description.contains($0.objectUrlString),
-                isFavorited: Int.random(in: 0...1) == 0 // TODO: should handle favoriting
+                usdzObject: newObject,
+                isDownloaded: allLocalFilesTitles.description.contains(newObject.objectUrlString),
+                isFavorited:  isFavorited // TODO: should handle favoriting
             )
             
         }
-        print("the new object is : \(newObject)")
+        print("the new object are : \(newObjects)")
         
-        return newObject
+        return newObjects
     }
     
     /// get all the local usdz in the file
@@ -66,6 +72,7 @@ final class UsdzLibraryService {
     /// "file:///private/var/mobile/Containers/Data/Application/C06C2D29-7F85-43FC-8C71-1DC6F05494B6/Documents/tv_retro.usdz"
         let allLocalFilesTitles =  try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
         print("🎱 \(allLocalFilesTitles)")
+        #warning("what was that ?")
         let usdz: UsdzObject = UsdzObject(title: "tv_retro", objectUrlString: allLocalFilesTitles.description, thumbnailImageUrlString: "somethumbnail")
     
         return usdz
@@ -140,14 +147,29 @@ final class UsdzLibraryService {
     }
     
     
-    // TODO: replace ITEM by UsdzObject
     
-    func getFavoriteObjects() -> [Item] {
+    func getFavoriteObjects() -> [UsdzObject] {
         return itemCoreDataManager.getItems()
     }
     
-    func addFavorite() {
+    func addFavorite(usdzObject: UsdzObject) {
+        coreDataManager.addItem(usdz: usdzObject)
     }
+    
+    func removeFavorite(usdzObject: UsdzObject) {
+        coreDataManager.deleteItem(with: usdzObject)
+    }
+    
+    func checkFavorite(usdzobject: UsdzObject) -> Bool{
+        let favoritedUsdzObjects = getFavoriteObjects()
+        
+        let isFavorited = favoritedUsdzObjects.contains { favoritedUsdzObject in
+            favoritedUsdzObject.title == usdzobject.title
+        }
+        return isFavorited
+    }
+    
+    
     
     private func getHostUrl() -> URL {
         return URL(string: "")!
@@ -157,7 +179,7 @@ final class UsdzLibraryService {
     /// Singleton of the network manager
     private let networkManager = NetworkManager.shared
     private let studioFrameFileManager = StudioFrameFileManager.shared
-    private let itemCoreDataManager = ItemCoreDataManager.shared
+    private let itemCoreDataManager = UsdzCoreDataManager.shared
     
 
 }

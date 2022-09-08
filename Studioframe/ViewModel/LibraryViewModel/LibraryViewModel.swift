@@ -21,11 +21,14 @@ final class LibraryViewModel: ObservableObject {
     // MARK: Internal - Properties
     
     @Published var isAlertPresented = false
-    
     @Published var searchText = ""
-    
     @Published var currentLibraryFilterOption: LibraryFilterOption = .all
+    @Published var localLibraryObjectViewModels: [LibraryObjectViewModel] = []
+    @Published var isLoadingList: Bool = false
+    @Published var shouldDismiss = false
     
+    
+    /// Filtered librart depending on the research and the option
     var filteredLocalLibraryObjectViewModels: [LibraryObjectViewModel] {
         let libaryObjectViewModelsFilterdOption = getLibraryObjectViewModelsAfterFilterOption()
         guard !searchText.isEmpty else {
@@ -34,12 +37,20 @@ final class LibraryViewModel: ObservableObject {
         
         
         let searchTextFiltered = libaryObjectViewModelsFilterdOption.filter { viewModel in
-            viewModel.name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines).contains(searchText.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
+            viewModel.name
+                .lowercased()
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+                .contains(
+                    searchText
+                        .lowercased()
+                        .trimmingCharacters(in: .whitespacesAndNewlines)
+                )
         }
         
         return searchTextFiltered
     }
     
+    /// function to research usdz depending on their category when we clicked a filter in library
     private func getLibraryObjectViewModelsAfterFilterOption() -> [LibraryObjectViewModel] {
         switch currentLibraryFilterOption {
         case .all:
@@ -54,16 +65,11 @@ final class LibraryViewModel: ObservableObject {
             }
         }
     }
-
-    
-    @Published var localLibraryObjectViewModels: [LibraryObjectViewModel] = []
-    
-    @Published var isLoadingList: Bool = false
-    @Published var shouldDismiss = false
     
     
     // MARK: Internal - Methods
     
+    /// Fetch usdz on the server and generate viewmodel for each usdz
     func fetchObjects() {
         Task {
             isLoadingList = true
@@ -81,12 +87,26 @@ final class LibraryViewModel: ObservableObject {
     }
     
 
-    
-    func onFavoriteItem(usdzObject: UsdzObject) {
+    /// button to make the USDZ favorite
+    func onAddFavoriteItem(usdzObject: UsdzObject) {
+        usdzLibraryService.addFavorite(usdzObject: usdzObject)
         print("Item favorited with name: \(usdzObject.title)")
     }
     
+    /// button to remove the USDZ favorite
+    func onRemoveFavoriteItem(usdzObject: UsdzObject){
+        print("❌❌❌On Remove Favorite Item \(usdzObject.title)")
+        usdzLibraryService.removeFavorite(usdzObject: usdzObject)
+    }
     
+    func onFavoriteItem(usdzObject: UsdzObjectWrapper){
+        let usdzCheckFavorite = usdzLibraryService.checkFavorite(usdzobject: usdzObject.usdzObject)
+        if usdzCheckFavorite == true {
+            onRemoveFavoriteItem(usdzObject: usdzObject.usdzObject)
+        } else {
+            onAddFavoriteItem(usdzObject: usdzObject.usdzObject)
+        }
+    }
     
     
     // MARK: - PRIVATE
@@ -104,7 +124,7 @@ final class LibraryViewModel: ObservableObject {
             
             LibraryObjectViewModel(
                 usdzObjectWrapper: usdzObjectWrapper,
-                onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObject) },
+                onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObjectWrapper) },
                 didProduceError: { [weak self] error in
                     self?.isAlertPresented = true
                     

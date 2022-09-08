@@ -33,9 +33,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
     }
     
     var textConsolePrint: String {
-        selectedEntity == nil ?
-        "Selected entity is nil " :
-        "Selected"
+        selectedEntity?.name ?? ""
     }
     
     private static var streams = [AnyCancellable]()
@@ -82,7 +80,6 @@ class StudioFrameExperience: NSObject, ObservableObject {
   func addUsdzObject(usdzResourceName: String) {
       var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
       url.appendPathComponent(usdzResourceName + ".usdz")
-      //let usdzUrl = Bundle.main.url(forResource: usdzResourceName, withExtension: ".usdz")!
       addUsdzObject(usdzResourceUrl: url)
   }
     
@@ -105,6 +102,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
                         gestureRecognizer.delegate = self
                     }
                 }
+                loadedModelEntity.name = usdzResourceUrl.lastPathComponent.split(separator: ".").first?.description ?? ""
                 self?.scene?.addChild(loadedModelEntity)
             }
             .store(in: &subscriptions)
