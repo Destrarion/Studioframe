@@ -20,11 +20,13 @@ final class LibraryObjectViewModel: ObservableObject {
     init(
         usdzObjectWrapper: UsdzObjectWrapper,
         onFavorite: @escaping (UsdzObject) -> Void,
+        onRemove: @escaping (UsdzObject) -> Void,
         didProduceError: @escaping (Error) -> Void,
         onDismiss: @escaping () -> Void
     ) {
         self.usdzObjectWrapper = usdzObjectWrapper
         self.onFavorite = onFavorite
+        self.onRemove = onRemove
         self.didProduceError = didProduceError
         self.onDismiss = onDismiss
         
@@ -63,6 +65,7 @@ final class LibraryObjectViewModel: ObservableObject {
     
     
     private let onFavorite: (UsdzObject) -> Void
+    private let onRemove: (UsdzObject) -> Void
     private let didProduceError: (Error) -> Void
     private let onDismiss: () -> Void
     
@@ -130,6 +133,7 @@ final class LibraryObjectViewModel: ObservableObject {
         usdzLibraryService.remove(usdzObject: usdzObjectWrapper.usdzObject)
         updateDownloadState()
         print("Item removed with name: \(usdzObjectWrapper.usdzObject.title)")
+        onRemove(usdzObjectWrapper.usdzObject)
     }
     
     

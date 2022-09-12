@@ -44,13 +44,23 @@ struct FileDownloadedView: View {
             Button {
                 viewModel.didTapFavorite()
             } label: {
-                Text("Favorite")
+                if viewModel.isFavorited {
+                    Text("Remove Favorite")
+                        .lineLimit(1)
+                        .frame( maxWidth: 600, maxHeight: 30)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .stroke(Color.orange,lineWidth: 5.0)
+                        )
+                } else {
+                Text("Add Favorite")
                     .lineLimit(1)
                     .frame( maxWidth: 600, maxHeight: 30)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10.0)
                             .stroke(Color.orange,lineWidth: 5.0)
                     )
+                }
             }
 
             Spacer()

@@ -77,7 +77,6 @@ final class LibraryViewModel: ObservableObject {
             print("✈️ LibraryViewModel usdzObjects \(usdzObjects)")
     
             usdzObjects.forEach { usdzobject in
-                
                generateLocalLibraryObjectViewModels(usdzObjects: usdzObjects)
             }
             
@@ -85,7 +84,6 @@ final class LibraryViewModel: ObservableObject {
             
         }
     }
-    
 
     /// button to make the USDZ favorite
     func onAddFavoriteItem(usdzObject: UsdzObject) {
@@ -106,6 +104,8 @@ final class LibraryViewModel: ObservableObject {
         } else {
             onAddFavoriteItem(usdzObject: usdzObject.usdzObject)
         }
+        
+        fetchObjects()
     }
     
     
@@ -125,6 +125,7 @@ final class LibraryViewModel: ObservableObject {
             LibraryObjectViewModel(
                 usdzObjectWrapper: usdzObjectWrapper,
                 onFavorite: { [weak self] usdzObject in self?.onFavoriteItem(usdzObject: usdzObjectWrapper) },
+                onRemove: { [weak self] _ in self?.fetchObjects() },
                 didProduceError: { [weak self] error in
                     self?.isAlertPresented = true
                     

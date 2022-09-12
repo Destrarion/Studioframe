@@ -113,7 +113,6 @@ final class UsdzLibraryService {
                     return
                 }
                 
-                
             }
         }
         
@@ -123,6 +122,7 @@ final class UsdzLibraryService {
         
         do {
             try studioFrameFileManager.removeFileFromDocumentsDirectiory(fileName:  usdzObject.objectUrlString)
+            removeFavorite(usdzObject: usdzObject)
             print("try to remove item at \(usdzObject.objectUrlString)")
         } catch {
             print(error)
@@ -134,8 +134,6 @@ final class UsdzLibraryService {
         guard let allFileTitles = try? studioFrameFileManager.getAllFileTitlesInDocumentsDirectory() else {
             return false
         }
-        
-        
         
         // FIXME: should not work like that
         let isDownloaded = allFileTitles.contains { url in
