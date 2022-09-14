@@ -171,14 +171,22 @@ final class UsdzLibraryService {
     }
     
     
-    #warning("need to find why")
+    #warning("need to find why this was added")
     private func getHostUrl() -> URL {
         return URL(string: "")!
     }
     
     private func addAirForceFavorite(){
         let airForce = try? studioFrameFileManager.getFileUrl(fileName: "AirForce")
-        coreDataManager.addItem(usdz: UsdzObject.init(title: "AirForce", objectUrlString: "\(String(describing: airForce))", thumbnailImageUrlString: ""))
+        let favoriteObject = getFavoriteObjects()
+        print(favoriteObject.description)
+        print(String(describing: airForce))
+        let isFavorited = favoriteObject.contains { favoriteObject in
+            favoriteObject.objectUrlString.split(separator: "/").last?.description == airForce?.pathComponents.last!.split(separator: "/").last!.description
+        }
+        if isFavorited == false {
+            coreDataManager.addItem(usdz: UsdzObject.init(title: "AirForce", objectUrlString: "\(airForce?.description ?? "")", thumbnailImageUrlString: ""))
+        }
     }
     
     /// Singleton of the network manager
