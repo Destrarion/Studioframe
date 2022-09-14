@@ -12,7 +12,10 @@ final class UsdzLibraryService {
     
     static let shared = UsdzLibraryService()
     let urlProvider = StudioframeUrlProvider()
-    var coreDataManager = UsdzCoreDataManager.shared
+    
+    init(){
+        addAirForceFavorite()
+    }
     
     
     ///function to stop the dowload of the usdz
@@ -147,7 +150,7 @@ final class UsdzLibraryService {
     
     
     func getFavoriteObjects() -> [UsdzObject] {
-        return itemCoreDataManager.getItems()
+        return coreDataManager.getItems()
     }
     
     func addFavorite(usdzObject: UsdzObject) {
@@ -168,16 +171,20 @@ final class UsdzLibraryService {
     }
     
     
-    
+    #warning("need to find why")
     private func getHostUrl() -> URL {
         return URL(string: "")!
     }
     
+    private func addAirForceFavorite(){
+        let airForce = try? studioFrameFileManager.getFileUrl(fileName: "AirForce")
+        coreDataManager.addItem(usdz: UsdzObject.init(title: "AirForce", objectUrlString: "\(String(describing: airForce))", thumbnailImageUrlString: ""))
+    }
     
     /// Singleton of the network manager
     private let networkManager = NetworkManager.shared
     private let studioFrameFileManager = StudioFrameFileManager.shared
-    private let itemCoreDataManager = UsdzCoreDataManager.shared
+    private let coreDataManager = UsdzCoreDataManager.shared
     
 
 }

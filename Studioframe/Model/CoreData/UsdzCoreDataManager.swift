@@ -13,8 +13,6 @@ class UsdzCoreDataManager: UsdzCoreDataManagerProtocol {
     
     static let shared = UsdzCoreDataManager()
     
-    
-    
     init(coreDataContextProvider: CoreDataContextProviderProtocol =  CoreDataContextProvider.shared) {
         self.coreDataContextProvider = coreDataContextProvider
     }

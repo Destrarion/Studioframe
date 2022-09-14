@@ -7,6 +7,7 @@ final class USDZScrollingMenuViewModel: ObservableObject {
    init() throws {
 
        usdzObjectContainers = usdzLibraryService.getFavoriteObjects().map {
+           
            UsdzObjectContainer(fileName: $0.title, fileUrl: $0.objectUrlString)
        }
        
