@@ -182,7 +182,7 @@ final class UsdzLibraryService {
         print(favoriteObject.description)
         print(String(describing: airForce))
         let isFavorited = favoriteObject.contains { favoriteObject in
-            favoriteObject.objectUrlString.split(separator: "/").last?.description == airForce?.pathComponents.last!.split(separator: "/").last!.description
+            favoriteObject.objectUrlString.split(separator: "/").last?.description == airForce?.pathComponents.last?.split(separator: "/").last?.description
         }
         if isFavorited == false {
             coreDataManager.addItem(usdz: UsdzObject.init(title: "AirForce", objectUrlString: "\(airForce?.description ?? "")", thumbnailImageUrlString: ""))

@@ -78,8 +78,8 @@ struct MainView: View {
             }
             
             
-            NavigationView {
-                Text("Une liste avec les options / réglages / imprint / text juridique, très simple")
+            NavigationView() {
+                SettingsView()
             }
             .tabItem {
                 Image(systemName: "gearshape.fill")

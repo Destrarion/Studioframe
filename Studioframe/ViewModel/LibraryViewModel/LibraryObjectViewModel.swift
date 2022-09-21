@@ -37,13 +37,7 @@ final class LibraryObjectViewModel: ObservableObject {
         usdzObjectWrapper.usdzObject.title
     }
     
-    
-//    if UsdzLibraryService.shared.downloadedUsdzObjects[viewModel.name] == true {
-//        FileDownloadedView(viewModel: viewModel)
-//    } else {
-//        FileNotDowloadedView(viewModel: viewModel)
-//    }
-//
+
     @Published var downloadState: LibraryObjectDownloadState = .notDownloaded
     
     var thumbnailImageUrl: URL? {
@@ -89,7 +83,7 @@ final class LibraryObjectViewModel: ObservableObject {
     
     func didTapDownload() {
         downloadState = .downloading
-        downloadItem(usdzObject: usdzObjectWrapper.usdzObject)
+        downloadItem(usdzObject: self.usdzObjectWrapper.usdzObject)
     }
     
     func didTapStopDownload() {
@@ -108,7 +102,11 @@ final class LibraryObjectViewModel: ObservableObject {
             print("Item selected with name: \(usdzObject.title)")
             guard let _ = try? await usdzLibraryService.downloadUsdzObject(
                 usdzObject: usdzObject,
-                onDownloadProgressChanged: { [weak self] downloadProgress in self?.downloadProgress = downloadProgress }
+                onDownloadProgressChanged: { [weak self] downloadProgress in
+                    DispatchQueue.main.async { [weak self] in // TECHDEBT: Xcode 14 provide runtime error if not dispatching to the main queue, main actor issue?
+                        self?.downloadProgress = downloadProgress
+                    }
+                }
             ) else {
                 didProduceError(LibraryObjectViewModelError.failedToDownload)
                 updateDownloadState()

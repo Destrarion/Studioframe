@@ -19,6 +19,7 @@ struct FileNotDowloadedView : View {
                             .stroke(Color.gray,lineWidth: 5.0)
                     )
             }
+            .buttonStyle(.plain) // TECHDEBT: Xcode 14 provide runtime error if not dispatching to the main queue OR making the button style plain, main actor issue?
         }
     }
     
