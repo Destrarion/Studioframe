@@ -4,31 +4,66 @@ import SwiftUI
 
 struct FileDownloadedView: View {
     
-    @ObservedObject var viewModel: LocalLibraryObjectViewModel
+    @ObservedObject var viewModel: LibraryObjectViewModel
+    
+
     
     var body: some View {
-        HStack {
+        VStack {
+            Spacer()
             Button {
-                viewModel.didSelect()
+                viewModel.didTapSelect()
+                //dismiss()
+                //presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Select")
+                Text("Add to scene")
                     .lineLimit(1)
+                    .frame( maxWidth: 600, maxHeight: 30)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10.0)
+                            .stroke(Color.blue,lineWidth: 5.0)
+                    )
+
             }
+
             
             Spacer()
             Button {
-                viewModel.didRemove()
+                viewModel.didTapRemove()
             } label: {
                 Text("Remove")
                     .lineLimit(1)
+                    .frame( maxWidth: 600, maxHeight: 30)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10.0)
+                            .stroke(Color.red,lineWidth: 5.0)
+                    )
+                    
             }
             Spacer()
             Button {
-                viewModel.didFavorite()
+                viewModel.didTapFavorite()
             } label: {
-                Text("Favorite")
+                if viewModel.isFavorited {
+                    Text("Remove Favorite")
+                        .lineLimit(1)
+                        .frame( maxWidth: 600, maxHeight: 30)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10.0)
+                                .stroke(Color.orange,lineWidth: 5.0)
+                        )
+                } else {
+                Text("Add Favorite")
                     .lineLimit(1)
+                    .frame( maxWidth: 600, maxHeight: 30)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10.0)
+                            .stroke(Color.orange,lineWidth: 5.0)
+                    )
+                }
             }
+
+            Spacer()
 
         }
         .buttonStyle(PlainButtonStyle())

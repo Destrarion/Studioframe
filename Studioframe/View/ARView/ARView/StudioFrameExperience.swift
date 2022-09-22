@@ -33,9 +33,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
     }
     
     var textConsolePrint: String {
-        selectedEntity == nil ?
-        "Selected entity is nil " :
-        "Selected"
+        selectedEntity?.name ?? ""
     }
     
     private static var streams = [AnyCancellable]()
@@ -79,10 +77,11 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     
     
-    func addUsdzObject(usdzResourceName: String) {
-        let usdzUrl = Bundle.main.url(forResource: usdzResourceName, withExtension: ".usdz")!
-        addUsdzObject(usdzResourceUrl: usdzUrl)
-    }
+  func addUsdzObject(usdzResourceName: String) {
+      var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+      url.appendPathComponent(usdzResourceName + ".usdz")
+      addUsdzObject(usdzResourceUrl: url)
+  }
     
     func addUsdzObject(usdzResourceUrl: URL) {
         ModelEntity.loadModelAsync(contentsOf: usdzResourceUrl)
@@ -96,15 +95,15 @@ class StudioFrameExperience: NSObject, ObservableObject {
                 }
             } receiveValue: { [weak self] loadedModelEntity in
                 loadedModelEntity.generateCollisionShapes(recursive: true)
-            
+
                 self?.arView.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
                 if let gestureRecognizers = self?.arView.gestureRecognizers {
                     for gestureRecognizer in gestureRecognizers {
                         gestureRecognizer.delegate = self
                     }
                 }
+                loadedModelEntity.name = usdzResourceUrl.lastPathComponent.split(separator: ".").first?.description ?? ""
                 self?.scene?.addChild(loadedModelEntity)
-                // self?.textConsolePrint = "\(loadedModelEntity.name) created"
             }
             .store(in: &subscriptions)
     }
@@ -125,42 +124,6 @@ class StudioFrameExperience: NSObject, ObservableObject {
         return airForceScene
     }
     
-    //#warning("Multiple confict between touch, including TapGesture but moving the screen result to a drag non recognized. Or that the touch is not selecting")
-    // SOLUTIONS : - https://www.hackingwithswift.com/books/ios-swiftui/how-to-use-gestures-in-swiftui
-    //private func enablePlacement() {
-        //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
-        //arView.addGestureRecognizer(tapGestureRecognizer)
-        //let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(panRecognizer:)))
-        //panGestureRecognizer.cancelsTouchesInView = false
-        //arView.addGestureRecognizer(panGestureRecognizer)
-        
-    //}
-    
-   // @objc func handleTap(recognizer: UITapGestureRecognizer) {
-   //     let location = recognizer.location(in: arView)
-   //
-   //     if let entity = arView.entity(at: location) {
-   //         selectedEntity = entity
-   //         // textConsolePrint = "\(entity.name) selected"
-   //     }
-   //
-   //
-   // }
-    
-    //@objc func handlePan(panRecognizer: UIPanGestureRecognizer) {
-    //    let location = panRecognizer.location(in: arView)
-    //    print("")
-    //    print("Pan triggered")
-    //    print("location => \(panRecognizer.location(in: arView))")
-    //
-    //    if let entity = arView.entity(at: location) {
-    //        print("Has found entity at location !")
-    //        selectedEntity = entity
-    //    }
-    //
-    //
-    //}
-    
 
     class StudioFrameScene: RealityKit.Entity, RealityKit.HasAnchoring {
 
@@ -176,14 +139,9 @@ extension StudioFrameExperience: UIGestureRecognizerDelegate {
         
         if let entity = arView.entity(at: location) {
             selectedEntity = entity
-            // textConsolePrint = "\(entity.name) selected"
         }
         
         return true
     }
-}
-
-extension ARView {
-  
 }
 

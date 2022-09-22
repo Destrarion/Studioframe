@@ -9,28 +9,19 @@ import Foundation
 import SwiftUI
 import RealityKit
 
-@MainActor
-final class USDZScrollingMenuViewModel: ObservableObject {
-    
-    let usdzObjectContainers: [UsdzObjectContainer] = [
-        .init(fileName: "AirForce")
-    ]
-    
-}
 
-
-
-@MainActor
 struct USDZScrollingMenu: View {
     
-    init(experience: StudioFrameExperience) {
+    init(experience: StudioFrameExperience) throws {
         self.experience = experience
+        self._viewModel = StateObject(wrappedValue: try! USDZScrollingMenuViewModel())
+        
+        
     }
     
     var experience: StudioFrameExperience?
     
-    @StateObject var viewModel = USDZScrollingMenuViewModel()
-
+    @StateObject var viewModel: USDZScrollingMenuViewModel
     
     var body: some View {
         
@@ -42,11 +33,12 @@ struct USDZScrollingMenu: View {
     @ViewBuilder
     var objectLibraryView: some View {
         
-        List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
+        let list = List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
             
             HStack {
                 Button {
                     print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
+                    //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
                     experience!.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
                     
                 } label: {
@@ -61,6 +53,11 @@ struct USDZScrollingMenu: View {
             .listRowBackground(Color.clear)
         }
         .frame(width: 100, alignment: .bottomTrailing)
+        if #available(iOS 16.0, *) {
+            list.scrollContentBackground(.hidden)
+                } else {
+                    list.background(.clear)
+                }
         
     }
     
