@@ -13,7 +13,7 @@ struct SettingsView: View{
     
     var body : some View {
         VStack{
-            Text("Une liste avec les options / réglages / imprint / text juridique, très simple")
+            Text("Settings")
             
             List{
                 Link (destination: URL(string: "https://twitter.com/FabienDietrich")!){

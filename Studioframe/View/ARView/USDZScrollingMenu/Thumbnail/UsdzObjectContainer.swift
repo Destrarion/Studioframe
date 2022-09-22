@@ -24,7 +24,7 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
     @Published var isLoading = false
     let id = UUID()
     let fileName: String
-    let fileURL: String
+    let fileURL: String 
     
     private func loadThumbnailImage() {
         Task {
