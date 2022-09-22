@@ -10,6 +10,11 @@ import RealityKit
 
 
 struct MainView: View {
+    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.darkGray.withAlphaComponent(0.5)
+        }
+    
     @StateObject private var studioFrameExperience = StudioFrameExperience()
     @State private var isScrollingUSDZMenuOpen: Bool = false
     @State var isLibraryPresented = false

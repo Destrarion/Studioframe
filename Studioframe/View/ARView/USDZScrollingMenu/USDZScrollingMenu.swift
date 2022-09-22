@@ -14,9 +14,9 @@ struct USDZScrollingMenu: View {
     
     init(experience: StudioFrameExperience) throws {
         self.experience = experience
-        
         self._viewModel = StateObject(wrappedValue: try! USDZScrollingMenuViewModel())
-
+        
+        
     }
     
     var experience: StudioFrameExperience?
@@ -33,7 +33,7 @@ struct USDZScrollingMenu: View {
     @ViewBuilder
     var objectLibraryView: some View {
         
-        List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
+        let list = List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
             
             HStack {
                 Button {
@@ -53,6 +53,11 @@ struct USDZScrollingMenu: View {
             .listRowBackground(Color.clear)
         }
         .frame(width: 100, alignment: .bottomTrailing)
+        if #available(iOS 16.0, *) {
+            list.scrollContentBackground(.hidden)
+                } else {
+                    list.background(.clear)
+                }
         
     }
     
