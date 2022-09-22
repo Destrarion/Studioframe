@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "95E34392-BF14-4E9F-9558-42728D844FED"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A53D6BD8-8BCA-422D-A462-CE9596883785"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "addAirForceFavorite()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7B3094C-CCE4-4CEE-8B5E-6E744FF6A312"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "addAirForceFavorite()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0FED43A2-7CCF-4570-94DA-E5620BB96354"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "addAirForceFavorite()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0FED43A2-7CCF-4570-94DA-E5620BB96354 - 7f6f651be8a2af18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Studioframe.UsdzLibraryService.addAirForceFavorite() -&gt; ()"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "184"
+                  endingLineNumber = "184"
+                  offsetFromSymbolStart = "910">
+               </Location>
+               <Location
+                  uuid = "0FED43A2-7CCF-4570-94DA-E5620BB96354 - b6fddf51db98cc20"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Studioframe.UsdzObject) -&gt; Swift.Bool in Studioframe.UsdzLibraryService.addAirForceFavorite() -&gt; ()"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "184">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1359C975-EC5B-43C3-8D78-AEC6CE346B0A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "addAirForceFavorite()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB4D4553-0085-4AA5-9BB6-051A4F1D1C48"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "addAirForceFavorite()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3E7786C-4F75-4694-A406-B2951EA37092"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "addAirForceFavorite()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.RuntimeIssueBreakpoint">
+         <BreakpointContent
+            uuid = "1C669509-F241-4E3A-8A08-8EBA4E25A434"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            type = "65535">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "956F6014-2FA2-4AE4-948D-73686E28793D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/View/ARView/USDZScrollingMenu/Thumbnail/UsdzObjectContainer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "loadThumbnailImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73E9411A-5139-4757-8C46-7BAD10C7E6FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/View/ARView/USDZScrollingMenu/Thumbnail/UsdzObjectContainer.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "loadThumbnailImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "73E9411A-5139-4757-8C46-7BAD10C7E6FC - bac6b3a76a1b7c37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Studioframe.UsdzObjectContainer.loadThumbnailImage() -&gt; ()"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/View/ARView/USDZScrollingMenu/Thumbnail/UsdzObjectContainer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "480">
+               </Location>
+               <Location
+                  uuid = "73E9411A-5139-4757-8C46-7BAD10C7E6FC - d34d87615782f33e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in Studioframe.UsdzObjectContainer.loadThumbnailImage() -&gt; ()"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/View/ARView/USDZScrollingMenu/Thumbnail/UsdzObjectContainer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "73E9411A-5139-4757-8C46-7BAD10C7E6FC - 750774c8d2f9bc35"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Studioframe.UsdzObjectContainer.loadThumbnailImage() -&gt; ()"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/View/ARView/USDZScrollingMenu/Thumbnail/UsdzObjectContainer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -17,7 +17,10 @@ extension ItemEntity {
     }
 
     @NSManaged public var title: String
+    @NSManaged public var url: String
+    @NSManaged public var imageURL: String
 
+    
 }
 
 extension ItemEntity : Identifiable {
