@@ -7,6 +7,7 @@
 import Foundation
 
 protocol StudioframeUrlProviderProtocol {
+    func createUsdzListRequestUrl() -> URL?
 }
 
 /// Main class to create the URL for fetching API.
