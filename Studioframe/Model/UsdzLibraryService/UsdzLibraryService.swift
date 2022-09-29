@@ -161,6 +161,10 @@ final class UsdzLibraryService {
         coreDataManager.deleteItem(with: usdzObject)
     }
     
+    func deleteAllFavorite(){
+        coreDataManager.deleteAllItems()
+    }
+    
     func checkFavorite(usdzobject: UsdzObject) -> Bool{
         let favoritedUsdzObjects = getFavoriteObjects()
         

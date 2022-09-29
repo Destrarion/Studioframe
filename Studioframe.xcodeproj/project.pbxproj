@@ -19,9 +19,9 @@
 		5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F3B2755992D00AD6B62 /* Experience.rcproject */; };
 		5F1E5F3E2755992F00AD6B62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E5F3D2755992F00AD6B62 /* Assets.xcassets */; };
 		5F1E5F412755992F00AD6B62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E5F402755992F00AD6B62 /* Preview Assets.xcassets */; };
-		5F1E5F4B2755992F00AD6B62 /* StudioframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F4A2755992F00AD6B62 /* StudioframeTests.swift */; };
 		5F1E5F552755992F00AD6B62 /* StudioframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */; };
 		5F1E5F572755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */; };
+		5F1F047C28E546AE00FF1115 /* StudioFrameNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F047B28E546AE00FF1115 /* StudioFrameNetworkManager.swift */; };
 		5F4FFFE127AA081E00690A77 /* hab.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDE27AA081E00690A77 /* hab.reality */; };
 		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
 		5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F51C6F127C7939200FE8356 /* NetworkManager.swift */; };
@@ -48,6 +48,7 @@
 		5FBC171B28362B420060FE95 /* QuickLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171A28362B420060FE95 /* QuickLookViewController.swift */; };
 		5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171D28362B940060FE95 /* QuickLookView.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */; };
+		5FEE361D28E35042003760F0 /* StudioFrameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE361C28E35042003760F0 /* StudioFrameTest.swift */; };
 		F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52274032819586500F3648A /* LibraryObjectViewModel.swift */; };
 		F57139D8281840D10056FA8D /* UsdzObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */; };
 		F57139DA2818557B0056FA8D /* FileDownloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D92818557B0056FA8D /* FileDownloadingView.swift */; };
@@ -85,10 +86,10 @@
 		5F1E5F3D2755992F00AD6B62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F1E5F402755992F00AD6B62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F1E5F462755992F00AD6B62 /* StudioframeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudioframeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F1E5F4A2755992F00AD6B62 /* StudioframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeTests.swift; sourceTree = "<group>"; };
 		5F1E5F502755992F00AD6B62 /* StudioframeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudioframeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITests.swift; sourceTree = "<group>"; };
 		5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5F1F047B28E546AE00FF1115 /* StudioFrameNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameNetworkManager.swift; sourceTree = "<group>"; };
 		5F4FFFDE27AA081E00690A77 /* hab.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = hab.reality; sourceTree = "<group>"; };
 		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
 		5F51C6F127C7939200FE8356 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 		5FBC171D28362B940060FE95 /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
 		5FC01FE6282CEC6F00BB3C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
+		5FEE361C28E35042003760F0 /* StudioFrameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameTest.swift; sourceTree = "<group>"; };
 		F52274032819586500F3648A /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
 		F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectWrapper.swift; sourceTree = "<group>"; };
 		F57139D92818557B0056FA8D /* FileDownloadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadingView.swift; sourceTree = "<group>"; };
@@ -231,7 +233,8 @@
 		5F1E5F492755992F00AD6B62 /* StudioframeTests */ = {
 			isa = PBXGroup;
 			children = (
-				5F1E5F4A2755992F00AD6B62 /* StudioframeTests.swift */,
+				5FEE361C28E35042003760F0 /* StudioFrameTest.swift */,
+				5F1F047B28E546AE00FF1115 /* StudioFrameNetworkManager.swift */,
 			);
 			path = StudioframeTests;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 					};
 					5F1E5F452755992F00AD6B62 = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1400;
 						TestTargetID = 5F1E5F332755992D00AD6B62;
 					};
 					5F1E5F4F2755992F00AD6B62 = {
@@ -569,7 +573,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F1E5F4B2755992F00AD6B62 /* StudioframeTests.swift in Sources */,
+				5F1F047C28E546AE00FF1115 /* StudioFrameNetworkManager.swift in Sources */,
+				5FEE361D28E35042003760F0 /* StudioFrameTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +792,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 578R27WKR9;
@@ -801,6 +807,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Fabien-Dietrich.StudioframeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Studioframe.app/Studioframe";
@@ -812,6 +819,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 578R27WKR9;
@@ -978,6 +986,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 578R27WKR9;
@@ -992,6 +1001,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Fabien-Dietrich.StudioframeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Studioframe.app/Studioframe";
@@ -1121,6 +1131,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 578R27WKR9;
@@ -1135,6 +1146,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Fabien-Dietrich.StudioframeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Studioframe.app/Studioframe";
