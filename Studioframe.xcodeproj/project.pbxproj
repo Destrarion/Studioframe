@@ -21,7 +21,6 @@
 		5F1E5F412755992F00AD6B62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E5F402755992F00AD6B62 /* Preview Assets.xcassets */; };
 		5F1E5F552755992F00AD6B62 /* StudioframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */; };
 		5F1E5F572755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */; };
-		5F1F047C28E546AE00FF1115 /* StudioFrameNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1F047B28E546AE00FF1115 /* StudioFrameNetworkManager.swift */; };
 		5F4FFFE127AA081E00690A77 /* hab.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDE27AA081E00690A77 /* hab.reality */; };
 		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
 		5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F51C6F127C7939200FE8356 /* NetworkManager.swift */; };
@@ -47,8 +46,11 @@
 		5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */; };
 		5FBC171B28362B420060FE95 /* QuickLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171A28362B420060FE95 /* QuickLookViewController.swift */; };
 		5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171D28362B940060FE95 /* QuickLookView.swift */; };
+		5FD0AA2728EE43C70001AD0D /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */; };
+		5FD0AA2928EE96890001AD0D /* JsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2828EE96890001AD0D /* JsonResponse.json */; };
+		5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */; };
-		5FEE361D28E35042003760F0 /* StudioFrameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE361C28E35042003760F0 /* StudioFrameTest.swift */; };
+		5FEE361D28E35042003760F0 /* UsdzLibraryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */; };
 		F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52274032819586500F3648A /* LibraryObjectViewModel.swift */; };
 		F57139D8281840D10056FA8D /* UsdzObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */; };
 		F57139DA2818557B0056FA8D /* FileDownloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D92818557B0056FA8D /* FileDownloadingView.swift */; };
@@ -89,7 +91,6 @@
 		5F1E5F502755992F00AD6B62 /* StudioframeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudioframeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITests.swift; sourceTree = "<group>"; };
 		5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		5F1F047B28E546AE00FF1115 /* StudioFrameNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameNetworkManager.swift; sourceTree = "<group>"; };
 		5F4FFFDE27AA081E00690A77 /* hab.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = hab.reality; sourceTree = "<group>"; };
 		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
 		5F51C6F127C7939200FE8356 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -116,8 +117,11 @@
 		5FBC171A28362B420060FE95 /* QuickLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookViewController.swift; sourceTree = "<group>"; };
 		5FBC171D28362B940060FE95 /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
 		5FC01FE6282CEC6F00BB3C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		5FD0AA2828EE96890001AD0D /* JsonResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonResponse.json; sourceTree = "<group>"; };
+		5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUrlProviderMock.swift; sourceTree = "<group>"; };
 		5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
-		5FEE361C28E35042003760F0 /* StudioFrameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameTest.swift; sourceTree = "<group>"; };
+		5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryServiceTests.swift; sourceTree = "<group>"; };
 		F52274032819586500F3648A /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
 		F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectWrapper.swift; sourceTree = "<group>"; };
 		F57139D92818557B0056FA8D /* FileDownloadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadingView.swift; sourceTree = "<group>"; };
@@ -233,8 +237,10 @@
 		5F1E5F492755992F00AD6B62 /* StudioframeTests */ = {
 			isa = PBXGroup;
 			children = (
-				5FEE361C28E35042003760F0 /* StudioFrameTest.swift */,
-				5F1F047B28E546AE00FF1115 /* StudioFrameNetworkManager.swift */,
+				5FD0AA2A28EEAECA0001AD0D /* Mocks */,
+				5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */,
+				5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */,
+				5FD0AA2828EE96890001AD0D /* JsonResponse.json */,
 			);
 			path = StudioframeTests;
 			sourceTree = "<group>";
@@ -396,6 +402,14 @@
 			path = QuickLook;
 			sourceTree = "<group>";
 		};
+		5FD0AA2A28EEAECA0001AD0D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -513,6 +527,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FD0AA2928EE96890001AD0D /* JsonResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,8 +588,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F1F047C28E546AE00FF1115 /* StudioFrameNetworkManager.swift in Sources */,
-				5FEE361D28E35042003760F0 /* StudioFrameTest.swift in Sources */,
+				5FD0AA2728EE43C70001AD0D /* MockNetworkManager.swift in Sources */,
+				5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift in Sources */,
+				5FEE361D28E35042003760F0 /* UsdzLibraryServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

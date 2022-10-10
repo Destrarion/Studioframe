@@ -7,8 +7,16 @@
 
 import Foundation
 
+protocol NetworkManagerProtocol {
+    func fetch<T: Decodable>(urlRequest: URLRequest) async throws -> T
+    func fetchFile(urlRequest: URLRequest,onDownloadProgressChanged: @escaping (Int) -> Void,completionHandler: @escaping (URL) -> Void)
+    func fetchData(urlRequest: URLRequest) async throws -> Data
+    func stopDownload(url: URL)
+    
+}
 
-class NetworkManager: NSObject {
+
+class NetworkManager: NSObject , NetworkManagerProtocol {
     
     static let shared = NetworkManager()
     
@@ -61,7 +69,7 @@ class NetworkManager: NSObject {
         
         onDownloadProgressChanged(0)
         
-#if local
+        #if local
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
             self?.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
         }
@@ -69,7 +77,7 @@ class NetworkManager: NSObject {
         
         
         // TODO: Handle configurations
-         #elseif Heroku
+        #elseif Heroku
         self.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
         //
         
@@ -112,20 +120,21 @@ class NetworkManager: NSObject {
         
     }
     
-    
+    //MARK: - Private - Variables
     private var onDownloadProgressChangedContainer: [String: ((Int) -> Void)] = [:]
     private var downloadTaskCompletionHandlerContainer: [String: ((URL) -> Void)] = [:]
     private var downloadTaskContainer: [String: URLSessionDownloadTask] = [:]
     
 }
 
+//MARK: - URLSessionDelegate
 extension NetworkManager: URLSessionDelegate {
     func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
         print("❌didBecomeInvalidWithError DOWNLOAD")
         print(error ?? "ERROR IS NIL")
     }
 }
-
+//MARK: - URLSessionDownloadDelegate
 extension NetworkManager: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         print("✅✅FINISHED DOWNLOAD AT URL")

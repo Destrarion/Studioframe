@@ -1,5 +1,5 @@
 //
-//  StudioFrameTest.swift
+//  UsdzLibraryServiceTests.swift
 //  StudioframeTests
 //
 //  Created by Fabien Dietrich on 27/09/2022.
@@ -9,12 +9,11 @@ import XCTest
 
 @testable import Studioframe
 
-final class StudioFrameTest: XCTestCase {
+final class UsdzLibraryServiceTests: XCTestCase {
     
     
     var usdzLibraryService: UsdzLibraryService!
     
-
     override func setUpWithError() throws {
         usdzLibraryService = UsdzLibraryService()
         usdzLibraryService.deleteAllFavorite()
@@ -26,19 +25,22 @@ final class StudioFrameTest: XCTestCase {
         usdzLibraryService.deleteAllFavorite()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_givenUrlProviderFail_whenFetchUsdzObjects_thenObjectsIsEmpty() async throws {
+        let urlProviderMock = StudioframeUrlProviderMock()
+        usdzLibraryService = UsdzLibraryService(urlProvider: urlProviderMock)
+        
+        let objects = try await usdzLibraryService.fetchUsdzObjects()
+        
+        XCTAssertTrue(objects.isEmpty)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_givenSuccessNetwork_whenFetchUsdzObjects_thenObjectsIsNotEmpty() async throws {
+        let networkManagerMock = MockNetworkManagerSuccess()
+        usdzLibraryService = UsdzLibraryService(networkManager: networkManagerMock)
+        
+        let objects = try await usdzLibraryService.fetchUsdzObjects()
+        
+        XCTAssertFalse(objects.isEmpty)
     }
     
 

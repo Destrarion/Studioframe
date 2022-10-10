@@ -11,9 +11,14 @@ import SwiftUI
 final class UsdzLibraryService {
     
     static let shared = UsdzLibraryService()
-    let urlProvider = StudioframeUrlProvider()
     
-    init(){
+    init(
+        networkManager: NetworkManagerProtocol = NetworkManager.shared,
+        urlProvider: StudioframeUrlProviderProtocol = StudioframeUrlProvider()
+    ){
+        self.networkManager = networkManager
+        self.urlProvider = urlProvider
+        
         addAirForceFavorite()
     }
     
@@ -69,16 +74,6 @@ final class UsdzLibraryService {
         }
         
         return usddObjects
-    }
-    
-    func fetchAllLocalObjects() throws -> UsdzObject {
-    /// "file:///private/var/mobile/Containers/Data/Application/C06C2D29-7F85-43FC-8C71-1DC6F05494B6/Documents/tv_retro.usdz"
-        let allLocalFilesTitles =  try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
-        print("🎱 \(allLocalFilesTitles)")
-        #warning("what was that ?")
-        let usdz: UsdzObject = UsdzObject(title: "tv_retro", objectUrlString: allLocalFilesTitles.description, thumbnailImageUrlString: "somethumbnail")
-    
-        return usdz
     }
     
     
@@ -174,12 +169,6 @@ final class UsdzLibraryService {
         return isFavorited
     }
     
-    
-    #warning("need to find why this was added")
-    private func getHostUrl() -> URL {
-        return URL(string: "")!
-    }
-    
     private func addAirForceFavorite(){
         let airForce = try? studioFrameFileManager.getFileUrl(fileName: "AirForce")
         let favoriteObject = getFavoriteObjects()
@@ -194,7 +183,8 @@ final class UsdzLibraryService {
     }
     
     /// Singleton of the network manager
-    private let networkManager = NetworkManager.shared
+    private let networkManager : NetworkManagerProtocol
+    private let urlProvider: StudioframeUrlProviderProtocol
     private let studioFrameFileManager = StudioFrameFileManager.shared
     private let coreDataManager = UsdzCoreDataManager.shared
     
