@@ -70,4 +70,10 @@ final class StudioFrameFileManager {
     }
     
  
+    func deleteAllFiles() {
+        let files = try! getAllFileTitlesInDocumentsDirectory()
+        files.forEach { fileUrl in
+            try! removeFile(at: fileUrl)
+        }
+    }
 }

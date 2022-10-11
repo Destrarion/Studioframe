@@ -54,6 +54,7 @@
 		F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52274032819586500F3648A /* LibraryObjectViewModel.swift */; };
 		F57139D8281840D10056FA8D /* UsdzObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */; };
 		F57139DA2818557B0056FA8D /* FileDownloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D92818557B0056FA8D /* FileDownloadingView.swift */; };
+		F5C69D2C28F5B97D00F874C5 /* UsdzObjectContainerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C69D2B28F5B97D00F874C5 /* UsdzObjectContainerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		F52274032819586500F3648A /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
 		F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectWrapper.swift; sourceTree = "<group>"; };
 		F57139D92818557B0056FA8D /* FileDownloadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadingView.swift; sourceTree = "<group>"; };
+		F5C69D2B28F5B97D00F874C5 /* UsdzObjectContainerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzObjectContainerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */,
 				5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */,
 				5FD0AA2828EE96890001AD0D /* JsonResponse.json */,
+				F5C69D2B28F5B97D00F874C5 /* UsdzObjectContainerTest.swift */,
 			);
 			path = StudioframeTests;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C69D2C28F5B97D00F874C5 /* UsdzObjectContainerTest.swift in Sources */,
 				5FD0AA2728EE43C70001AD0D /* MockNetworkManager.swift in Sources */,
 				5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift in Sources */,
 				5FEE361D28E35042003760F0 /* UsdzLibraryServiceTests.swift in Sources */,

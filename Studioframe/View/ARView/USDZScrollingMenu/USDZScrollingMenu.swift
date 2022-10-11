@@ -54,7 +54,7 @@ struct USDZScrollingMenu: View {
         }
         .frame(width: 100, alignment: .bottomTrailing)
         if #available(iOS 16.0, *) {
-            list.scrollContentBackground(.hidden)
+            list.background().hidden()
                 } else {
                     list.background(.clear)
                 }

@@ -25,9 +25,8 @@ final class MockNetworkManagerSuccess: NetworkManagerProtocol {
     }
     
     func fetchFile(urlRequest: URLRequest, onDownloadProgressChanged: @escaping (Int) -> Void, completionHandler: @escaping (URL) -> Void)  {
-        var usdzservice = UsdzLibraryService.shared
-        let object = usdzservice.getFavoriteObjects()
-        completionHandler(URL(string: object.first!.objectUrlString)!)
+        let studioFrameFileManager = StudioFrameFileManager.shared
+        try? studioFrameFileManager.moveFile(at: Bundle.main.url(forResource: "AirForce", withExtension: ".usdz")!,fileName: "AirForce.usdz")
     }
     
     func fetchData(urlRequest: URLRequest) async throws -> Data {
@@ -36,9 +35,7 @@ final class MockNetworkManagerSuccess: NetworkManagerProtocol {
     }
     
     func stopDownload(url: URL) {
-        let key = url.absoluteString
-//        downloadTaskContainer[key]?.cancel()
-//        cleanDownload(url: url)
+        let urlFake = "https://googletakeyourdata.com"
     }
 
 }

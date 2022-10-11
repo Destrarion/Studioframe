@@ -172,8 +172,6 @@ final class UsdzLibraryService {
     private func addAirForceFavorite(){
         let airForce = try? studioFrameFileManager.getFileUrl(fileName: "AirForce")
         let favoriteObject = getFavoriteObjects()
-        print(favoriteObject.description)
-        print(String(describing: airForce))
         let isFavorited = favoriteObject.contains { favoriteObject in
             favoriteObject.objectUrlString.split(separator: "/").last?.description == airForce?.pathComponents.last?.split(separator: "/").last?.description
         }
