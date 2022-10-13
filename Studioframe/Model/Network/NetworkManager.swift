@@ -9,14 +9,15 @@ import Foundation
 
 protocol NetworkManagerProtocol {
     func fetch<T: Decodable>(urlRequest: URLRequest) async throws -> T
-    func fetchFile(urlRequest: URLRequest,onDownloadProgressChanged: @escaping (Int) -> Void,completionHandler: @escaping (URL) -> Void)
+    func fetchFile(urlRequest: URLRequest, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> Data
     func fetchData(urlRequest: URLRequest) async throws -> Data
     func stopDownload(url: URL)
     
 }
 
 
-class NetworkManager: NSObject , NetworkManagerProtocol {
+class NetworkManager: NSObject, NetworkManagerProtocol {
+    
     
     static let shared = NetworkManager()
     
@@ -27,7 +28,7 @@ class NetworkManager: NSObject , NetworkManagerProtocol {
         
         let session = URLSession(
             configuration: sessionConfiguration,
-            delegate: self,
+            delegate: nil,
             delegateQueue: .main
         )
         
@@ -38,18 +39,16 @@ class NetworkManager: NSObject , NetworkManagerProtocol {
     private func cleanDownload(url: URL) {
         let key = url.absoluteString
         onDownloadProgressChangedContainer.removeValue(forKey: key)
-        downloadTaskCompletionHandlerContainer.removeValue(forKey: key)
-        downloadTaskContainer.removeValue(forKey: key)
+        session.invalidateAndCancel()
+        session = URLSession(configuration: .default)
     }
     
     func stopDownload(url: URL) {
-        let key = url.absoluteString
-        downloadTaskContainer[key]?.cancel()
         cleanDownload(url: url)
     }
     
     func fetch<T: Decodable>(urlRequest: URLRequest) async throws -> T {
-        let (data, response) = try await session.data(for: urlRequest, delegate: self)
+        let (data, response) = try await session.data(for: urlRequest)
         
         print((response as? HTTPURLResponse)?.statusCode ?? "-1")
         
@@ -63,56 +62,47 @@ class NetworkManager: NSObject , NetworkManagerProtocol {
     
     func fetchFile(
         urlRequest: URLRequest,
-        onDownloadProgressChanged: @escaping (Int) -> Void,
-        completionHandler: @escaping (URL) -> Void
-    ) {
+        onDownloadProgressChanged: @escaping (Int) -> Void
+    ) async throws -> Data {
         
-        onDownloadProgressChanged(0)
-        
-        #if local
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [weak self] in
-            self?.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
-        }
-        
-        
-        
-        // TODO: Handle configurations
-        #elseif Heroku
-        self.triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged, completionHandler: completionHandler)
-        //
-        
-        
-        // let (downloadedFileLocationUrl, response) = try await session.download(for: urlRequest, delegate: self)
-        
-        #endif
-        
-        
-        print("⚠️⚠️⚠️⚠️⚠️")
-        //print((response as? HTTPURLResponse)?.statusCode ?? "-1")
-        
+        //onDownloadProgressChanged(0)
+        try await triggerFileDownload(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged)
         
     }
     
     private func triggerFileDownload(
         urlRequest: URLRequest,
-        onDownloadProgressChanged: @escaping (Int) -> Void,
-        completionHandler: @escaping (URL) -> Void
-    ) {
-        let key = urlRequest.url?.absoluteString ?? ""
-        onDownloadProgressChangedContainer[key] = onDownloadProgressChanged
+        onDownloadProgressChanged: @escaping (Int) -> Void
+    ) async throws -> Data {
         
-        let downloadTask = session.downloadTask(with: urlRequest)
-        downloadTaskContainer[key] = downloadTask
-        downloadTask.resume()
+        //let (url, _) = try await session.download(for: urlRequest, delegate: self)
         
-        downloadTaskCompletionHandlerContainer[key] = completionHandler
+        let (asyncBytes, urlResponse) = try await session.bytes(for: urlRequest)
         
+        let length = Int(urlResponse.expectedContentLength)
+        var data = Data()
+        data.reserveCapacity(length)
+        
+        var lastProgressPercentage = 0
+        
+        for try await byte in asyncBytes {
+            let progress = Int((Double(data.count) / Double(length)) * 100.0)
+            data.append(byte)
+            
+            if lastProgressPercentage != progress {
+                print("🍅 DOWNLOAD PROGRESS \(progress)%")
+                onDownloadProgressChanged(progress)
+                lastProgressPercentage = progress
+            }
+        }
+        
+        return data
     }
     
     
     
     func fetchData(urlRequest: URLRequest) async throws -> Data {
-        let (data, response) = try await session.data(for: urlRequest, delegate: self)
+        let (data, response) = try await session.data(for: urlRequest)
         
         print((response as? HTTPURLResponse)?.statusCode ?? "-1")
         
@@ -122,53 +112,6 @@ class NetworkManager: NSObject , NetworkManagerProtocol {
     
     //MARK: - Private - Variables
     private var onDownloadProgressChangedContainer: [String: ((Int) -> Void)] = [:]
-    private var downloadTaskCompletionHandlerContainer: [String: ((URL) -> Void)] = [:]
-    private var downloadTaskContainer: [String: URLSessionDownloadTask] = [:]
-    
-}
 
-//MARK: - URLSessionDelegate
-extension NetworkManager: URLSessionDelegate {
-    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
-        print("❌didBecomeInvalidWithError DOWNLOAD")
-        print(error ?? "ERROR IS NIL")
-    }
-}
-//MARK: - URLSessionDownloadDelegate
-extension NetworkManager: URLSessionDownloadDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        print("✅✅FINISHED DOWNLOAD AT URL")
-        print(location.absoluteString)
-        
-        guard let downloadUrl = downloadTask.originalRequest?.url else { return }
-        
-        let key = downloadUrl.absoluteString
-        downloadTaskCompletionHandlerContainer[key]?(location)
-        cleanDownload(url: downloadUrl)
-    }
-    
-    
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print( error ?? "ERROR IS NIL")
-    }
-    
-    
-    
-    func urlSession(
-        _ session: URLSession,
-        downloadTask: URLSessionDownloadTask,
-        didWriteData bytesWritten: Int64,
-        totalBytesWritten: Int64,
-        totalBytesExpectedToWrite: Int64
-    ) {
-        
-        let downloadCompletionPercentage = Int((Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)) * 100.0)
-        print("🍅 \(downloadCompletionPercentage)%")
-        
-        let key = downloadTask.originalRequest?.url?.absoluteString ?? ""
-        onDownloadProgressChangedContainer[key]?(downloadCompletionPercentage)
-        
-    }
-    
     
 }

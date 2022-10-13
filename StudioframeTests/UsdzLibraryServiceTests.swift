@@ -94,7 +94,7 @@ final class UsdzLibraryServiceTests: XCTestCase {
     /// Test Get Local Object ( return 1)
     func test_givenUsdzLibrary_whenFetchAllLocalUsdz_thenReturnLocalUsdz() {
         guard let localUsdz = try? usdzLibraryService.getLocalObjects() else { return XCTFail("error getting local object")}
-            XCTAssertEqual(localUsdz.count, 1)
+        XCTAssertEqual(localUsdz.count, 1)
     }
     
     /// Test Check if already downloaded
@@ -119,18 +119,33 @@ final class UsdzLibraryServiceTests: XCTestCase {
     
     /// Test Usdz we fake it with the mock taking AirForce from Bundle and give him the AirForce instead of download
     #warning("DownloadUsdzIbject test is leaked on continuation")
-   // func test_givenNoFileUsdz_whenFetchFile_thenGetAirForceFile() async {
-   //     StudioFrameFileManager.shared.deleteAllFiles()
-   //     let networkManagerMock = MockNetworkManagerSuccess()
-   //     usdzLibraryService = UsdzLibraryService(networkManager: networkManagerMock)
-   //     let exempleUsdz = UsdzObject(title: "AirForce", objectUrlString: "", //thumbnailImageUrlString: "")
-   //     let someInt: (Int) -> Void = { _ in 100 }
-   //     try! await usdzLibraryService.downloadUsdzObject(usdzObject: exempleUsdz, //onDownloadProgressChanged: someInt)
-   //     let localUsdz = try? usdzLibraryService.getLocalObjects()
-   //     XCTAssertTrue(localUsdz?.first?.title == exempleUsdz.title)
-   // }
-    
-    #warning("no clue how to test stopDownload")
+    func test_givenNoFileUsdz_whenFetchFile_thenGetAirForceFile() async throws {
+        StudioFrameFileManager.shared.deleteAllFiles()
+        
+        let networkManagerMock = MockNetworkManagerSuccess()
+        
+        usdzLibraryService = UsdzLibraryService(networkManager: networkManagerMock)
+        
+        let exempleUsdz = UsdzObject(
+            title: "AirForce",
+            objectUrlString: "AirForce.usdz",
+            thumbnailImageUrlString: ""
+        )
+        
+        _ = try await usdzLibraryService.downloadUsdzObject(
+            usdzObject: exempleUsdz,
+            onDownloadProgressChanged: { _ in }
+        )
+        
+        let localUsdzObjects = try usdzLibraryService.getLocalObjects()
+        
+        let containsExampleUsdz = localUsdzObjects.contains { localUsdzObject in
+            localUsdzObject.title == exempleUsdz.title
+        }
+        XCTAssertTrue(containsExampleUsdz)
+    }
+   
+#warning("no clue how to test stopDownload")
     func test_givenFakeDownloadUrl_whenStopDownload_thenDownloadStopped() {
         let usdz = UsdzObject(title: "Fakeusdz", objectUrlString: "fakedownload", thumbnailImageUrlString: "notTestingThat")
         usdzLibraryService.stopDownload(usdzObject: usdz)

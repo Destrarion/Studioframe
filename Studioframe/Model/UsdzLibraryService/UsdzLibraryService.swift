@@ -82,38 +82,19 @@ final class UsdzLibraryService {
     /// - Returns: The local URL of the downloaded USDZ object
     func downloadUsdzObject(usdzObject: UsdzObject, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> URL {
         
-        
         // let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString)! (local configuration)
         let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
         
         let urlRequest = URLRequest(url: url)
         
+        let downloadedUsdzObjectData = try await networkManager.fetchFile(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged)
         
-        return try await withCheckedThrowingContinuation { (continuation:  CheckedContinuation<URL, Error>) in
-            networkManager.fetchFile(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged) { [weak self] usdzObjectLocalFileUrl in
-                guard let self = self else {
-                    continuation.resume(throwing: UsdzLibraryServiceError.failedToDownloadUsdzObject)
-                    return
-                }
-                
-                do {
-                    let newLocationUrl = try self.studioFrameFileManager.moveFile(at: usdzObjectLocalFileUrl, fileName: usdzObject.objectUrlString)
-                    
-                    //self.urlPathUsdzObjects ["\(usdzObject.title)"] = newLocationUrl
-                    print("New Location : \(newLocationUrl)")
-                    print("⚠️ Successfuly stored USDZ")
-                    continuation.resume(returning: newLocationUrl)
-                    return
-                } catch {
-                    print("FAILED TO COPY USDZ FILE")
-                    print(error)
-                    continuation.resume(throwing: UsdzLibraryServiceError.failedToDownloadUsdzObject)
-                    return
-                }
-                
-            }
+        guard let newLocationUrl = try? studioFrameFileManager.writeData(data: downloadedUsdzObjectData, fileName: usdzObject.objectUrlString) else {
+            throw UsdzLibraryServiceError.failedToDownloadUsdzObject
         }
+        print("🍅🍅 \(newLocationUrl.absoluteString)")
         
+        return newLocationUrl
     }
     
     func remove(usdzObject: UsdzObject) {
@@ -132,6 +113,8 @@ final class UsdzLibraryService {
         guard let allFileTitles = try? studioFrameFileManager.getAllFileTitlesInDocumentsDirectory() else {
             return false
         }
+        
+        print("🍅🍅 \(allFileTitles)")
         
         // FIXME: should not work like that
         let isDownloaded = allFileTitles.contains { url in

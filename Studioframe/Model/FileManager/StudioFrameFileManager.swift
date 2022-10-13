@@ -7,6 +7,9 @@
 
 import Foundation
 
+enum StudioFrameFileManagerError: Error {
+    case unknownError
+}
 
 
 final class StudioFrameFileManager {
@@ -16,6 +19,27 @@ final class StudioFrameFileManager {
     }
     
     static let shared = StudioFrameFileManager()
+    
+    func readFileData(fileName: String) throws -> Data {
+        let url = Bundle.main.url(forResource: fileName, withExtension: ".usdz")!
+        
+        return try Data(contentsOf: url)
+    }
+    
+    func writeData(data: Data, fileName: String) throws -> URL {
+        print("⚠️⚠️ \(fileName)")
+        let newLocationUrl = getDocumentsDirectory().appendingPathComponent(fileName)
+        do {
+            try data.write(to: newLocationUrl)
+        } catch {
+            print("⚠️⚠️ \(fileName)")
+            print(error)
+            print(error.localizedDescription)
+            throw StudioFrameFileManagerError.unknownError
+        }
+
+        return newLocationUrl
+    }
     
     func moveFile(at originUrlPath: URL, fileName: String) throws -> URL {
         let newLocationUrl = getDocumentsDirectory().appendingPathComponent(fileName)

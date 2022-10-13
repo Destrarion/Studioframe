@@ -11,6 +11,7 @@ import Foundation
 final class MockNetworkManagerSuccess: NetworkManagerProtocol {
     
     
+    
     //guard let url = Bundle(for: MockNetworkManagerSuccess.self).url(forResource: "JsonResponse", withExtension: ".json"),
     //           let data = try? Data(contentsOf: url) else {
     //         return completion(nil)
@@ -24,9 +25,9 @@ final class MockNetworkManagerSuccess: NetworkManagerProtocol {
         return usdzObjects as! T
     }
     
-    func fetchFile(urlRequest: URLRequest, onDownloadProgressChanged: @escaping (Int) -> Void, completionHandler: @escaping (URL) -> Void)  {
+    func fetchFile(urlRequest: URLRequest, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> Data {
         let studioFrameFileManager = StudioFrameFileManager.shared
-        try? studioFrameFileManager.moveFile(at: Bundle.main.url(forResource: "AirForce", withExtension: ".usdz")!,fileName: "AirForce.usdz")
+        return try studioFrameFileManager.readFileData(fileName: "AirForce")
     }
     
     func fetchData(urlRequest: URLRequest) async throws -> Data {

@@ -7,95 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "88B0683D-7D1E-46C8-86E2-400BB2E80351"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "test_givenSuccessNetwork_whenFetchUsdzObjects_thenObjectsIsNotEmpty()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "BFD53B4D-3E9B-427B-A4F7-FDC155202DEA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StudioframeTests/MockNetworkManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "fetch(urlRequest:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "00CC6F51-C83C-4D4E-8DA7-4A8A459AFF7F"
+            uuid = "B4A7F1CE-C46F-482F-BE8D-ABB764522C35"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "fetchUsdzObjects()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0F465A1A-304E-4522-9BDA-CC07BDF8ADBE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "fetchUsdzObjects()"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "downloadUsdzObject(usdzObject:onDownloadProgressChanged:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0F465A1A-304E-4522-9BDA-CC07BDF8ADBE - a0c1257771999b8f"
+                  uuid = "B4A7F1CE-C46F-482F-BE8D-ABB764522C35 - 281a399c785d791f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for Studioframe.UsdzLibraryService.fetchUsdzObjects() async throws -&gt; Swift.Array&lt;Studioframe.UsdzObjectWrapper&gt;"
+                  symbolName = "(1) suspend resume partial function for Studioframe.UsdzLibraryService.downloadUsdzObject(usdzObject: Studioframe.UsdzObject, onDownloadProgressChanged: (Swift.Int) -&gt; ()) async throws -&gt; Foundation.URL"
                   moduleName = "Studioframe"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "381">
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "177">
                </Location>
                <Location
-                  uuid = "0F465A1A-304E-4522-9BDA-CC07BDF8ADBE - 1145cb3611945722"
+                  uuid = "B4A7F1CE-C46F-482F-BE8D-ABB764522C35 - 9c5cc3286d723521"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Studioframe.UsdzObject) -&gt; Studioframe.UsdzObjectWrapper in Studioframe.UsdzLibraryService.fetchUsdzObjects() async throws -&gt; Swift.Array&lt;Studioframe.UsdzObjectWrapper&gt;"
+                  symbolName = "(3) suspend resume partial function for Studioframe.UsdzLibraryService.downloadUsdzObject(usdzObject: Studioframe.UsdzObject, onDownloadProgressChanged: (Swift.Int) -&gt; ()) async throws -&gt; Foundation.URL"
                   moduleName = "Studioframe"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "70">
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "594">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -103,16 +55,143 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A5CB4E35-1DC0-4358-A194-2571D67F964B"
+            uuid = "1FD52111-24D4-4851-93F1-2A4D26079335"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "fetchUsdzObjects()"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "downloadUsdzObject(usdzObject:onDownloadProgressChanged:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1FD52111-24D4-4851-93F1-2A4D26079335 - 9c5cc3286d7235fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Studioframe.UsdzLibraryService.downloadUsdzObject(usdzObject: Studioframe.UsdzObject, onDownloadProgressChanged: (Swift.Int) -&gt; ()) async throws -&gt; Foundation.URL"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "289">
+               </Location>
+               <Location
+                  uuid = "1FD52111-24D4-4851-93F1-2A4D26079335 - 9c5cc3286d7235fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Studioframe.UsdzLibraryService.downloadUsdzObject(usdzObject: Studioframe.UsdzObject, onDownloadProgressChanged: (Swift.Int) -&gt; ()) async throws -&gt; Foundation.URL"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "869">
+               </Location>
+               <Location
+                  uuid = "1FD52111-24D4-4851-93F1-2A4D26079335 - 9c5cc3286d7235fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Studioframe.UsdzLibraryService.downloadUsdzObject(usdzObject: Studioframe.UsdzObject, onDownloadProgressChanged: (Swift.Int) -&gt; ()) async throws -&gt; Foundation.URL"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "1898">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1656EC6E-7AA5-4C8A-87D3-E8AF41D82726"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "downloadUsdzObject(usdzObject:onDownloadProgressChanged:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2412C2DE-E275-4F0D-B04B-1A06A2169B41"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/FileManager/StudioFrameFileManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "writeData(data:fileName:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2412C2DE-E275-4F0D-B04B-1A06A2169B41 - e111611e43ab3bbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Studioframe.StudioFrameFileManager.writeData(data: Foundation.Data, fileName: Swift.String) throws -&gt; Foundation.URL"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/FileManager/StudioFrameFileManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "2184">
+               </Location>
+               <Location
+                  uuid = "2412C2DE-E275-4F0D-B04B-1A06A2169B41 - e111611e43ab3bbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Studioframe.StudioFrameFileManager.writeData(data: Foundation.Data, fileName: Swift.String) throws -&gt; Foundation.URL"
+                  moduleName = "Studioframe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/Studioframe/Model/FileManager/StudioFrameFileManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "2239">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEDDD0DA-AE09-4FE7-87BE-C7F122505476"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Studioframe/Model/UsdzLibraryService/UsdzLibraryService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "downloadUsdzObject(usdzObject:onDownloadProgressChanged:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
