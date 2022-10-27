@@ -10,13 +10,6 @@ import Foundation
 
 final class MockNetworkManagerSuccess: NetworkManagerProtocol {
     
-    
-    
-    //guard let url = Bundle(for: MockNetworkManagerSuccess.self).url(forResource: "JsonResponse", withExtension: ".json"),
-    //           let data = try? Data(contentsOf: url) else {
-    //         return completion(nil)
-    //     }
-    
     func fetch<T>(urlRequest: URLRequest) async throws -> T where T : Decodable {
         let usdzObjects: [UsdzObject] = [
             .init(title: "AirForce", objectUrlString: "https://www.testurl.com/airforce", thumbnailImageUrlString: "https://www.testurl.com/airforce/img"),
@@ -36,7 +29,7 @@ final class MockNetworkManagerSuccess: NetworkManagerProtocol {
     }
     
     func stopDownload(url: URL) {
-        let urlFake = "https://googletakeyourdata.com"
+        _ = "https://googletakeyourdata.com"
     }
 
 }

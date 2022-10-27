@@ -25,13 +25,26 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
     @Published var isLoading = false
     let id = UUID()
     let fileName: String
-    let fileURL: String 
+    var fileURL: String
+    
+    private var usdzLibraryService = UsdzLibraryService.shared
+    
+    func assignURLFile(title : String) {
+        let local = try? usdzLibraryService.getLocalObjects()
+        local?.forEach { usdz in
+            if usdz.title == title {
+                fileURL = usdz.objectUrlString
+                
+            }
+        }
+    }
     
     private func loadThumbnailImage() {
         Task {
             isLoading.toggle()
             print(fileName)
             print(fileURL)
+            assignURLFile(title: fileName)
             self.image = await thumbnailGenerator.getThumbnail(fileURL: fileURL, size: CGSize(width: 400, height: 400))
             isLoading.toggle()
         }

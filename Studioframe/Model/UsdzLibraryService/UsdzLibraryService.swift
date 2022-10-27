@@ -125,6 +125,11 @@ final class UsdzLibraryService {
         return isDownloaded
     }
     
+    func clearAllDownload()  {
+        studioFrameFileManager.deleteAllFiles()
+        addAirForceFavorite()
+    }
+    
     
     
     func getFavoriteObjects() -> [UsdzObject] {

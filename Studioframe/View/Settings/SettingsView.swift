@@ -9,20 +9,71 @@ import Foundation
 import SwiftUI
 
 
-struct SettingsView: View{
+struct SettingsView: View {
+    
+    @StateObject var settingViewModel = SettingsViewModel()
+    @State var showAlert = false
     
     var body : some View {
         VStack{
             Text("Settings")
             
+
             List{
-                Link (destination: URL(string: "https://twitter.com/FabienDietrich")!){
-                        Text("Twitter")
+                
+                Section {
+                    Link (destination: URL(string: "https://twitter.com/FabienDietrich")!){
+                            Text("Twitter")
+                            .foregroundColor(.teal)
+                    }
+                    Link (destination: URL(string: "https://github.com/Destrarion/Studioframe")!){
+                            Text("GitHub")
+                    }
                 }
-                Link (destination: URL(string: "https://github.com/Destrarion/Studioframe")!){
-                        Text("GitHub")
+                
+                
+                Section {
+                    Button {
+                        
+                        showAlert.toggle()
+                    } label: {
+                        Text("Clear all favorite ")
+                            .foregroundColor(.red)
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Are you sure to clear all favorite ?"),
+                              message: Text("All favorite will be gone after this"),
+                              primaryButton: .destructive(Text("Favorite must be purged")) {
+                            settingViewModel.clearAllFavorite()
+                            
+                        },
+                              secondaryButton: .cancel())
+                    }
+                    
+                    Button {
+                        showAlert.toggle()
+                    } label: {
+                        Text("Clear all downloaded files ")
+                            .foregroundColor(.red)
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Are you sure to clear all Files ?"),
+                              message: Text("All files and favorited downloaded files will be purged in the process"),
+                              primaryButton: .destructive(Text("Files must be purged")) {
+                            settingViewModel.clearAllDownload()
+                            settingViewModel.clearAllFavorite()
+                            
+                        },
+                              secondaryButton: .cancel())
+                    }
                 }
+                
+                
             }
+          
+            
+            
         }
+        .listStyle(.grouped)
     }
 }

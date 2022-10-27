@@ -44,6 +44,7 @@
 		5FB3587727746C2700CA03CF /* ItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */; };
 		5FB3587B27746ED600CA03CF /* FileNotDowloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */; };
 		5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */; };
+		5FB5E30D290142B200BB46DF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB5E30C290142B200BB46DF /* SettingsViewModel.swift */; };
 		5FBC171B28362B420060FE95 /* QuickLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171A28362B420060FE95 /* QuickLookViewController.swift */; };
 		5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171D28362B940060FE95 /* QuickLookView.swift */; };
 		5FD0AA2728EE43C70001AD0D /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */; };
@@ -115,6 +116,7 @@
 		5FB3587527746C2700CA03CF /* ItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5FB3587A27746ED600CA03CF /* FileNotDowloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNotDowloadedView.swift; sourceTree = "<group>"; };
 		5FB3587C27746EF600CA03CF /* FileDownloadedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadedView.swift; sourceTree = "<group>"; };
+		5FB5E30C290142B200BB46DF /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		5FBC171A28362B420060FE95 /* QuickLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookViewController.swift; sourceTree = "<group>"; };
 		5FBC171D28362B940060FE95 /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
 		5FC01FE6282CEC6F00BB3C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				5F6FFA1A2891821B0027A120 /* LibraryViewModel */,
 				5FA12D17286D3C8300020A5E /* USDZScrollingMenuViewModel.swift */,
+				5FB5E30C290142B200BB46DF /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				5F07671727D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift in Sources */,
 				5F07670F27D600EB00F2EF52 /* ARViewContainer.swift in Sources */,
 				5F716BC927EC693D005C88B8 /* UsdzLibraryServiceError.swift in Sources */,
+				5FB5E30D290142B200BB46DF /* SettingsViewModel.swift in Sources */,
 				5FB3587627746C2700CA03CF /* ItemEntity+CoreDataClass.swift in Sources */,
 				5FA12D16286BDF3A00020A5E /* ConfigurationService.swift in Sources */,
 				5F07671327D606B900F2EF52 /* UsdzObjectContainer.swift in Sources */,

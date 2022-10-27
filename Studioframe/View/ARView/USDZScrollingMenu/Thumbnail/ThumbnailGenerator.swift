@@ -23,11 +23,11 @@ class ThumbnailGenerator: ObservableObject {
         
         print(thumbnailCache)
         
-        guard let cacheThumbnail = thumbnailCache[fileURL] else {
+        //guard let cacheThumbnail = thumbnailCache[fileURL] else {
             return await generateThumbnail(urlFile: fileURL, size: size)
-        }
+        //}
         
-        return cacheThumbnail
+        //return cacheThumbnail
     }
     
     

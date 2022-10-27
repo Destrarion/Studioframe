@@ -14,7 +14,7 @@ struct USDZScrollingMenu: View {
     
     init(experience: StudioFrameExperience) throws {
         self.experience = experience
-        self._viewModel = StateObject(wrappedValue: try! USDZScrollingMenuViewModel())
+        self._viewModel = StateObject(wrappedValue: USDZScrollingMenuViewModel())
         
         
     }
@@ -24,24 +24,25 @@ struct USDZScrollingMenu: View {
     @StateObject var viewModel: USDZScrollingMenuViewModel
     
     var body: some View {
-        
         objectLibraryView
-        
     }
     
     
     @ViewBuilder
     var objectLibraryView: some View {
         
-        let list = List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
+        List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
             
             HStack {
                 Button {
                     print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
                     //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
-                    experience!.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
+                    experience?.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
                     
                 } label: {
+                    //Rectangle()
+                    //    .foregroundColor(.red)
+                    //    .frame(width: 50, height: 50)
                     ThumbnailUsdzAddButton(viewModel: usdzObjectContainer)
                     
                 }
@@ -53,17 +54,19 @@ struct USDZScrollingMenu: View {
             .listRowBackground(Color.clear)
         }
         .frame(width: 100, alignment: .bottomTrailing)
-        if #available(iOS 16.0, *) {
-            list.background().hidden()
-                } else {
-                    list.background(.clear)
-                }
+        .hideBackgroundOnList()
+        //.background().hidden()
         
     }
-    
-    
-    
-    
-    
-    
+}
+
+extension View {
+    @ViewBuilder
+    func hideBackgroundOnList() -> some View {
+        if #available(iOS 16.0, *) {
+            self.scrollContentBackground(.hidden)
+        } else {
+            self.hidden()
+        }
+    }
 }

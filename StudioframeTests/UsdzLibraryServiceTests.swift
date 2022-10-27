@@ -118,7 +118,6 @@ final class UsdzLibraryServiceTests: XCTestCase {
     }
     
     /// Test Usdz we fake it with the mock taking AirForce from Bundle and give him the AirForce instead of download
-    #warning("DownloadUsdzIbject test is leaked on continuation")
     func test_givenNoFileUsdz_whenFetchFile_thenGetAirForceFile() async throws {
         StudioFrameFileManager.shared.deleteAllFiles()
         
