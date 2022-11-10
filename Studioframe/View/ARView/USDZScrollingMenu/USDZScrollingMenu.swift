@@ -31,30 +31,31 @@ struct USDZScrollingMenu: View {
     @ViewBuilder
     var objectLibraryView: some View {
         
-        List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
-            
-            HStack {
-                Button {
-                    print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
-                    //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
-                    experience?.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
-                    
-                } label: {
-                    //Rectangle()
-                    //    .foregroundColor(.red)
-                    //    .frame(width: 50, height: 50)
-                    ThumbnailUsdzAddButton(viewModel: usdzObjectContainer)
+        if !viewModel.usdzObjectContainers.isEmpty {
+            List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
+                
+                HStack {
+                    Button {
+                        print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
+                        //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
+                        experience?.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
+                        
+                    } label: {
+                        ThumbnailUsdzAddButton(viewModel: usdzObjectContainer)
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
                     
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
-                
+                .listRowSeparator(.hidden)
+                .listSectionSeparator(.hidden)
+                .listRowBackground(Color.clear)
             }
-            .listRowSeparator(.hidden)
-            .listSectionSeparator(.hidden)
-            .listRowBackground(Color.clear)
+            .frame(width: 100, alignment: .bottomTrailing)
+            .hideBackgroundOnList()
+        } else {
+            EmptyView()
         }
-        .frame(width: 100, alignment: .bottomTrailing)
-        .hideBackgroundOnList()
         //.background().hidden()
         
     }

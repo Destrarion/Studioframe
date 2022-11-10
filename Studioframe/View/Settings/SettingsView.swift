@@ -12,7 +12,8 @@ import SwiftUI
 struct SettingsView: View {
     
     @StateObject var settingViewModel = SettingsViewModel()
-    @State var showAlert = false
+    @State var showClearAllFavoritesAlert = false
+    @State var showClearAllDownloadedFilesAlert = false
     
     var body : some View {
         VStack{
@@ -35,12 +36,12 @@ struct SettingsView: View {
                 Section {
                     Button {
                         
-                        showAlert.toggle()
+                        showClearAllFavoritesAlert.toggle()
                     } label: {
                         Text("Clear all favorite ")
                             .foregroundColor(.red)
                     }
-                    .alert(isPresented: $showAlert) {
+                    .alert(isPresented: $showClearAllFavoritesAlert) {
                         Alert(title: Text("Are you sure to clear all favorite ?"),
                               message: Text("All favorite will be gone after this"),
                               primaryButton: .destructive(Text("Favorite must be purged")) {
@@ -51,12 +52,12 @@ struct SettingsView: View {
                     }
                     
                     Button {
-                        showAlert.toggle()
+                        showClearAllDownloadedFilesAlert.toggle()
                     } label: {
                         Text("Clear all downloaded files ")
                             .foregroundColor(.red)
                     }
-                    .alert(isPresented: $showAlert) {
+                    .alert(isPresented: $showClearAllDownloadedFilesAlert) {
                         Alert(title: Text("Are you sure to clear all Files ?"),
                               message: Text("All files and favorited downloaded files will be purged in the process"),
                               primaryButton: .destructive(Text("Files must be purged")) {

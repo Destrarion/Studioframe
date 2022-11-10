@@ -1,11 +1,14 @@
 import UIKit
 import SwiftUI
 import ARKit
+import Mixpanel
 
 @main
 struct StudioFrame: App {
+    
+  
 
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -15,9 +18,10 @@ struct StudioFrame: App {
     
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+//class AppDelegate: NSObject, UIApplicationDelegate {
+    //func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+    
         //guard ARWorldTrackingConfiguration.isSupported else {
         //    fatalError("""
         //        ARKit is not available on this device. For apps that require ARKit
@@ -41,8 +45,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 //        configuration.planeDetection = [.horizontal, .vertical]
 //        
         
-        return true
-    }
+        //return true
+    //}
     
         
-}
+//}

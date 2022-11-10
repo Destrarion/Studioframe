@@ -6,7 +6,64 @@
 //
 
 import Foundation
+import Mixpanel
 
+
+enum TrackingEvent {
+    case addFavorite
+    case downloadUsdz
+    case removeUsdz
+    case stopDownloadUsdz
+    
+    
+    var title: String {
+        switch self {
+        case .addFavorite:
+            return "Add Favorite"
+        case .downloadUsdz:
+            return "Download USDZ"
+        case .removeUsdz:
+            return "Removed USDZ"
+        case .stopDownloadUsdz:
+            return "Stopped downloading Usdz"
+        }
+    }
+    
+    var properties: [String: any MixpanelType] {
+        switch self {
+        case .addFavorite:
+            return [:]
+        case .downloadUsdz:
+            return [:]
+        case .removeUsdz:
+            return [:]
+        case .stopDownloadUsdz:
+            return [:]
+        }
+    }
+}
+
+final class TrackingService {
+    static let shared = TrackingService()
+    
+    private let mixpanelInstance: MixpanelInstance
+    
+    init() {
+        Mixpanel.initialize(token: "d4d00a48e60230a09f1d45159daa6ea9", trackAutomaticEvents: true)
+        self.mixpanelInstance = Mixpanel.mainInstance()
+    }
+    
+    
+    func track(event: TrackingEvent) {
+        mixpanelInstance.track(
+            event: event.title,
+            properties: event.properties
+        )
+    }
+    
+    
+    
+}
 
 enum LibraryObjectDownloadState {
     case notDownloaded
@@ -22,13 +79,16 @@ final class LibraryObjectViewModel: ObservableObject {
         onFavorite: @escaping (UsdzObject) -> Void,
         onRemove: @escaping (UsdzObject) -> Void,
         didProduceError: @escaping (Error) -> Void,
-        onDismiss: @escaping () -> Void
+        onDismiss: @escaping () -> Void,
+        trackingService: TrackingService = TrackingService.shared
     ) {
         self.usdzObjectWrapper = usdzObjectWrapper
         self.onFavorite = onFavorite
         self.onRemove = onRemove
         self.didProduceError = didProduceError
         self.onDismiss = onDismiss
+        
+        self.trackingService = trackingService
         
         self.updateDownloadState()
     }
@@ -37,7 +97,7 @@ final class LibraryObjectViewModel: ObservableObject {
         usdzObjectWrapper.usdzObject.title
     }
     
-
+    
     @Published var downloadState: LibraryObjectDownloadState = .notDownloaded
     
     var thumbnailImageUrl: URL? {
@@ -63,6 +123,8 @@ final class LibraryObjectViewModel: ObservableObject {
     private let didProduceError: (Error) -> Void
     private let onDismiss: () -> Void
     
+    private let trackingService: TrackingService
+    
     
     
     func didTapSelect() {
@@ -73,22 +135,26 @@ final class LibraryObjectViewModel: ObservableObject {
     
     func didTapFavorite() {
         onFavorite(usdzObjectWrapper.usdzObject)
+        trackingService.track(event: .addFavorite)
     }
     
     
     func didTapRemove() {
         removeLocalObject()
+        trackingService.track(event: .removeUsdz)
     }
     
     
     func didTapDownload() {
         downloadState = .downloading
         downloadItem(usdzObject: self.usdzObjectWrapper.usdzObject)
+        trackingService.track(event: .downloadUsdz)
     }
     
     func didTapStopDownload() {
         downloadState = .notDownloaded
         usdzLibraryService.stopDownload(usdzObject: usdzObjectWrapper.usdzObject)
+        trackingService.track(event: .stopDownloadUsdz)
     }
     
     
@@ -96,7 +162,7 @@ final class LibraryObjectViewModel: ObservableObject {
     private let studioFrameFileManager = StudioFrameFileManager.shared
     private let configurationService = ConfigurationService.shared
     
-
+    
     private func downloadItem(usdzObject: UsdzObject) {
         Task {
             print("Item selected with name: \(usdzObject.title)")
@@ -112,7 +178,7 @@ final class LibraryObjectViewModel: ObservableObject {
                 updateDownloadState()
                 return
             }
-           
+            
             updateDownloadState()
             
         }

@@ -52,6 +52,7 @@
 		5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */; };
 		5FEE361D28E35042003760F0 /* UsdzLibraryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */; };
+		5FF26EE72913B03700042674 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 5FF26EE62913B03700042674 /* Mixpanel */; };
 		F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52274032819586500F3648A /* LibraryObjectViewModel.swift */; };
 		F57139D8281840D10056FA8D /* UsdzObjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */; };
 		F57139DA2818557B0056FA8D /* FileDownloadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57139D92818557B0056FA8D /* FileDownloadingView.swift */; };
@@ -136,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF26EE72913B03700042674 /* Mixpanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +207,7 @@
 				5F1E5F492755992F00AD6B62 /* StudioframeTests */,
 				5F1E5F532755992F00AD6B62 /* StudioframeUITests */,
 				5F1E5F352755992D00AD6B62 /* Products */,
+				5FF26EE22913AEEC00042674 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -416,6 +419,13 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		5FF26EE22913AEEC00042674 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -432,6 +442,9 @@
 			dependencies = (
 			);
 			name = Studioframe;
+			packageProductDependencies = (
+				5FF26EE62913B03700042674 /* Mixpanel */,
+			);
 			productName = Studioframe;
 			productReference = 5F1E5F342755992D00AD6B62 /* Studioframe.app */;
 			productType = "com.apple.product-type.application";
@@ -505,6 +518,9 @@
 				Base,
 			);
 			mainGroup = 5F1E5F2B2755992D00AD6B62;
+			packageReferences = (
+				5FF26EE52913B03700042674 /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+			);
 			productRefGroup = 5F1E5F352755992D00AD6B62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1248,6 +1264,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5FF26EE52913B03700042674 /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5FF26EE62913B03700042674 /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5FF26EE52913B03700042674 /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5FB3580F27745E5300CA03CF /* CoredataModel.xcdatamodeld */ = {
