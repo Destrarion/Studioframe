@@ -16,6 +16,13 @@ extension NSNotification.Name {
     static let shouldAddUsdzObject: NSNotification.Name = .init("shouldAddUsdzObject")
 }
 
+
+
+enum StudioFrameExperienceError: Error {
+    case failedToCreateURL
+}
+
+
 @available(iOS 13.0, macOS 10.15, *)
 class StudioFrameExperience: NSObject, ObservableObject {
     
@@ -25,9 +32,9 @@ class StudioFrameExperience: NSObject, ObservableObject {
             forName: .shouldAddUsdzObject,
             object: nil,
             queue: .main
-        ) { [weak self ] notification in
-            let objectUrl = notification.object as! URL
+        ) { [weak self] notification in
             
+            guard let objectUrl = notification.object as? URL else { return }
             self?.addUsdzObject(usdzResourceUrl: objectUrl)
         }
     }
@@ -36,7 +43,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
         selectedEntity?.name ?? ""
     }
     
-    private static var streams = [AnyCancellable]()
+    
     
     var arView: ARView!
     var scene: StudioFrameScene?
@@ -50,7 +57,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     /// Load the object into the Experience file into the scene "Main scene"
     func loadExperience() throws -> StudioFrameExperience.StudioFrameScene {
-        let experienceURL = Bundle.main.url(forResource: "Experience", withExtension: "reality")!
+        guard let experienceURL = Bundle.main.url(forResource: "Experience", withExtension: "reality") else { throw StudioFrameExperienceError.failedToCreateURL }
         let realityFileSceneURL = experienceURL.appendingPathComponent("MainScene", isDirectory: false)
         let sceneAnchorEntity = try StudioFrameScene.loadAnchor(contentsOf: realityFileSceneURL)
         let scene = createScene(from: sceneAnchorEntity)
@@ -72,7 +79,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     
     func addUsdzObject(usdzResourceName: String) {
-        var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         url.appendPathComponent(usdzResourceName + ".usdz")
         addUsdzObject(usdzResourceUrl: url)
     }
@@ -89,7 +96,6 @@ class StudioFrameExperience: NSObject, ObservableObject {
                 }
             } receiveValue: { [weak self] loadedModelEntity in
                 loadedModelEntity.generateCollisionShapes(recursive: true)
-                
                 self?.arView.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
                 if let gestureRecognizers = self?.arView.gestureRecognizers {
                     for gestureRecognizer in gestureRecognizers {
@@ -104,11 +110,6 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     
     private var subscriptions: Set<AnyCancellable> = []
-    
-    
-    func getEntityWith(name: String) -> Entity? {
-        scene?.findEntity(named: name)
-    }
     
     
     
@@ -129,7 +130,6 @@ class StudioFrameExperience: NSObject, ObservableObject {
 extension StudioFrameExperience: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let location = gestureRecognizer.location(in: arView)
-        
         
         if let entity = arView.entity(at: location) {
             selectedEntity = entity

@@ -132,7 +132,7 @@ final class UsdzLibraryService {
     
     
     
-    func getFavoriteObjects() -> [UsdzObject] { 
+    func getFavoriteObjects() -> [UsdzObject] {
         return coreDataManager.getItems()
     }
     

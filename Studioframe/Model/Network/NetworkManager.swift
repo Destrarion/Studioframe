@@ -10,14 +10,12 @@ import Foundation
 protocol NetworkManagerProtocol {
     func fetch<T: Decodable>(urlRequest: URLRequest) async throws -> T
     func fetchFile(urlRequest: URLRequest, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> Data
-    func fetchData(urlRequest: URLRequest) async throws -> Data
     func stopDownload(url: URL)
     
 }
 
 
 class NetworkManager: NSObject, NetworkManagerProtocol {
-    
     
     static let shared = NetworkManager()
     
@@ -98,17 +96,7 @@ class NetworkManager: NSObject, NetworkManagerProtocol {
         
         return data
     }
-    
-    
-    
-    func fetchData(urlRequest: URLRequest) async throws -> Data {
-        let (data, response) = try await session.data(for: urlRequest)
-        
-        print((response as? HTTPURLResponse)?.statusCode ?? "-1")
-        
-        return data
-        
-    }
+
     
     //MARK: - Private - Variables
     private var onDownloadProgressChangedContainer: [String: ((Int) -> Void)] = [:]

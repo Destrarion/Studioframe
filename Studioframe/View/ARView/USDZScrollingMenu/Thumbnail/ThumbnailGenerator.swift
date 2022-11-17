@@ -13,7 +13,6 @@ import Combine
 class ThumbnailGenerator: ObservableObject {
     
     static let shared = ThumbnailGenerator()
-    var usdzLibraryService = UsdzLibraryService.shared
     
     
     // MARK: Other version
@@ -23,11 +22,11 @@ class ThumbnailGenerator: ObservableObject {
         
         print(thumbnailCache)
         
-        //guard let cacheThumbnail = thumbnailCache[fileURL] else {
+        guard let cacheThumbnail = thumbnailCache[fileURL] else {
             return await generateThumbnail(urlFile: fileURL, size: size)
-        //}
+        }
         
-        //return cacheThumbnail
+        return cacheThumbnail
     }
     
     
@@ -40,11 +39,12 @@ class ThumbnailGenerator: ObservableObject {
             return nil
         }
         
-        let request = QLThumbnailGenerator.Request(fileAt: url, size: size, scale: scale, representationTypes: .all)
-        
-        let generator = QLThumbnailGenerator.shared
+  
         
         let image: Image? = await withCheckedContinuation { continuation in
+            let request = QLThumbnailGenerator.Request(fileAt: url, size: size, scale: scale, representationTypes: .all)
+            let generator = QLThumbnailGenerator.shared
+            
             generator.generateBestRepresentation(for: request) { (thumbnail, error)  in
                 
                 guard let thumbnail = thumbnail,

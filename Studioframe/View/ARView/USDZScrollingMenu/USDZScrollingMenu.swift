@@ -12,15 +12,13 @@ import RealityKit
 
 struct USDZScrollingMenu: View {
     
-    init(experience: StudioFrameExperience) throws {
+    init(experience: StudioFrameExperience) {
         self.experience = experience
         self._viewModel = StateObject(wrappedValue: USDZScrollingMenuViewModel())
         
-        
     }
     
-    var experience: StudioFrameExperience?
-    
+    @ObservedObject var experience: StudioFrameExperience
     @StateObject var viewModel: USDZScrollingMenuViewModel
     
     var body: some View {
@@ -33,12 +31,11 @@ struct USDZScrollingMenu: View {
         
         if !viewModel.usdzObjectContainers.isEmpty {
             List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
-                
                 HStack {
                     Button {
                         print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
                         //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
-                        experience?.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
+                        experience.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
                         
                     } label: {
                         ThumbnailUsdzAddButton(viewModel: usdzObjectContainer)

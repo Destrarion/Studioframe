@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-struct ThumbnailUsdzAddButton : View {
+struct ThumbnailUsdzAddButton: View {
     
     @ObservedObject var viewModel: UsdzObjectContainer
     

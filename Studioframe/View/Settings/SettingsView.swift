@@ -19,16 +19,16 @@ struct SettingsView: View {
         VStack{
             Text("Settings")
             
-
+            
             List{
                 
                 Section {
                     Link (destination: URL(string: "https://twitter.com/FabienDietrich")!){
-                            Text("Twitter")
+                        Text("Twitter")
                             .foregroundColor(.teal)
                     }
                     Link (destination: URL(string: "https://github.com/Destrarion/Studioframe")!){
-                            Text("GitHub")
+                        Text("GitHub")
                     }
                 }
                 

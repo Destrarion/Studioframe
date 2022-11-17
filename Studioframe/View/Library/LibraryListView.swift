@@ -41,7 +41,8 @@ struct LibraryListView: View{
                             LibraryObjectView(viewModel: viewModel)
                         }
                         .listRowSeparator(.visible)
-                        .listRowSeparatorTint(Color("ListRowColor"))
+                        //.listRowSeparatorTint(Color("ListRowColor"))
+                        .listRowSeparatorTint(Color(.red))
                         .listRowBackground(Color.clear)
                     }
                     .alert("Error", isPresented: $viewModel.isAlertPresented, actions: {})

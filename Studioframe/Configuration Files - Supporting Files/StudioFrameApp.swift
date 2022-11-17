@@ -4,7 +4,7 @@ import ARKit
 import Mixpanel
 
 @main
-struct StudioFrame: App {
+struct StudioFrameApp: App {
     
   
 

@@ -14,7 +14,7 @@
 		5F07671727D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671627D6127F00F2EF52 /* ThumbnailUsdzAddButton.swift */; };
 		5F07671D27D61B5900F2EF52 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671C27D61B5900F2EF52 /* LibraryViewModel.swift */; };
 		5F07672027D6200700F2EF52 /* LibraryObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F07671F27D6200700F2EF52 /* LibraryObjectView.swift */; };
-		5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F372755992D00AD6B62 /* AppDelegate.swift */; };
+		5F1E5F382755992D00AD6B62 /* StudioFrameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F372755992D00AD6B62 /* StudioFrameApp.swift */; };
 		5F1E5F3A2755992D00AD6B62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F392755992D00AD6B62 /* ContentView.swift */; };
 		5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F3B2755992D00AD6B62 /* Experience.rcproject */; };
 		5F1E5F3E2755992F00AD6B62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E5F3D2755992F00AD6B62 /* Assets.xcassets */; };
@@ -50,6 +50,7 @@
 		5FD0AA2728EE43C70001AD0D /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */; };
 		5FD0AA2928EE96890001AD0D /* JsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2828EE96890001AD0D /* JsonResponse.json */; };
 		5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */; };
+		5FD644EB291CEBDE00639C01 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD644EA291CEBDE00639C01 /* MainView.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */; };
 		5FEE361D28E35042003760F0 /* UsdzLibraryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */; };
 		5FF26EE72913B03700042674 /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 5FF26EE62913B03700042674 /* Mixpanel */; };
@@ -85,7 +86,7 @@
 		5F07671C27D61B5900F2EF52 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		5F07671F27D6200700F2EF52 /* LibraryObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectView.swift; sourceTree = "<group>"; };
 		5F1E5F342755992D00AD6B62 /* Studioframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studioframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F1E5F372755992D00AD6B62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5F1E5F372755992D00AD6B62 /* StudioFrameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioFrameApp.swift; sourceTree = "<group>"; };
 		5F1E5F392755992D00AD6B62 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5F1E5F3B2755992D00AD6B62 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		5F1E5F3D2755992F00AD6B62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 		5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		5FD0AA2828EE96890001AD0D /* JsonResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonResponse.json; sourceTree = "<group>"; };
 		5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUrlProviderMock.swift; sourceTree = "<group>"; };
+		5FD644EA291CEBDE00639C01 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryServiceTests.swift; sourceTree = "<group>"; };
 		F52274032819586500F3648A /* LibraryObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectViewModel.swift; sourceTree = "<group>"; };
@@ -192,7 +194,7 @@
 			children = (
 				5FA12D15286BDF3900020A5E /* ConfigurationService.swift */,
 				5FA12D13286BDF0F00020A5E /* ConfigurationTypeEnum.swift */,
-				5F1E5F372755992D00AD6B62 /* AppDelegate.swift */,
+				5F1E5F372755992D00AD6B62 /* StudioFrameApp.swift */,
 				5F1E5F3D2755992F00AD6B62 /* Assets.xcassets */,
 				5F1E5F3F2755992F00AD6B62 /* Preview Content */,
 				5F94D508275E71A700941292 /* Usdz files */,
@@ -386,6 +388,7 @@
 		5FB3587927746E8C00CA03CF /* ARView */ = {
 			isa = PBXGroup;
 			children = (
+				5FD644EA291CEBDE00639C01 /* MainView.swift */,
 				5F1E5F392755992D00AD6B62 /* ContentView.swift */,
 				5F07671427D607C800F2EF52 /* ARViewInterface.swift */,
 				5F07671A27D6173A00F2EF52 /* ARView */,
@@ -572,6 +575,7 @@
 				5F07672027D6200700F2EF52 /* LibraryObjectView.swift in Sources */,
 				5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */,
 				5F07671D27D61B5900F2EF52 /* LibraryViewModel.swift in Sources */,
+				5FD644EB291CEBDE00639C01 /* MainView.swift in Sources */,
 				5FB3587D27746EF600CA03CF /* FileDownloadedView.swift in Sources */,
 				5FA12D14286BDF0F00020A5E /* ConfigurationTypeEnum.swift in Sources */,
 				5F716BC627EC6907005C88B8 /* UsdzLibraryService.swift in Sources */,
@@ -598,7 +602,7 @@
 				5FBC171B28362B420060FE95 /* QuickLookViewController.swift in Sources */,
 				5FB3581127745E5300CA03CF /* CoredataModel.xcdatamodeld in Sources */,
 				F52274042819586500F3648A /* LibraryObjectViewModel.swift in Sources */,
-				5F1E5F382755992D00AD6B62 /* AppDelegate.swift in Sources */,
+				5F1E5F382755992D00AD6B62 /* StudioFrameApp.swift in Sources */,
 				5FA12D18286D3C8300020A5E /* USDZScrollingMenuViewModel.swift in Sources */,
 				5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */,
 				5F1E5F3C2755992D00AD6B62 /* Experience.rcproject in Sources */,
