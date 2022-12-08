@@ -10,7 +10,6 @@ struct FileNotDowloadedView : View {
             Spacer()
             Button {
                 viewModel.didTapDownload()
-                print("Downloading")
             } label: {
                 Text("Download")
                     .frame( maxWidth: 600, maxHeight: 30)

@@ -106,14 +106,14 @@ final class UsdzLibraryServiceTests: XCTestCase {
     /// Test check if usdz is not downloaded
     func test_givenAirForceUsdzFile_whenCheckingIfAlreadyDownloaded_thenReturnFalse() {
         guard var localUsdz = try? usdzLibraryService.getLocalObjects() else { return XCTFail("error getting local object")}
-        usdzLibraryService.remove(usdzObject: localUsdz.removeFirst())
+        usdzLibraryService.removeDownload(usdzObject: localUsdz.removeFirst())
         XCTAssertFalse(usdzLibraryService.getIsDownload(usdzObject: UsdzObject(title: "", objectUrlString: "", thumbnailImageUrlString: "")))
     }
     
     /// Test removing downloaded usdz
     func test_givenUsdzLibrary_whenRemoveAirForce_thenAirForceRemoved (){
         var localUsdz = try? usdzLibraryService.getLocalObjects()
-        usdzLibraryService.remove(usdzObject: localUsdz!.removeFirst())
+        usdzLibraryService.removeDownload(usdzObject: localUsdz!.removeFirst())
         XCTAssertFalse(usdzLibraryService.getIsDownload(usdzObject: UsdzObject.init(title: "Airforce", objectUrlString: "", thumbnailImageUrlString: "")))
     }
     

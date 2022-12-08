@@ -42,8 +42,6 @@ class UsdzObjectContainer: ObservableObject, Identifiable {
     private func loadThumbnailImage() {
         Task {
             isLoading.toggle()
-            print(fileName)
-            print(fileURL)
             assignURLFile(title: fileName)
             self.image = await thumbnailGenerator.getThumbnail(fileURL: fileURL, size: CGSize(width: 400, height: 400))
             isLoading.toggle()

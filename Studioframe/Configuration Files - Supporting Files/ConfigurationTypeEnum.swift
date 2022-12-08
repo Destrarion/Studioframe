@@ -1,6 +1,6 @@
 import Foundation
 
-enum ConfigurationType {
+enum ConfigurationTypeEnum {
     case local
     case heroku
     

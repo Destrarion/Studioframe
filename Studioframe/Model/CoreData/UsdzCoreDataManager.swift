@@ -11,21 +11,18 @@ protocol UsdzCoreDataManagerProtocol {
 
 class UsdzCoreDataManager: UsdzCoreDataManagerProtocol {
     
-    static let shared = UsdzCoreDataManager()
-    
     init(coreDataContextProvider: CoreDataContextProviderProtocol =  CoreDataContextProvider.shared) {
         self.coreDataContextProvider = coreDataContextProvider
     }
     
-    private let coreDataContextProvider: CoreDataContextProviderProtocol
-    
+    //MARK: - Internal - static let
+    static let shared = UsdzCoreDataManager()
     
     /// Add the item into CoreData
     ///
     /// This function will add the title, image, total time , ingredients and the url  into CoreData to become a Favorite Item.
     /// - Parameter item: Item to add in favorite
     func addItem(usdz: UsdzObject) {
-        print("💾💾💾💾💾💾💾💾💾")
         let itemEntity = ItemEntity(context: coreDataContextProvider.viewContext)
         itemEntity.title = usdz.title
         itemEntity.url = usdz.objectUrlString
@@ -78,10 +75,8 @@ class UsdzCoreDataManager: UsdzCoreDataManagerProtocol {
         try? coreDataContextProvider.save()
     }
     
-    
-
-    
-    
+    //MARK: Private
+    //MARK: Private - Function
     /// Function to get a specific entity in CoreData, Return ItemEntity to get access to the favorite Item in CoreData
     /// - Returns: ItemEntity, contains the information for the title, image, total time , ingredients and the url.
     private func getItemEntities() -> [ItemEntity] {
@@ -92,20 +87,7 @@ class UsdzCoreDataManager: UsdzCoreDataManagerProtocol {
         return itemEntities
     }
     
-    
-    
+    //MARK: Private - Let
+    private let coreDataContextProvider: CoreDataContextProviderProtocol
 }
 
-
-
-//struct Item {
-//    let title: String
-//    let url: String
-//    let imageURL: String
-//
-//    init(title: String, url: String, imageURL: String) {
-//        self.title = title
-//        self.url = url
-//        self.imageURL = imageURL
-//    }
-//}

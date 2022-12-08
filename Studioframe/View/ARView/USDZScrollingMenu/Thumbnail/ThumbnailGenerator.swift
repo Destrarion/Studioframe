@@ -18,10 +18,6 @@ class ThumbnailGenerator: ObservableObject {
     // MARK: Other version
     
     func getThumbnail(fileURL: String, size: CGSize) async -> Image? {
-        
-        
-        print(thumbnailCache)
-        
         guard let cacheThumbnail = thumbnailCache[fileURL] else {
             return await generateThumbnail(urlFile: fileURL, size: size)
         }
@@ -35,7 +31,6 @@ class ThumbnailGenerator: ObservableObject {
         let scale = await UIScreen.main.scale
         
         guard let url = URL(string: urlFile) else {
-            print("could not convert string to URL for thumbnail")
             return nil
         }
         
@@ -49,7 +44,6 @@ class ThumbnailGenerator: ObservableObject {
                 
                 guard let thumbnail = thumbnail,
                       error == nil else {
-                          print("Error generating thumbnail: \(error?.localizedDescription ?? "Error generating thumbnail")")
                           continuation.resume(returning: nil)
                           return
                       }

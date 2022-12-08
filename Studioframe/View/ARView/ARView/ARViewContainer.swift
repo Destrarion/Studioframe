@@ -9,7 +9,6 @@ struct ARViewContainer: UIViewRepresentable {
     
     @ObservedObject var experience: StudioFrameExperience
     
-    
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)

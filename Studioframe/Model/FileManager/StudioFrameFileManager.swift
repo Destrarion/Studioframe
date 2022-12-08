@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum StudioFrameFileManagerError: Error {
-    case unknownError
-}
-
 
 final class StudioFrameFileManager {
     
@@ -27,15 +23,12 @@ final class StudioFrameFileManager {
     }
     
     func writeData(data: Data, fileName: String) throws -> URL {
-        print("⚠️⚠️ \(fileName)")
         let newLocationUrl = getDocumentsDirectory().appendingPathComponent(fileName)
         do {
             try data.write(to: newLocationUrl)
         } catch {
-            print("⚠️⚠️ \(fileName)")
-            print(error)
             print(error.localizedDescription)
-            throw StudioFrameFileManagerError.unknownError
+            throw StudioFrameFileManagerErrorEnum.unknownError
         }
 
         return newLocationUrl
@@ -48,7 +41,6 @@ final class StudioFrameFileManager {
         return newLocationUrl
     }
     
-    
     func removeFileFromDocumentsDirectiory(fileName: String) throws {
         let fileLocationUrl = getDocumentsDirectory().appendingPathComponent(fileName)
         try removeFile(at: fileLocationUrl)
@@ -57,7 +49,6 @@ final class StudioFrameFileManager {
     func removeFile(at locationUrl: URL) throws {
         try FileManager.default.removeItem(at: locationUrl)
     }
-    
     
     func getFileUrl(fileName: String) throws -> URL {
         let fileLocationURL = getDocumentsDirectory().appendingPathComponent(fileName)
@@ -75,7 +66,6 @@ final class StudioFrameFileManager {
             print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
         }
         
-        
         return []
     }
     
@@ -84,16 +74,12 @@ final class StudioFrameFileManager {
         try moveFile(at: Bundle.main.url(forResource: "AirForce", withExtension: ".usdz")!,fileName: "AirForce.usdz")
     }
     
-    
-    
-    
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         
         return paths[0]
     }
     
- 
     func deleteAllFiles() {
         let files = try! getAllFileTitlesInDocumentsDirectory()
         files.forEach { fileUrl in

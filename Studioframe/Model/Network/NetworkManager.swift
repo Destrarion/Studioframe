@@ -14,41 +14,18 @@ protocol NetworkManagerProtocol {
     
 }
 
-
 class NetworkManager: NSObject, NetworkManagerProtocol {
     
+    //MARK: - Internal - Static let
     static let shared = NetworkManager()
     
-    
-    
-    private lazy var session: URLSession = {
-        let sessionConfiguration = URLSessionConfiguration.default
-        
-        let session = URLSession(
-            configuration: sessionConfiguration,
-            delegate: nil,
-            delegateQueue: .main
-        )
-        
-        return session
-    }()
-    
-    
-    private func cleanDownload(url: URL) {
-        let key = url.absoluteString
-        onDownloadProgressChangedContainer.removeValue(forKey: key)
-        session.invalidateAndCancel()
-        session = URLSession(configuration: .default)
-    }
-    
+    //MARK: - Internal - Function
     func stopDownload(url: URL) {
         cleanDownload(url: url)
     }
     
     func fetch<T: Decodable>(urlRequest: URLRequest) async throws -> T {
         let (data, response) = try await session.data(for: urlRequest)
-        
-        print((response as? HTTPURLResponse)?.statusCode ?? "-1")
         
         let jsonDecoder = JSONDecoder()
         
@@ -68,6 +45,7 @@ class NetworkManager: NSObject, NetworkManagerProtocol {
         
     }
     
+    //MARK: - Private - Function
     private func triggerFileDownload(
         urlRequest: URLRequest,
         onDownloadProgressChanged: @escaping (Int) -> Void
@@ -97,8 +75,25 @@ class NetworkManager: NSObject, NetworkManagerProtocol {
         return data
     }
 
-    
+    private func cleanDownload(url: URL) {
+        let key = url.absoluteString
+        onDownloadProgressChangedContainer.removeValue(forKey: key)
+        session.invalidateAndCancel()
+        session = URLSession(configuration: .default)
+    }
     //MARK: - Private - Variables
+    private lazy var session: URLSession = {
+        let sessionConfiguration = URLSessionConfiguration.default
+        
+        let session = URLSession(
+            configuration: sessionConfiguration,
+            delegate: nil,
+            delegateQueue: .main
+        )
+        
+        return session
+    }()
+    
     private var onDownloadProgressChangedContainer: [String: ((Int) -> Void)] = [:]
 
     

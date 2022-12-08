@@ -24,11 +24,11 @@ struct LibraryListView: View{
                     Picker("Selected section:", selection: $viewModel.currentLibraryFilterOption) {
                         Group {
                             Text("All")
-                                .tag(LibraryFilterOption.all)
+                                .tag(LibraryFilterOptionEnum.all)
                             Text("Favorites")
-                                .tag(LibraryFilterOption.favorited)
+                                .tag(LibraryFilterOptionEnum.favorited)
                             Text("Download")
-                                .tag(LibraryFilterOption.downloaded)
+                                .tag(LibraryFilterOptionEnum.downloaded)
                         }
                     }.pickerStyle(.segmented)
                     
@@ -39,10 +39,11 @@ struct LibraryListView: View{
                         
                         ForEach(viewModel.filteredLocalLibraryObjectViewModels, id: \.name) { viewModel in
                             LibraryObjectView(viewModel: viewModel)
+                            Divider()
                         }
-                        .listRowSeparator(.visible)
+                        .listRowSeparator(.hidden)
                         //.listRowSeparatorTint(Color("ListRowColor"))
-                        .listRowSeparatorTint(Color(.red))
+                        .listRowSeparatorTint(.clear)
                         .listRowBackground(Color.clear)
                     }
                     .alert("Error", isPresented: $viewModel.isAlertPresented, actions: {})

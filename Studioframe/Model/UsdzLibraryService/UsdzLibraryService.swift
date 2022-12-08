@@ -23,12 +23,7 @@ final class UsdzLibraryService {
     }
     
     
-    ///function to stop the dowload of the usdz
-    func stopDownload(usdzObject: UsdzObject) {
-        let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
-        networkManager.stopDownload(url: url)
-    }
-    
+    //MARK: - Download Browsing
     /// fetch usdz on the server and rethrieve all usdz info (not downloaded yet)
     func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
         //let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
@@ -43,9 +38,6 @@ final class UsdzLibraryService {
         
         
         let newObjects : [UsdzObjectWrapper] = usdzObjects.map { newObject in
-            print(allLocalFilesTitles.description.contains(newObject.objectUrlString))
-            
-            
             let isFavorited = checkFavorite(usdzobject: newObject)
             
             return UsdzObjectWrapper(
@@ -55,8 +47,6 @@ final class UsdzLibraryService {
             )
             
         }
-        print("the new object are : \(newObjects)")
-        
         return newObjects
     }
     
@@ -76,6 +66,12 @@ final class UsdzLibraryService {
         return usddObjects
     }
     
+    //MARK: - Download Management function
+    ///function to stop the dowload of the usdz
+    func stopDownload(usdzObject: UsdzObject) {
+        let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
+        networkManager.stopDownload(url: url)
+    }
     
     /// Download the specified usdz object and store it locally
     /// - Parameter usdzObject: Object containing the url pointing to the file web location
@@ -90,14 +86,13 @@ final class UsdzLibraryService {
         let downloadedUsdzObjectData = try await networkManager.fetchFile(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged)
         
         guard let newLocationUrl = try? studioFrameFileManager.writeData(data: downloadedUsdzObjectData, fileName: usdzObject.objectUrlString) else {
-            throw UsdzLibraryServiceError.failedToDownloadUsdzObject
+            throw UsdzLibraryServiceErrorEnum.failedToDownloadUsdzObject
         }
-        print("🍅🍅 \(newLocationUrl.absoluteString)")
         
         return newLocationUrl
     }
     
-    func remove(usdzObject: UsdzObject) {
+    func removeDownload(usdzObject: UsdzObject) {
         
         do {
             try studioFrameFileManager.removeFileFromDocumentsDirectiory(fileName:  usdzObject.objectUrlString)
@@ -114,8 +109,6 @@ final class UsdzLibraryService {
             return false
         }
         
-        print("🍅🍅 \(allFileTitles)")
-        
         // FIXME: should not work like that
         let isDownloaded = allFileTitles.contains { url in
             url.absoluteString.contains(usdzObject.objectUrlString)
@@ -130,8 +123,7 @@ final class UsdzLibraryService {
         addAirForceFavorite()
     }
     
-    
-    
+    //MARK: - Favorite Function
     func getFavoriteObjects() -> [UsdzObject] {
         return coreDataManager.getItems()
     }
@@ -168,6 +160,7 @@ final class UsdzLibraryService {
         }
     }
     
+    //MARK: - Private let
     /// Singleton of the network manager
     private let networkManager : NetworkManagerProtocol
     private let urlProvider: StudioframeUrlProviderProtocol

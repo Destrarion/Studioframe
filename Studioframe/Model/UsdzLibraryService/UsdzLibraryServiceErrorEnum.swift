@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum UsdzLibraryServiceError: Error {
+enum UsdzLibraryServiceErrorEnum: Error {
     case failedToDownloadUsdzObject
 }

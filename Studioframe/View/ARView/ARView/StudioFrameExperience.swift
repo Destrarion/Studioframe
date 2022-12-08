@@ -9,18 +9,7 @@ import Foundation
 import RealityKit
 import simd
 import Combine
-import SwiftUI
-
-
-extension NSNotification.Name {
-    static let shouldAddUsdzObject: NSNotification.Name = .init("shouldAddUsdzObject")
-}
-
-
-
-enum StudioFrameExperienceError: Error {
-    case failedToCreateURL
-}
+import ARKit
 
 
 @available(iOS 13.0, macOS 10.15, *)
@@ -57,7 +46,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     /// Load the object into the Experience file into the scene "Main scene"
     func loadExperience() throws -> StudioFrameExperience.StudioFrameScene {
-        guard let experienceURL = Bundle.main.url(forResource: "Experience", withExtension: "reality") else { throw StudioFrameExperienceError.failedToCreateURL }
+        guard let experienceURL = Bundle.main.url(forResource: "Experience", withExtension: "reality") else { throw StudioFrameExperienceErrorEnum.failedToCreateURL }
         let realityFileSceneURL = experienceURL.appendingPathComponent("MainScene", isDirectory: false)
         let sceneAnchorEntity = try StudioFrameScene.loadAnchor(contentsOf: realityFileSceneURL)
         let scene = createScene(from: sceneAnchorEntity)

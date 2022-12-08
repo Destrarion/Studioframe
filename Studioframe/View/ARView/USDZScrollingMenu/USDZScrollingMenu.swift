@@ -33,7 +33,6 @@ struct USDZScrollingMenu: View {
             List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
                 HStack {
                     Button {
-                        print("should add item with filename => \(usdzObjectContainer.fileName) object to arview")
                         //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
                         experience.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
                         

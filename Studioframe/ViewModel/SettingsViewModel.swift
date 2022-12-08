@@ -9,14 +9,12 @@ import Foundation
 
 @MainActor
 final class SettingsViewModel: ObservableObject {
-    private let usdzLibraryService = UsdzLibraryService.shared
-    
     func clearAllFavorite() {
         usdzLibraryService.deleteAllFavorite()
     }
-    
     func clearAllDownload() {
         usdzLibraryService.clearAllDownload()
-        
     }
+    
+    private let usdzLibraryService = UsdzLibraryService.shared
 }

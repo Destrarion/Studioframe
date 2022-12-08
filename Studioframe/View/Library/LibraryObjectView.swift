@@ -63,7 +63,6 @@ struct LibraryObjectView: View {
                 QuickLookView(objectUrl: viewModel.downloadedUsdzObjectUrl!)
                     .toolbar {
                         Button("Close") {
-                            print("Should close")
                             viewModel.isQuickLookPresented = false
                         }
                     }
