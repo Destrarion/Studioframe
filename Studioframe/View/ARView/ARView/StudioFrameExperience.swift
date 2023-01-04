@@ -48,9 +48,14 @@ class StudioFrameExperience: NSObject, ObservableObject {
     func loadExperience() throws -> StudioFrameExperience.StudioFrameScene {
         guard let experienceURL = Bundle.main.url(forResource: "Experience", withExtension: "reality") else { throw StudioFrameExperienceErrorEnum.failedToCreateURL }
         let realityFileSceneURL = experienceURL.appendingPathComponent("MainScene", isDirectory: false)
+        
+        let baseEntity = try ModelEntity.load(contentsOf: realityFileSceneURL)
+        baseEntity.generateCollisionShapes(recursive: true)
         let sceneAnchorEntity = try StudioFrameScene.loadAnchor(contentsOf: realityFileSceneURL)
         let scene = createScene(from: sceneAnchorEntity)
         self.scene = scene
+        
+        scene.addChild(baseEntity)
         
         return scene
     }

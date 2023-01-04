@@ -17,7 +17,9 @@ final class StudioFrameFileManager {
     static let shared = StudioFrameFileManager()
     
     func readFileData(fileName: String) throws -> Data {
-        let url = Bundle.main.url(forResource: fileName, withExtension: ".usdz")!
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: ".usdz") else{
+            throw StudioFrameFileManagerErrorEnum.bundleFileURLError
+        }
         
         return try Data(contentsOf: url)
     }
@@ -80,10 +82,11 @@ final class StudioFrameFileManager {
         return paths[0]
     }
     
-    func deleteAllFiles() {
-        let files = try! getAllFileTitlesInDocumentsDirectory()
-        files.forEach { fileUrl in
-            try! removeFile(at: fileUrl)
+    func deleteAllFilesExceptAirForce() throws {
+        let files = try getAllFileTitlesInDocumentsDirectory()
+        for fileUrl in files {
+            guard !fileUrl.lastPathComponent.hasPrefix("AirForce") else { continue }
+            try removeFile(at: fileUrl)
         }
     }
 }

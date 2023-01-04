@@ -3,4 +3,342 @@
    uuid = "95E34392-BF14-4E9F-9558-42728D844FED"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF6E117E-A018-45C3-99C6-6F66479E1641"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "test_givenUsdzLibrary_whenRemoveAirForce_thenAirForceRemoved()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3BDC3107-1137-4A6C-B935-54C81A3D674D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "test_givenAirForceUsdzFile_whenCheckingIfAlreadyDownloaded_thenReturnFalse()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4CDB758-FA9E-4485-B5FA-24E3B4BE0A1C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "test_givenAirForceUsdzFile_whenCheckingIfAlreadyDownloaded_thenReturnTrue()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57B98FB9-8935-4EBD-8B61-938237851A77"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "test_givenUsdzLibrary_whenFetchAllLocalUsdz_thenReturnLocalUsdz()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7324A930-CC9D-48AC-9CDC-9575776ADD94"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "test_givenZeroUsdzFavorited_whenCheckFavorite_thenReturnFalse()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "608F1C82-FE3C-4FA8-A218-8A9478726688"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "test_givenUsdzFavorited_whenCheckFavorite_thenReturnTrue()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04B06502-F1B1-4D1B-A217-C64C3181F84F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "UsdzLibraryServiceTests"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A007E440-AC27-4F95-85BD-5662EE6B9807"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "test_givenAirForceFavorite_whenRemoveFavoriteAirForce_thenNoFavoriteRemain()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21AB34D3-26D3-4D41-B370-23E5A2D328C6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "test_givenOneFavoriteUsdz_whenAddFavoriteUsdz_thenUsdzFavoriteAddedAtRow2()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D079D8B-CA90-4F54-8DFB-61FFD967FD7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "test_givenNoFavorite_whenAddFavorite_thenFavoriteAdded()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA95CD56-A1B7-49BF-8741-96FFA7ACF509"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "test_givenUsdzLibraryService_whenUsdzLibraryServiceInit_thenAddAirForceInFavorite()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9028CEC-AC15-4C75-880F-A8D04D5F9369"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "test_givenSuccessNetwork_whenFetchUsdzObjects_thenObjectsIsNotEmpty()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B9028CEC-AC15-4C75-880F-A8D04D5F9369 - a13060196e4219b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudioframeTests.UsdzLibraryServiceTests.test_givenSuccessNetwork_whenFetchUsdzObjects_thenObjectsIsNotEmpty() async throws -&gt; ()"
+                  moduleName = "StudioframeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/StudioframeTests/UsdzLibraryServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "73">
+               </Location>
+               <Location
+                  uuid = "B9028CEC-AC15-4C75-880F-A8D04D5F9369 - 76d78a85291f100"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for StudioframeTests.UsdzLibraryServiceTests.test_givenSuccessNetwork_whenFetchUsdzObjects_thenObjectsIsNotEmpty() async throws -&gt; ()"
+                  moduleName = "StudioframeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/StudioframeTests/UsdzLibraryServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "78">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5990E52F-4600-4B0B-B818-F956210BE53D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "test_givenUrlProviderFail_whenFetchUsdzObjects_thenObjectsIsEmpty()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5990E52F-4600-4B0B-B818-F956210BE53D - 17a83f42e65668a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudioframeTests.UsdzLibraryServiceTests.test_givenUrlProviderFail_whenFetchUsdzObjects_thenObjectsIsEmpty() async throws -&gt; ()"
+                  moduleName = "StudioframeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/StudioframeTests/UsdzLibraryServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "73">
+               </Location>
+               <Location
+                  uuid = "5990E52F-4600-4B0B-B818-F956210BE53D - e8bfbcd710a655c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for StudioframeTests.UsdzLibraryServiceTests.test_givenUrlProviderFail_whenFetchUsdzObjects_thenObjectsIsEmpty() async throws -&gt; ()"
+                  moduleName = "StudioframeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/StudioframeTests/UsdzLibraryServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "78">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85D3B3F5-82B3-4D9A-944C-61EAE5C5055B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "test_givenNoFileUsdz_whenFetchFile_thenGetAirForceFile()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "85D3B3F5-82B3-4D9A-944C-61EAE5C5055B - 4d49acb9979628ec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudioframeTests.UsdzLibraryServiceTests.test_givenNoFileUsdz_whenFetchFile_thenGetAirForceFile() async throws -&gt; ()"
+                  moduleName = "StudioframeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/StudioframeTests/UsdzLibraryServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "181">
+               </Location>
+               <Location
+                  uuid = "85D3B3F5-82B3-4D9A-944C-61EAE5C5055B - 3d339bcce18b81f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for StudioframeTests.UsdzLibraryServiceTests.test_givenNoFileUsdz_whenFetchFile_thenGetAirForceFile() async throws -&gt; ()"
+                  moduleName = "StudioframeTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/fabien/Desktop/Xcode%20Project/Projet%20Openclassrooms/Projet%2011%20-%20Studioframe/Studioframe/StudioframeTests/UsdzLibraryServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "125">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "000825C1-88EB-47A7-AA97-A002E31F10DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudioframeTests/UsdzLibraryServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "test_givenIsDownloading_whenStopDownload_thenDownloadStopped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

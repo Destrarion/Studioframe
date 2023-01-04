@@ -37,6 +37,8 @@ final class LibraryObjectViewModel: ObservableObject {
     @Published var downloadProgress: Int = 0
     @Published var isQuickLookPresented = false
     
+    @Published var isErrorAlertPresented = false
+    
     //MARK: Internal - Var
     var thumbnailImageUrl: URL? {
         configurationService.configurationType.schemeWithHostAndPort.appendingPathComponent(usdzObjectWrapper.usdzObject.thumbnailImageUrlString)
@@ -75,8 +77,12 @@ final class LibraryObjectViewModel: ObservableObject {
         trackingService.track(event: .downloadUsdz)
     }
     func didTapStopDownload() {
+        guard let _ = try? usdzLibraryService.stopDownload(usdzObject: usdzObjectWrapper.usdzObject) else {
+            isErrorAlertPresented.toggle()
+            return
+        }
+        
         downloadState = .notDownloaded
-        usdzLibraryService.stopDownload(usdzObject: usdzObjectWrapper.usdzObject)
         trackingService.track(event: .stopDownloadUsdz)
     }
     
@@ -101,7 +107,10 @@ final class LibraryObjectViewModel: ObservableObject {
         }
     }
     private func removeLocalObject() {
-        usdzLibraryService.removeDownload(usdzObject: usdzObjectWrapper.usdzObject)
+        guard let _ = try? usdzLibraryService.removeDownload(usdzObject: usdzObjectWrapper.usdzObject) else {
+            isErrorAlertPresented.toggle()
+            return
+        }
         updateDownloadState()
         onRemove(usdzObjectWrapper.usdzObject)
     }

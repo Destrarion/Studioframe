@@ -70,6 +70,9 @@ struct LibraryObjectView: View {
                     .navigationTitle(viewModel.usdzObjectWrapper.usdzObject.title)
             }
         }
+        .alert(isPresented: $viewModel.isErrorAlertPresented) {
+            .init(title: Text("Error"))
+        }
     }
 }
 

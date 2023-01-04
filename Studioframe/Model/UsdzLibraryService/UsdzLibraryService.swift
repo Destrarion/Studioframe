@@ -26,7 +26,7 @@ final class UsdzLibraryService {
     //MARK: - Download Browsing
     /// fetch usdz on the server and rethrieve all usdz info (not downloaded yet)
     func fetchUsdzObjects() async throws -> [UsdzObjectWrapper] {
-        //let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects")!
+        //guard let url = URL(string: "https://studioframeserver.herokuapp.com/usdz-objects") else { return StudioframeUrlProviderError}
         /// Choose here between local or heroku server for the request
         guard let url = urlProvider.createUsdzListRequestUrl() else { return [] }
         let urlRequest = URLRequest(url: url)
@@ -53,8 +53,10 @@ final class UsdzLibraryService {
     /// get all the local usdz in the file
     func getLocalObjects() throws -> [UsdzObject] {
         let allLocalFilesUrls = try studioFrameFileManager.getAllFileTitlesInDocumentsDirectory()
-        let usddObjects = allLocalFilesUrls.map { url -> UsdzObject in
-            let title = url.pathComponents.last!.split(separator: ".").first!.description
+        let usddObjects = allLocalFilesUrls.compactMap { url -> UsdzObject? in
+            guard let title = url.pathComponents.last?.split(separator: ".").first?.description else {
+                return nil
+            }
             let object = UsdzObject(
                 title: title,
                 objectUrlString: url.absoluteString,
@@ -68,8 +70,10 @@ final class UsdzLibraryService {
     
     //MARK: - Download Management function
     ///function to stop the dowload of the usdz
-    func stopDownload(usdzObject: UsdzObject) {
-        let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
+    func stopDownload(usdzObject: UsdzObject) throws {
+        guard let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString) else {
+            throw UsdzLibraryServiceErrorEnum.failedToStopDownload
+        }
         networkManager.stopDownload(url: url)
     }
     
@@ -78,8 +82,10 @@ final class UsdzLibraryService {
     /// - Returns: The local URL of the downloaded USDZ object
     func downloadUsdzObject(usdzObject: UsdzObject, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> URL {
         
-        // let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString)! (local configuration)
-        let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString)!
+        // guard let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString) else {throw UsdzLibraryServiceErrorEnum.failedToDownloadUsdzObject} (local configuration)
+        guard let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString) else {
+            throw UsdzLibraryServiceErrorEnum.failedToDownloadUsdzObject
+        }
         
         let urlRequest = URLRequest(url: url)
         
@@ -92,16 +98,9 @@ final class UsdzLibraryService {
         return newLocationUrl
     }
     
-    func removeDownload(usdzObject: UsdzObject) {
-        
-        do {
-            try studioFrameFileManager.removeFileFromDocumentsDirectiory(fileName:  usdzObject.objectUrlString)
-            removeFavorite(usdzObject: usdzObject)
-            print("try to remove item at \(usdzObject.objectUrlString)")
-        } catch {
-            print(error)
-            print("Error removing item \(usdzObject.objectUrlString)")
-        }
+    func removeDownload(usdzObject: UsdzObject) throws {
+        try studioFrameFileManager.removeFileFromDocumentsDirectiory(fileName:  usdzObject.objectUrlString)
+        removeFavorite(usdzObject: usdzObject)
     }
     
     func getIsDownload(usdzObject: UsdzObject) -> Bool {
@@ -118,8 +117,8 @@ final class UsdzLibraryService {
         return isDownloaded
     }
     
-    func clearAllDownload()  {
-        studioFrameFileManager.deleteAllFiles()
+    func clearAllDownload() throws {
+        try studioFrameFileManager.deleteAllFilesExceptAirForce()
         addAirForceFavorite()
     }
     
@@ -136,8 +135,8 @@ final class UsdzLibraryService {
         coreDataManager.deleteItem(with: usdzObject)
     }
     
-    func deleteAllFavorite(){
-        coreDataManager.deleteAllItems()
+    func deleteAllFavorite() throws {
+        try coreDataManager.deleteAllItems()
     }
     
     func checkFavorite(usdzobject: UsdzObject) -> Bool{
@@ -149,7 +148,7 @@ final class UsdzLibraryService {
         return isFavorited
     }
     
-    private func addAirForceFavorite(){
+    private func addAirForceFavorite() {
         let airForce = try? studioFrameFileManager.getFileUrl(fileName: "AirForce")
         let favoriteObject = getFavoriteObjects()
         let isFavorited = favoriteObject.contains { favoriteObject in
@@ -158,6 +157,11 @@ final class UsdzLibraryService {
         if isFavorited == false {
             coreDataManager.addItem(usdz: UsdzObject.init(title: "AirForce", objectUrlString: "\(airForce?.description ?? "")", thumbnailImageUrlString: ""))
         }
+    }
+    
+    func clearAllDownloadAndFavorite() throws {
+        try studioFrameFileManager.deleteAllFilesExceptAirForce()
+        try deleteAllFavorite()
     }
     
     //MARK: - Private let

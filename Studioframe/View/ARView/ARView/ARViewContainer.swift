@@ -9,6 +9,7 @@ struct ARViewContainer: UIViewRepresentable {
     
     @ObservedObject var experience: StudioFrameExperience
     
+    
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
@@ -23,7 +24,9 @@ struct ARViewContainer: UIViewRepresentable {
         arView.environment.sceneUnderstanding.options.insert(.collision)
 
         // Load the "Box" scene from the "Experience" Reality File
-        let scene = try! experience.loadExperience()
+        guard let scene = try? experience.loadExperience() else {
+            return ARView()
+        }
         
         // Add the box anchor to the scene
         arView.scene.anchors.append(scene)

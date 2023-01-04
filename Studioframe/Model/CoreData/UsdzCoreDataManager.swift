@@ -65,14 +65,14 @@ class UsdzCoreDataManager: UsdzCoreDataManagerProtocol {
     
     /// Delete all the favorite item in CoreData.
     /// Called for test for CoreData
-    func deleteAllItems() {
+    func deleteAllItems() throws {
         let itemEntities = getItemEntities()
         
         for itemEntity in itemEntities {
             coreDataContextProvider.delete(itemEntity)
         }
         
-        try? coreDataContextProvider.save()
+        try coreDataContextProvider.save()
     }
     
     //MARK: Private

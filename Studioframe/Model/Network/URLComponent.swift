@@ -33,4 +33,6 @@ final class StudioframeUrlProvider: StudioframeUrlProviderProtocol {
 
 }
 
-
+enum StudioframeUrlProviderError : Error {
+    case failconfigurationtype
+}

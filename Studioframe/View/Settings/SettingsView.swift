@@ -11,17 +11,13 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @StateObject var settingViewModel = SettingsViewModel()
-    @State var showClearAllFavoritesAlert = false
-    @State var showClearAllDownloadedFilesAlert = false
+    @StateObject var viewModel = SettingsViewModel()
     
     var body : some View {
         VStack{
             Text("Settings")
             
-            
             List{
-                
                 Section {
                     Link (destination: URL(string: "https://twitter.com/FabienDietrich")!){
                         Text("Twitter")
@@ -31,50 +27,52 @@ struct SettingsView: View {
                         Text("GitHub")
                     }
                 }
-                
-                
+
                 Section {
                     Button {
                         
-                        showClearAllFavoritesAlert.toggle()
+                        viewModel.showClearAllFavoritesAlert.toggle()
                     } label: {
                         Text("Clear all favorite ")
                             .foregroundColor(.red)
                     }
-                    .alert(isPresented: $showClearAllFavoritesAlert) {
+                    .alert(isPresented: $viewModel.showClearAllFavoritesAlert) {
                         Alert(title: Text("Are you sure to clear all favorite ?"),
                               message: Text("All favorite will be gone after this"),
                               primaryButton: .destructive(Text("Favorite must be purged")) {
-                            settingViewModel.clearAllFavorite()
+                            viewModel.clearAllFavorite()
                             
                         },
                               secondaryButton: .cancel())
                     }
                     
                     Button {
-                        showClearAllDownloadedFilesAlert.toggle()
+                        viewModel.showClearAllDownloadedFilesAlert.toggle()
                     } label: {
                         Text("Clear all downloaded files ")
                             .foregroundColor(.red)
                     }
-                    .alert(isPresented: $showClearAllDownloadedFilesAlert) {
+                    .alert(isPresented: $viewModel.showClearAllDownloadedFilesAlert) {
                         Alert(title: Text("Are you sure to clear all Files ?"),
                               message: Text("All files and favorited downloaded files will be purged in the process"),
                               primaryButton: .destructive(Text("Files must be purged")) {
-                            settingViewModel.clearAllDownload()
-                            settingViewModel.clearAllFavorite()
+                            viewModel.clearAllDownloadAndFavorite()
                             
                         },
                               secondaryButton: .cancel())
                     }
                 }
-                
-                
             }
-          
-            
-            
         }
         .listStyle(.grouped)
+        .alert(isPresented: $viewModel.isErrorAlertPresented) {
+            Alert(
+                title: Text("ERROR"),
+                message: Text("The operation failed"),
+                dismissButton: .default(
+                    Text("OK")
+                )
+            )
+        }
     }
 }

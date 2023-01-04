@@ -9,13 +9,13 @@ final class UsdzLibraryServiceTests: XCTestCase {
     /// Renitialise UsdzLibraryService and clear it favorite
     override func setUpWithError() throws {
         usdzLibraryService = UsdzLibraryService()
-        usdzLibraryService.deleteAllFavorite()
+        
     }
     
     /// Delete all favorite
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        usdzLibraryService.deleteAllFavorite()
+        try usdzLibraryService.clearAllDownloadAndFavorite()
     }
     
     /// Test of the URL Provider (Fail) that should result to a Empty Object
@@ -48,7 +48,8 @@ final class UsdzLibraryServiceTests: XCTestCase {
     }
     
     /// Test Add Favorite
-    func test_givenNoFavorite_whenAddFavorite_thenFavoriteAdded() {
+    func test_givenNoFavorite_whenAddFavorite_thenFavoriteAdded() throws {
+        try usdzLibraryService.deleteAllFavorite()
         let usdzToAdd = UsdzObject(title: "UsdzToAdd", objectUrlString: "To add", thumbnailImageUrlString: "none")
         usdzLibraryService.addFavorite(usdzObject: usdzToAdd)
         XCTAssertEqual(usdzLibraryService.getFavoriteObjects().first?.title, usdzToAdd.title)
@@ -56,13 +57,12 @@ final class UsdzLibraryServiceTests: XCTestCase {
     
     /// Test Add Favorite if already one existed
     func test_givenOneFavoriteUsdz_whenAddFavoriteUsdz_thenUsdzFavoriteAddedAtRow2() {
-        usdzLibraryService.addFavorite(usdzObject: UsdzObject.init(title: "AirForce", objectUrlString: "", thumbnailImageUrlString: ""))
+        /// First favorite usdz added in usdzlibraryservice init
         let usdz = UsdzObject(title: "usdz", objectUrlString: "1.2.3", thumbnailImageUrlString: "none")
         usdzLibraryService.addFavorite(usdzObject: usdz)
         let favorite = usdzLibraryService.getFavoriteObjects()
         XCTAssertEqual(favorite.count, 2)
         XCTAssertEqual(favorite[1].title,usdz.title)
-        usdzLibraryService.deleteAllFavorite()
     }
     
     /// Test Removing AirForce
@@ -73,6 +73,13 @@ final class UsdzLibraryServiceTests: XCTestCase {
         usdzLibraryService.removeFavorite(usdzObject: favoriteUsdz.first!)
         favoriteUsdz = usdzLibraryService.getFavoriteObjects()
         XCTAssertEqual(favoriteUsdz.count, 0)
+    }
+    
+    func test_givenAirForceFavorite_whenClearAllDownload_thenOnlyOneAirforceRemain() {
+        var favoriteUsdz = usdzLibraryService.getFavoriteObjects()
+        favoriteUsdz = usdzLibraryService.getFavoriteObjects()
+        print("☄️ + \(favoriteUsdz)")
+        XCTAssertEqual(favoriteUsdz.count, 1)
     }
     
     /// Test Checking Favorite ( True )
@@ -92,34 +99,38 @@ final class UsdzLibraryServiceTests: XCTestCase {
     //MARK: - USDZ File test
     
     /// Test Get Local Object ( return 1)
-    func test_givenUsdzLibrary_whenFetchAllLocalUsdz_thenReturnLocalUsdz() {
-        guard let localUsdz = try? usdzLibraryService.getLocalObjects() else { return XCTFail("error getting local object")}
-        XCTAssertEqual(localUsdz.count, 1)
+    func test_givenUsdzLibrary_whenFetchAllLocalUsdz_thenReturnLocalUsdz() throws {
+        let localObjects = try usdzLibraryService.getLocalObjects()
+        XCTAssertEqual(localObjects.count, 1)
     }
     
     /// Test Check if already downloaded
-    func test_givenAirForceUsdzFile_whenCheckingIfAlreadyDownloaded_thenReturnTrue() {
-        guard let localUsdz = try? usdzLibraryService.getLocalObjects() else { return XCTFail("error getting local object")}
-        XCTAssertTrue(usdzLibraryService.getIsDownload(usdzObject: localUsdz.first!))
+    func test_givenAirForceUsdzFile_whenCheckingIfAlreadyDownloaded_thenReturnTrue() throws {
+        let localObjects = try usdzLibraryService.getLocalObjects()
+        let firstLocalObject = try XCTUnwrap(localObjects.first)
+        XCTAssertTrue(usdzLibraryService.getIsDownload(usdzObject: firstLocalObject))
     }
     
     /// Test check if usdz is not downloaded
-    func test_givenAirForceUsdzFile_whenCheckingIfAlreadyDownloaded_thenReturnFalse() {
-        guard var localUsdz = try? usdzLibraryService.getLocalObjects() else { return XCTFail("error getting local object")}
-        usdzLibraryService.removeDownload(usdzObject: localUsdz.removeFirst())
+    func test_givenAirForceUsdzFile_whenCheckingIfAlreadyDownloaded_thenReturnFalse() throws {
+        let localObjects = try usdzLibraryService.getLocalObjects()
+        let firstLocalObject = try XCTUnwrap(localObjects.first)
+        usdzLibraryService.removeDownload(usdzObject: firstLocalObject)
         XCTAssertFalse(usdzLibraryService.getIsDownload(usdzObject: UsdzObject(title: "", objectUrlString: "", thumbnailImageUrlString: "")))
     }
     
     /// Test removing downloaded usdz
-    func test_givenUsdzLibrary_whenRemoveAirForce_thenAirForceRemoved (){
-        var localUsdz = try? usdzLibraryService.getLocalObjects()
-        usdzLibraryService.removeDownload(usdzObject: localUsdz!.removeFirst())
+    func test_givenUsdzLibrary_whenRemoveAirForce_thenAirForceRemoved() throws {
+        let localObjects = try usdzLibraryService.getLocalObjects() // There should 1 object
+        let firstLocalObject = try XCTUnwrap(localObjects.first)
+        
+        usdzLibraryService.removeDownload(usdzObject: firstLocalObject)
+        
         XCTAssertFalse(usdzLibraryService.getIsDownload(usdzObject: UsdzObject.init(title: "Airforce", objectUrlString: "", thumbnailImageUrlString: "")))
     }
     
     /// Test Usdz we fake it with the mock taking AirForce from Bundle and give him the AirForce instead of download
     func test_givenNoFileUsdz_whenFetchFile_thenGetAirForceFile() async throws {
-        StudioFrameFileManager.shared.deleteAllFiles()
         
         let networkManagerMock = MockNetworkManagerSuccess()
         
@@ -143,12 +154,16 @@ final class UsdzLibraryServiceTests: XCTestCase {
         }
         XCTAssertTrue(containsExampleUsdz)
     }
+    
    
-#warning("no clue how to test stopDownload")
-    func test_givenFakeDownloadUrl_whenStopDownload_thenDownloadStopped() {
+    func test_givenIsDownloading_whenStopDownload_thenDownloadStopped() throws {
         let usdz = UsdzObject(title: "Fakeusdz", objectUrlString: "fakedownload", thumbnailImageUrlString: "notTestingThat")
-        usdzLibraryService.stopDownload(usdzObject: usdz)
+        
+        try usdzLibraryService.stopDownload(usdzObject: usdz)
     }
     
     
+    func test_given_when_then() {
+        
+    }
 }

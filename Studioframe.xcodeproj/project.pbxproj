@@ -49,7 +49,7 @@
 		5FBC171E28362B940060FE95 /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC171D28362B940060FE95 /* QuickLookView.swift */; };
 		5FD0AA2728EE43C70001AD0D /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */; };
 		5FD0AA2928EE96890001AD0D /* JsonResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2828EE96890001AD0D /* JsonResponse.json */; };
-		5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */; };
+		5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMockNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMockNil.swift */; };
 		5FD644EB291CEBDE00639C01 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD644EA291CEBDE00639C01 /* MainView.swift */; };
 		5FE7B02527B441000032EF6E /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */; };
 		5FEE361D28E35042003760F0 /* UsdzLibraryServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */; };
@@ -141,7 +141,7 @@
 		5FC01FE6282CEC6F00BB3C06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FD0AA2628EE43C70001AD0D /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		5FD0AA2828EE96890001AD0D /* JsonResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonResponse.json; sourceTree = "<group>"; };
-		5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUrlProviderMock.swift; sourceTree = "<group>"; };
+		5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMockNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUrlProviderMockNil.swift; sourceTree = "<group>"; };
 		5FD644EA291CEBDE00639C01 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5FE7B02427B441000032EF6E /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailGenerator.swift; sourceTree = "<group>"; };
 		5FEE361C28E35042003760F0 /* UsdzLibraryServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsdzLibraryServiceTests.swift; sourceTree = "<group>"; };
@@ -462,7 +462,7 @@
 		5FD0AA2A28EEAECA0001AD0D /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift */,
+				5FD0AA2B28EEAEDD0001AD0D /* StudioframeUrlProviderMockNil.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -709,7 +709,7 @@
 			files = (
 				F5C69D2C28F5B97D00F874C5 /* UsdzObjectContainerTest.swift in Sources */,
 				5FD0AA2728EE43C70001AD0D /* MockNetworkManager.swift in Sources */,
-				5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMock.swift in Sources */,
+				5FD0AA2C28EEAEDD0001AD0D /* StudioframeUrlProviderMockNil.swift in Sources */,
 				5FEE361D28E35042003760F0 /* UsdzLibraryServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
