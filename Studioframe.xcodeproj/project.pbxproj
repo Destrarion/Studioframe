@@ -241,7 +241,6 @@
 		5F1E5F2B2755992D00AD6B62 = {
 			isa = PBXGroup;
 			children = (
-				5FEEF0A5294160A200E0D970 /* LibraryFilterOptionEnum.swift */,
 				5F1E5F362755992D00AD6B62 /* Studioframe */,
 				5F1E5F492755992F00AD6B62 /* StudioframeTests */,
 				5F1E5F532755992F00AD6B62 /* StudioframeUITests */,
@@ -334,6 +333,7 @@
 		5F716BC727EC6923005C88B8 /* UsdzLibraryService */ = {
 			isa = PBXGroup;
 			children = (
+				5FEEF0A5294160A200E0D970 /* LibraryFilterOptionEnum.swift */,
 				5F716BC527EC6907005C88B8 /* UsdzLibraryService.swift */,
 				F57139D7281840D10056FA8D /* UsdzObjectWrapper.swift */,
 				5F716BC827EC693D005C88B8 /* UsdzLibraryServiceErrorEnum.swift */,
