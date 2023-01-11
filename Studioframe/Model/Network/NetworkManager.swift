@@ -17,7 +17,7 @@ class NetworkManager: NSObject, NetworkManagerProtocol {
     }
     
     func fetch<T: Decodable>(urlRequest: URLRequest) async throws -> T {
-        let (data, response) = try await session.data(for: urlRequest)
+        let (data, _) = try await session.data(for: urlRequest)
         let jsonDecoder = JSONDecoder()
         let decodedData = try jsonDecoder.decode(T.self, from: data)
         

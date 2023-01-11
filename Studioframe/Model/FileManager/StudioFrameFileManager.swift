@@ -73,7 +73,7 @@ final class StudioFrameFileManager {
     
     /// moving the Airforce from the Bundle.main to file
     private func saveSeed() throws {
-        try moveFile(at: Bundle.main.url(forResource: "AirForce", withExtension: ".usdz")!,fileName: "AirForce.usdz")
+        try _ = moveFile(at: Bundle.main.url(forResource: "AirForce", withExtension: ".usdz")!, fileName: "AirForce.usdz")
     }
     
     private func getDocumentsDirectory() -> URL {
