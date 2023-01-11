@@ -70,7 +70,7 @@ final class StudioFrameFileManager {
         
         return []
     }
-    
+
     /// moving the Airforce from the Bundle.main to file
     private func saveSeed() throws {
         try _ = moveFile(at: Bundle.main.url(forResource: "AirForce", withExtension: ".usdz")!, fileName: "AirForce.usdz")
