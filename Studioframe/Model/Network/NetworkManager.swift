@@ -1,10 +1,3 @@
-//
-//  NetworkManager.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 24/02/2022.
-//
-
 import Foundation
 
 protocol NetworkManagerProtocol {

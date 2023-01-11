@@ -1,9 +1,3 @@
-//
-//  URLComponent.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich.
-//
 import Foundation
 
 protocol StudioframeUrlProviderProtocol {

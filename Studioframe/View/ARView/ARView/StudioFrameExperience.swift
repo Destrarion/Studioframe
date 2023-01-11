@@ -1,10 +1,3 @@
-//
-//  AirForceExperience.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 06/01/2022.
-//
-
 import Foundation
 import RealityKit
 import simd
@@ -34,7 +27,8 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     
     
-    var arView: ARView!
+    var arView: ARView?
+    
     var scene: StudioFrameScene?
     @Published var selectedEntity: Entity? {
         didSet {
@@ -90,8 +84,8 @@ class StudioFrameExperience: NSObject, ObservableObject {
                 }
             } receiveValue: { [weak self] loadedModelEntity in
                 loadedModelEntity.generateCollisionShapes(recursive: true)
-                self?.arView.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
-                if let gestureRecognizers = self?.arView.gestureRecognizers {
+                self?.arView?.installGestures([.rotation, .translation, .scale], for: loadedModelEntity)
+                if let gestureRecognizers = self?.arView?.gestureRecognizers {
                     for gestureRecognizer in gestureRecognizers {
                         gestureRecognizer.delegate = self
                     }
@@ -125,7 +119,7 @@ extension StudioFrameExperience: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let location = gestureRecognizer.location(in: arView)
         
-        if let entity = arView.entity(at: location) {
+        if let entity = arView?.entity(at: location) {
             selectedEntity = entity
         }
         

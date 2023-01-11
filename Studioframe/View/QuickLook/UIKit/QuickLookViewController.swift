@@ -1,15 +1,10 @@
-//
-//  QuickLookViewController.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 19/05/2022.
-//
-
 import Foundation
 import UIKit
 import QuickLook
 
-
+enum QuickLookViewControllerError {
+    case failtoloadItem
+}
 
 final class QuickLookViewController: QLPreviewController {
     var objectUrl: URL?
@@ -26,8 +21,18 @@ extension QuickLookViewController: QLPreviewControllerDataSource {
     }
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        let previewItem = objectUrl! as QLPreviewItem
+        guard let previewItem = objectUrl as? QLPreviewItem else {
+            return PlaceholderPreviewItem()
+        }
         
         return previewItem
     }
+}
+
+
+
+class PlaceholderPreviewItem: NSObject, QLPreviewItem {
+    var previewItemURL: URL?
+    
+    var previewItemTitle: String? = "Failed to load"
 }

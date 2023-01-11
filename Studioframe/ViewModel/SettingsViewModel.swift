@@ -1,10 +1,3 @@
-//
-//  SettingsViewModel.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 20/10/2022.
-//
-
 import Foundation
 
 @MainActor
@@ -18,14 +11,6 @@ final class SettingsViewModel: ObservableObject {
     func clearAllFavorite() {
         do {
             try usdzLibraryService.deleteAllFavorite()
-        } catch {
-            isErrorAlertPresented.toggle()
-        }
-    }
-    
-    func clearAllDownload() {
-        do {
-            try usdzLibraryService.clearAllDownload()
         } catch {
             isErrorAlertPresented.toggle()
         }

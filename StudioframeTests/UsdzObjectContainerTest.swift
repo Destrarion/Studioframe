@@ -1,10 +1,3 @@
-//
-//  UsdzObjectContainerTest.swift
-//  StudioframeTests
-//
-//  Created by Sylvain Dietrich on 11/10/2022.
-//
-
 import XCTest
 
 class UsdzObjectContainerTest: XCTestCase {

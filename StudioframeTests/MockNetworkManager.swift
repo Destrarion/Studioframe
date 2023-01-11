@@ -1,10 +1,3 @@
-//
-//  MockNetworkManager.swift
-//  StudioframeTests
-//
-//  Created by Fabien Dietrich on 06/10/2022.
-//
-
 @testable import Studioframe
 import Foundation
 
@@ -57,26 +50,3 @@ final class MockNetworkManagerFailure: NetworkManagerProtocol {
 }
 
 }
-
-//final class MockNetworkManagerFailure: NetworkManagerProtocol {
-//    func fetch<T>(urlRequest: URLRequest) async throws -> T where T : Decodable {
-//        let usdzDowloaded = false
-//        return usdzDowloaded as! T
-//    }
-//
-//    func fetchFile(urlRequest: URLRequest, onDownloadProgressChanged: @escaping (Int) -> Void, completionHandler: @escaping (URL) -> Void)  {
-//        let fileDowloaded = false
-//        guard let error = URL(string: "wrong") else {}
-//        completionHandler(error)
-//    }
-//
-//    func fetchData(urlRequest: URLRequest) async throws -> Data {
-//        let dataDowloaded = false
-//        return fileDowloaded
-//    }
-//
-//    func stopDownload(url: URL) {
-//        return nil
-//    }
-//
-//}

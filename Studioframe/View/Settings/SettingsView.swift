@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 15/09/2022.
-//
-
 import Foundation
 import SwiftUI
 

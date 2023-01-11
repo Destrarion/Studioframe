@@ -1,14 +1,7 @@
-//
-//  Page N°1.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 08/12/2022.
-//
-
 import Foundation
 import SwiftUI
 
-struct PageOne: View {
+struct PageOneView: View {
     
     @Binding var selectedOnboardingTag : Int
     

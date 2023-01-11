@@ -1,10 +1,3 @@
-//
-//  QuickLookView.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 19/05/2022.
-//
-
 import Foundation
 import SwiftUI
 

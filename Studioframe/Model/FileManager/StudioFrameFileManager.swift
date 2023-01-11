@@ -1,10 +1,3 @@
-//
-//  StudioFrameFileManager.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 21/04/2022.
-//
-
 import Foundation
 
 
@@ -43,9 +36,16 @@ final class StudioFrameFileManager {
         return newLocationUrl
     }
     
-    func removeFileFromDocumentsDirectiory(fileName: String) throws {
-        let fileLocationUrl = getDocumentsDirectory().appendingPathComponent(fileName)
-        try removeFile(at: fileLocationUrl)
+    func removeFileFromDocumentsDirectiory(
+        fileName: String,
+        shouldAppendDocumentPath: Bool = true
+    ) throws {
+        if shouldAppendDocumentPath {
+            let fileLocationUrl = getDocumentsDirectory().appendingPathComponent(fileName)
+            try removeFile(at: fileLocationUrl)
+        } else {
+            try removeFile(at: URL(string: fileName)!)
+        }
     }
     
     func removeFile(at locationUrl: URL) throws {
@@ -85,7 +85,10 @@ final class StudioFrameFileManager {
     func deleteAllFilesExceptAirForce() throws {
         let files = try getAllFileTitlesInDocumentsDirectory()
         for fileUrl in files {
-            guard !fileUrl.lastPathComponent.hasPrefix("AirForce") else { continue }
+            print(fileUrl.lastPathComponent)
+            guard !fileUrl.lastPathComponent.hasPrefix("AirForce") else {
+                continue
+            }
             try removeFile(at: fileUrl)
         }
     }

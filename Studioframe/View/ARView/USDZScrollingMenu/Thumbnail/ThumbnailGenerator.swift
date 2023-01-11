@@ -1,10 +1,3 @@
-//
-//  ThumbnailUSDZ.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 09/02/2022.
-//
-
 import SwiftUI
 import QuickLookThumbnailing
 import Combine

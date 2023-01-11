@@ -1,10 +1,3 @@
-//
-//  UsdzLibraryService.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 24/03/2022.
-//
-
 import Foundation
 import SwiftUI
 
@@ -82,7 +75,6 @@ final class UsdzLibraryService {
     /// - Returns: The local URL of the downloaded USDZ object
     func downloadUsdzObject(usdzObject: UsdzObject, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> URL {
         
-        // guard let url = URL(string: "http://127.0.0.1:8080/" + usdzObject.objectUrlString) else {throw UsdzLibraryServiceErrorEnum.failedToDownloadUsdzObject} (local configuration)
         guard let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString) else {
             throw UsdzLibraryServiceErrorEnum.failedToDownloadUsdzObject
         }
@@ -98,8 +90,14 @@ final class UsdzLibraryService {
         return newLocationUrl
     }
     
-    func removeDownload(usdzObject: UsdzObject) throws {
-        try studioFrameFileManager.removeFileFromDocumentsDirectiory(fileName:  usdzObject.objectUrlString)
+    func removeDownload(
+        usdzObject: UsdzObject,
+        shouldAppendDocumentPath: Bool = true
+    ) throws {
+        try studioFrameFileManager.removeFileFromDocumentsDirectiory(
+            fileName:  usdzObject.objectUrlString,
+            shouldAppendDocumentPath: shouldAppendDocumentPath
+        )
         removeFavorite(usdzObject: usdzObject)
     }
     
@@ -162,6 +160,7 @@ final class UsdzLibraryService {
     func clearAllDownloadAndFavorite() throws {
         try studioFrameFileManager.deleteAllFilesExceptAirForce()
         try deleteAllFavorite()
+        addAirForceFavorite()
     }
     
     //MARK: - Private let

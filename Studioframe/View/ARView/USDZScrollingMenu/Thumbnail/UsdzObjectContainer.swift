@@ -1,10 +1,3 @@
-//
-//  UsdzObjectContainer.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 07/03/2022.
-//
-
 import SwiftUI
 
 

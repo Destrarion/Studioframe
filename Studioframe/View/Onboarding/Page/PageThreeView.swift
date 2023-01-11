@@ -1,14 +1,7 @@
-//
-//  Page N°3 View.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 08/12/2022.
-//
-
 import Foundation
 import SwiftUI
 
-struct PageThree: View {
+struct PageThreeView: View {
     
     @Binding var selectedOnboardingTag : Int
     

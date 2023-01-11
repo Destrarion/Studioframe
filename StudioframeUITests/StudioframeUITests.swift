@@ -1,10 +1,3 @@
-//
-//  StudioframeUITests.swift
-//  StudioframeUITests
-//
-//  Created by Fabien Dietrich on 30/11/2021.
-//
-
 import XCTest
 
 class StudioframeUITests: XCTestCase {

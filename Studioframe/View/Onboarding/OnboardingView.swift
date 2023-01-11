@@ -9,11 +9,11 @@ struct OnboardingView: View {
     var body: some View {
         TabView(selection: $selectedOnboardingTag) {
             
-            PageOne(selectedOnboardingTag: $selectedOnboardingTag)
+            PageOneView(selectedOnboardingTag: $selectedOnboardingTag)
             .tag(0)
-            PageTwo(selectedOnboardingTag: $selectedOnboardingTag)
+            PageTwoView(selectedOnboardingTag: $selectedOnboardingTag)
             .tag(1)
-            PageThree(selectedOnboardingTag: $selectedOnboardingTag)
+            PageThreeView(selectedOnboardingTag: $selectedOnboardingTag)
             .tag(2)
             PageFour(hasSeenOnboarding: $hasSeenOnboarding)
             .tag(3)

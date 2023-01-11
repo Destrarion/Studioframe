@@ -1,10 +1,3 @@
-//
-//  LibraryObjectDownloadedViewModel.swift
-//  Studioframe
-//
-//  Created by Sylvain Dietrich on 27/04/2022.
-//
-
 import Foundation
 import Mixpanel
 

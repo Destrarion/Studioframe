@@ -1,10 +1,3 @@
-//
-//  CoreDataContextProvider.swift
-//  Reciplease
-//
-//  Created by Fabien Dietrich on 16/06/2021.
-//
-
 import Foundation
 import CoreData
 

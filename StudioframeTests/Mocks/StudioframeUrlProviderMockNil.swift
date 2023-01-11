@@ -1,10 +1,3 @@
-//
-//  StudioframeUrlProviderMock.swift
-//  StudioframeTests
-//
-//  Created by Fabien Dietrich on 06/10/2022.
-//
-
 import Foundation
 
 @testable import Studioframe

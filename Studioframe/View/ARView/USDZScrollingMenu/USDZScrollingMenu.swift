@@ -1,10 +1,3 @@
-//
-//  ARItemMenu.swift
-//  Studioframe
-//
-//  Created by Fabien Dietrich on 19/01/2022.
-//
-
 import Foundation
 import SwiftUI
 import RealityKit
