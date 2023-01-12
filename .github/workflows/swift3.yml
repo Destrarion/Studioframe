@@ -1,0 +1,23 @@
+name: Studioframe iOS Unit Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Xcode
+      run: sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
+    - name: Install dependencies
+      run: swift package update
+
+    - name: Build and test
+      run: xcodebuild clean build test -workspace Studioframe.xcworkspace -scheme Studioframe -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.0'
