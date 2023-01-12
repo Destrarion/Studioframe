@@ -6,7 +6,7 @@ on:
 
 env:
   SCHEME: Studioframe
-  TEST_DEVICE: platform=iOS Simulator,name=iPhone 11,OS=15.2
+  TEST_DEVICE: platform=iOS Simulator,name=iPhone 13,OS=16.0
 
 jobs:
   build:
