@@ -19,7 +19,7 @@ jobs:
 
     - name: Build
       shell: bash
-      run: xcodebuild -scheme '${{ env.SCHEME }}' -sdk iphonesimulator -destination '${{ env.TEST_DEVICE }}' build
+      run: xcodebuild -scheme '${{ env.SCHEME }}' -sdk iphonesimulator -destination '${{ env.TEST_DEVICE }}' -UseNewBuildSystem=NO build
 
   test:
     runs-on: macos-latest
@@ -32,3 +32,5 @@ jobs:
     - name: Test
       shell: bash
       run: xcodebuild -scheme '${{ env.SCHEME }}' -sdk iphonesimulator -destination '${{ env.TEST_DEVICE }}' test
+
+
