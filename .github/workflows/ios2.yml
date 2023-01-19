@@ -16,12 +16,6 @@ jobs:
     steps:
     - name: Checkout project repo
       uses: actions/checkout@v2
-      
-    - name: Set up Xcode
-      run: |
-        xcode-select --install
-        sudo xcode-select -s /Applications/Xcode.app
-        xcodebuild -version
 
     - name: Build
       shell: bash

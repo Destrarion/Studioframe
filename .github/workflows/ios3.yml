@@ -12,11 +12,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Xcode
-      run: |
-        xcode-select --install
-        sudo xcode-select -s /Applications/Xcode.app
-        xcodebuild -version
 
     - name: Build App
       run: xcodebuild -project MyApp.xcodeproj -scheme MyApp -destination 'platform=iOS,OS=16.0,name=iPhone 11' -configuration Release build
