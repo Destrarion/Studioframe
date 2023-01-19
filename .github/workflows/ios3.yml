@@ -14,4 +14,4 @@ jobs:
 
 
     - name: Build App
-      run: xcodebuild -project MyApp.xcodeproj -scheme MyApp -destination 'platform=iOS,OS=16.0,name=iPhone 11' -configuration Release build
+      run: xcodebuild -project Studioframe.xcodeproj -scheme Studioframe -destination 'platform=iOS,OS=16.0,name=iPhone 11' -configuration Release build
