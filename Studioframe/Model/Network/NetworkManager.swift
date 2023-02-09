@@ -55,7 +55,6 @@ class NetworkManager: NSObject, NetworkManagerProtocol {
             data.append(byte)
             
             if lastProgressPercentage != progress {
-                print("🍅 DOWNLOAD PROGRESS \(progress)%")
                 onDownloadProgressChanged(progress)
                 lastProgressPercentage = progress
             }

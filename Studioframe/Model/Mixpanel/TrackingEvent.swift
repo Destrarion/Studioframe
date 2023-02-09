@@ -1,7 +1,7 @@
 import Foundation
 import Mixpanel
 
-enum TrackingEventEnum {
+enum TrackingEvent {
     case addFavorite
     case downloadUsdz
     case removeUsdz

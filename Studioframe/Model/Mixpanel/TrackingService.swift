@@ -13,7 +13,7 @@ final class TrackingService {
     }
     
     
-    func track(event: TrackingEventEnum) {
+    func track(event: TrackingEvent) {
         mixpanelInstance.track(
             event: event.title,
             properties: event.properties

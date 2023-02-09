@@ -24,11 +24,11 @@ struct LibraryListView: View{
                     Picker("Selected section:", selection: $viewModel.currentLibraryFilterOption) {
                         Group {
                             Text("All")
-                                .tag(LibraryFilterOptionEnum.all)
+                                .tag(LibraryFilterOption.all)
                             Text("Favorites")
-                                .tag(LibraryFilterOptionEnum.favorited)
+                                .tag(LibraryFilterOption.favorited)
                             Text("Download")
-                                .tag(LibraryFilterOptionEnum.downloaded)
+                                .tag(LibraryFilterOption.downloaded)
                         }
                     }.pickerStyle(.segmented)
                     

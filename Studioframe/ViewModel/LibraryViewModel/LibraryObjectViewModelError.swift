@@ -1,5 +1,5 @@
 import Foundation
 
-enum LibraryObjectViewModelErrorEnum: Error {
+enum LibraryObjectViewModelError: Error {
     case failedToDownload
 }

@@ -23,7 +23,7 @@ struct ARViewInterface: View {
 
             Spacer()
             
-            Text(experience.textConsolePrint)
+            Text(experience.textConsole)
             
             Spacer()
 

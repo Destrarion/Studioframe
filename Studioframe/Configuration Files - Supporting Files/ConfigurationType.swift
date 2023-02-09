@@ -1,6 +1,6 @@
 import Foundation
 
-enum ConfigurationTypeEnum {
+enum ConfigurationType {
     case local
     case heroku
     
@@ -25,7 +25,8 @@ enum ConfigurationTypeEnum {
     private var host: String {
         switch self {
         case .local:
-            return "127.0.0.1"
+            return "192.168.1.30"
+            //return "127.0.0.1"
         case .heroku:
             return "studioframeserver.herokuapp.com"
         }

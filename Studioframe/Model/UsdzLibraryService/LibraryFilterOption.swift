@@ -1,5 +1,5 @@
 import Foundation
 
-enum LibraryFilterOptionEnum {
+enum LibraryFilterOption {
     case all, favorited, downloaded
 }

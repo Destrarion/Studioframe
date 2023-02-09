@@ -77,7 +77,6 @@ final class UsdzLibraryServiceTests: XCTestCase {
     func test_givenAirForceFavorite_whenClearAllDownload_thenOnlyOneAirforceRemain() {
         var favoriteUsdz = usdzLibraryService.getFavoriteObjects()
         favoriteUsdz = usdzLibraryService.getFavoriteObjects()
-        print("☄️ + \(favoriteUsdz)")
         XCTAssertEqual(favoriteUsdz.count, 1)
     }
     

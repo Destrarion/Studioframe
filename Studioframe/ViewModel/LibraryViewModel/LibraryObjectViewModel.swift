@@ -26,7 +26,7 @@ final class LibraryObjectViewModel: ObservableObject {
     }
     
     //MARK: - Internal - Published Var
-    @Published var downloadState: LibraryObjectDownloadStateEnum = .notDownloaded
+    @Published var downloadState: LibraryObjectDownloadState = .notDownloaded
     @Published var downloadProgress: Int = 0
     @Published var isQuickLookPresented = false
     
@@ -90,7 +90,7 @@ final class LibraryObjectViewModel: ObservableObject {
                     }
                 }
             ) else {
-                didProduceError(LibraryObjectViewModelErrorEnum.failedToDownload)
+                didProduceError(LibraryObjectViewModelError.failedToDownload)
                 updateDownloadState()
                 return
             }

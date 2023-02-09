@@ -21,7 +21,7 @@ class StudioFrameExperience: NSObject, ObservableObject {
         }
     }
     
-    var textConsolePrint: String {
+    var textConsole: String {
         selectedEntity?.name ?? ""
     }
     
@@ -30,17 +30,11 @@ class StudioFrameExperience: NSObject, ObservableObject {
     var arView: ARView?
     
     var scene: StudioFrameScene?
-    @Published var selectedEntity: Entity? {
-        didSet {
-            if selectedEntity == nil {
-                print("SET TO NIL ENTITY")
-            }
-        }
-    }
+    @Published var selectedEntity: Entity?
     
     /// Load the object into the Experience file into the scene "Main scene"
     func loadExperience() throws -> StudioFrameExperience.StudioFrameScene {
-        guard let experienceURL = Bundle.main.url(forResource: "Experience", withExtension: "reality") else { throw StudioFrameExperienceErrorEnum.failedToCreateURL }
+        guard let experienceURL = Bundle.main.url(forResource: "Experience", withExtension: "reality") else { throw StudioFrameExperienceError.failedToCreateURL }
         let realityFileSceneURL = experienceURL.appendingPathComponent("MainScene", isDirectory: false)
         
         let baseEntity = try ModelEntity.load(contentsOf: realityFileSceneURL)
@@ -56,7 +50,6 @@ class StudioFrameExperience: NSObject, ObservableObject {
     
     func removeSelectedEntity() {
         guard let selectedEntity = selectedEntity else {
-            print("Selected entity is nil ")
             return
         }
         

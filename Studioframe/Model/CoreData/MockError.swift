@@ -1,5 +1,5 @@
 import Foundation
 
-enum MockErrorEnum: Error {
+enum MockError: Error {
     case error
 }

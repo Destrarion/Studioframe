@@ -1,6 +1,6 @@
 import Foundation
 
 
-enum StudioFrameExperienceErrorEnum: Error {
+enum StudioFrameExperienceError: Error {
     case failedToCreateURL
 }

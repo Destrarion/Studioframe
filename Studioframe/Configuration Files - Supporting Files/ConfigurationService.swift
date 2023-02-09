@@ -5,7 +5,7 @@ final class ConfigurationService {
     static let shared = ConfigurationService()
     private init() { }
     
-    var configurationType: ConfigurationTypeEnum {
+    var configurationType: ConfigurationType {
 #if Local
         return .local
 #elseif Heroku

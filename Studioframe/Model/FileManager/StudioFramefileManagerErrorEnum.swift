@@ -1,6 +1,6 @@
 import Foundation
 
-enum StudioFrameFileManagerErrorEnum: Error {
+enum StudioFrameFileManagerError: Error {
     case bundleFileURLError
     case unknownError
 }

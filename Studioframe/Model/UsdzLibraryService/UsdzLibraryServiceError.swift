@@ -1,6 +1,6 @@
 import Foundation
 
-enum UsdzLibraryServiceErrorEnum: Error {
+enum UsdzLibraryServiceError: Error {
     case failedToDownloadUsdzObject
     case failedToStopDownload
 }

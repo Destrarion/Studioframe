@@ -11,7 +11,7 @@ final class StudioFrameFileManager {
     
     func readFileData(fileName: String) throws -> Data {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: ".usdz") else{
-            throw StudioFrameFileManagerErrorEnum.bundleFileURLError
+            throw StudioFrameFileManagerError.bundleFileURLError
         }
         
         return try Data(contentsOf: url)
@@ -22,8 +22,7 @@ final class StudioFrameFileManager {
         do {
             try data.write(to: newLocationUrl)
         } catch {
-            print(error.localizedDescription)
-            throw StudioFrameFileManagerErrorEnum.unknownError
+            throw StudioFrameFileManagerError.unknownError
         }
 
         return newLocationUrl
@@ -61,14 +60,10 @@ final class StudioFrameFileManager {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
             let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil)
-            print(" get the document in documents \(fileURLs)")
             return fileURLs
-            // process files
         } catch {
-            print("Error while enumerating files \(documentsURL.path): \(error.localizedDescription)")
+            throw StudioFrameFileManagerError.unknownError
         }
-        
-        return []
     }
 
     /// moving the Airforce from the Bundle.main to file
@@ -85,7 +80,6 @@ final class StudioFrameFileManager {
     func deleteAllFilesExceptAirForce() throws {
         let files = try getAllFileTitlesInDocumentsDirectory()
         for fileUrl in files {
-            print(fileUrl.lastPathComponent)
             guard !fileUrl.lastPathComponent.hasPrefix("AirForce") else {
                 continue
             }

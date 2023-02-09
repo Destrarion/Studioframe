@@ -65,7 +65,7 @@ final class UsdzLibraryService {
     ///function to stop the dowload of the usdz
     func stopDownload(usdzObject: UsdzObject) throws {
         guard let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString) else {
-            throw UsdzLibraryServiceErrorEnum.failedToStopDownload
+            throw UsdzLibraryServiceError.failedToStopDownload
         }
         networkManager.stopDownload(url: url)
     }
@@ -76,7 +76,7 @@ final class UsdzLibraryService {
     func downloadUsdzObject(usdzObject: UsdzObject, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> URL {
         
         guard let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString) else {
-            throw UsdzLibraryServiceErrorEnum.failedToDownloadUsdzObject
+            throw UsdzLibraryServiceError.failedToDownloadUsdzObject
         }
         
         let urlRequest = URLRequest(url: url)
@@ -84,7 +84,7 @@ final class UsdzLibraryService {
         let downloadedUsdzObjectData = try await networkManager.fetchFile(urlRequest: urlRequest, onDownloadProgressChanged: onDownloadProgressChanged)
         
         guard let newLocationUrl = try? studioFrameFileManager.writeData(data: downloadedUsdzObjectData, fileName: usdzObject.objectUrlString) else {
-            throw UsdzLibraryServiceErrorEnum.failedToDownloadUsdzObject
+            throw UsdzLibraryServiceError.failedToDownloadUsdzObject
         }
         
         return newLocationUrl

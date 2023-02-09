@@ -30,6 +30,6 @@ class CoreDataContextProviderMock: CoreDataContextProviderProtocol {
     }
     
     func fetch<T: NSFetchRequestResult>(_ request: NSFetchRequest<T>) throws -> [T] {
-        throw MockErrorEnum.error
+        throw MockError.error
     }
 }

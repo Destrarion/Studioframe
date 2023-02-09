@@ -1,6 +1,6 @@
 import Foundation
 
-enum LibraryObjectDownloadStateEnum {
+enum LibraryObjectDownloadState {
     case notDownloaded
     case downloading
     case downloaded

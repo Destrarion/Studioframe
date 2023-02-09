@@ -13,7 +13,7 @@ final class LibraryViewModel: ObservableObject {
     
     @Published var isAlertPresented = false
     @Published var searchText = ""
-    @Published var currentLibraryFilterOption: LibraryFilterOptionEnum = .all
+    @Published var currentLibraryFilterOption: LibraryFilterOption = .all
     @Published var localLibraryObjectViewModels: [LibraryObjectViewModel] = []
     @Published var isLoadingList: Bool = false
     @Published var shouldDismiss = false
