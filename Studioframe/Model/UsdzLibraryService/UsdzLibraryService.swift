@@ -64,7 +64,8 @@ final class UsdzLibraryService {
     //MARK: - Download Management function
     ///function to stop the dowload of the usdz
     func stopDownload(usdzObject: UsdzObject) throws {
-        guard let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString) else {
+        //configurationService.configurationType.schemeWithHostAndPort ⚠️⚠️
+        guard let url = urlProvider.createUsdzDownloadRequestUrl(name: usdzObject.title) else {
             throw UsdzLibraryServiceError.failedToStopDownload
         }
         networkManager.stopDownload(url: url)
@@ -75,7 +76,8 @@ final class UsdzLibraryService {
     /// - Returns: The local URL of the downloaded USDZ object
     func downloadUsdzObject(usdzObject: UsdzObject, onDownloadProgressChanged: @escaping (Int) -> Void) async throws -> URL {
         
-        guard let url = URL(string: "https://studioframeserver.herokuapp.com/" + usdzObject.objectUrlString) else {
+        //configurationService.configurationType.schemeWithHostAndPort ⚠️⚠️
+        guard let url = urlProvider.createUsdzDownloadRequestUrl(name: usdzObject.title) else {
             throw UsdzLibraryServiceError.failedToDownloadUsdzObject
         }
         

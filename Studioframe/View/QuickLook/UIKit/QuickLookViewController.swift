@@ -22,6 +22,7 @@ extension QuickLookViewController: QLPreviewControllerDataSource {
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
         guard let previewItem = objectUrl as? QLPreviewItem else {
+            print("🌪️" + objectUrl!.description)
             return PlaceholderPreviewItem()
         }
         
@@ -33,6 +34,7 @@ extension QuickLookViewController: QLPreviewControllerDataSource {
 
 class PlaceholderPreviewItem: NSObject, QLPreviewItem {
     var previewItemURL: URL?
+    
     
     var previewItemTitle: String? = "Failed to load"
 }

@@ -41,6 +41,7 @@ final class LibraryObjectViewModel: ObservableObject {
     }
     var downloadedUsdzObjectUrl: URL? {
         guard downloadState == .downloaded else { return nil }
+        print(" ☄️" + usdzObjectWrapper.usdzObject.objectUrlString)
         return try? studioFrameFileManager.getFileUrl(fileName: usdzObjectWrapper.usdzObject.objectUrlString)
     }
     var name: String {
@@ -86,6 +87,7 @@ final class LibraryObjectViewModel: ObservableObject {
                 usdzObject: usdzObject,
                 onDownloadProgressChanged: { [weak self] downloadProgress in
                     DispatchQueue.main.async { [weak self] in // TECHDEBT: Xcode 14 provide runtime error if not dispatching to the main queue, main actor issue?
+                        print("⚠️⚠️" + downloadProgress.description)
                         self?.downloadProgress = downloadProgress
                     }
                 }
