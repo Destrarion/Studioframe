@@ -14,9 +14,7 @@ struct QuickLookView: UIViewControllerRepresentable {
     let objectUrl: URL
     
     func makeUIViewController(context: Context) -> some QuickLookViewController {
-        let quickLookViewController = QuickLookViewController()
-        quickLookViewController.objectUrl = objectUrl
-        return quickLookViewController
+        QuickLookViewController(objectUrl: objectUrl)
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {

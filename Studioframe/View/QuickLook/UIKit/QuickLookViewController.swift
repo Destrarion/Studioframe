@@ -7,7 +7,17 @@ enum QuickLookViewControllerError {
 }
 
 final class QuickLookViewController: QLPreviewController {
-    var objectUrl: URL?
+    
+    init(objectUrl: URL) {
+        self.objectUrl = objectUrl
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("QuickLookViewController from storyboard not implemented")
+    }
+    
+    private let objectUrl: URL
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +31,7 @@ extension QuickLookViewController: QLPreviewControllerDataSource {
     }
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        guard let previewItem = objectUrl as? QLPreviewItem else {
-            print("🌪️" + objectUrl!.description)
-            return PlaceholderPreviewItem()
-        }
-        
-        return previewItem
+        return objectUrl as QLPreviewItem
     }
 }
 
@@ -38,3 +43,4 @@ class PlaceholderPreviewItem: NSObject, QLPreviewItem {
     
     var previewItemTitle: String? = "Failed to load"
 }
+
