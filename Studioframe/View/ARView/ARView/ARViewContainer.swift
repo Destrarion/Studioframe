@@ -15,8 +15,6 @@ struct ARViewContainer: UIViewRepresentable {
         let arView = ARView(frame: .zero)
         experience.arView = arView
         
-        // Must have LiDAR avaible
-        /// https://developer.apple.com/videos/play/wwdc2020/10612/
         arView.environment.sceneUnderstanding.options = []
         arView.environment.sceneUnderstanding.options.insert(.occlusion)
         arView.environment.sceneUnderstanding.options.insert(.receivesLighting)

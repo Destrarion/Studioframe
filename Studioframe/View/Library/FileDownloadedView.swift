@@ -13,8 +13,6 @@ struct FileDownloadedView: View {
             Spacer()
             Button {
                 viewModel.didTapSelect()
-                //dismiss()
-                //presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Add to scene")
                     .lineLimit(1)

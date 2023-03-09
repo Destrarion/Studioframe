@@ -42,7 +42,6 @@ struct LibraryListView: View{
                             Divider()
                         }
                         .listRowSeparator(.hidden)
-                        //.listRowSeparatorTint(Color("ListRowColor"))
                         .listRowSeparatorTint(.clear)
                         .listRowBackground(Color.clear)
                     }

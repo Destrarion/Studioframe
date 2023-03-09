@@ -11,8 +11,6 @@ final class StudioframeUrlProvider: StudioframeUrlProviderProtocol {
     static let shared = StudioframeUrlProvider()
     
     
-    /// https://studioframeserver.herokuapp.com//usdz-objects
-    // let url = URL(string: "http://127.0.0.1:8080/usdz-objects")! (local configuration)
     func createUsdzListRequestUrl() -> URL? {
         
         guard var urlComponents = URLComponents(url: configurationService.configurationType.schemeWithHostAndPort, resolvingAgainstBaseURL: true) else {

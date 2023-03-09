@@ -26,7 +26,6 @@ struct USDZScrollingMenu: View {
             List(viewModel.usdzObjectContainers, id : \.id) { usdzObjectContainer in
                 HStack {
                     Button {
-                        //NotificationCenter.default.post(name: .shouldAddUsdzObject, object: viewModel.usdzObjectContainers.first?.fileName)
                         experience.addUsdzObject(usdzResourceName: usdzObjectContainer.fileName)
                         
                     } label: {
@@ -45,7 +44,6 @@ struct USDZScrollingMenu: View {
         } else {
             EmptyView()
         }
-        //.background().hidden()
         
     }
 }
