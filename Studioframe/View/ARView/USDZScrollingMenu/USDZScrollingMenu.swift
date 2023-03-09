@@ -56,7 +56,7 @@ extension View {
         if #available(iOS 16.0, *) {
             self.scrollContentBackground(.hidden)
         } else {
-            self.hidden()
+            self
         }
     }
 }

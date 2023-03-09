@@ -4,7 +4,8 @@ import Foundation
 final class USDZScrollingMenuViewModel: ObservableObject {
     
     @Published var usdzObjectContainers: [UsdzObjectContainer] = []
-    var usdzLibraryService = UsdzLibraryService.shared
+    
+    private let usdzLibraryService = UsdzLibraryService.shared
     
     init() {
         let favoritedObjects = usdzLibraryService.getFavoriteObjects()
