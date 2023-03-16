@@ -1,7 +1,5 @@
 import SwiftUI
 import QuickLookThumbnailing
-import Combine
-
 
 class ThumbnailGenerator: ObservableObject {
     

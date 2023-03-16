@@ -21,8 +21,6 @@
 		5F1E5F412755992F00AD6B62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F1E5F402755992F00AD6B62 /* Preview Assets.xcassets */; };
 		5F1E5F552755992F00AD6B62 /* StudioframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */; };
 		5F1E5F572755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */; };
-		5F4FFFE127AA081E00690A77 /* hab.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDE27AA081E00690A77 /* hab.reality */; };
-		5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5F4FFFDF27AA081E00690A77 /* LunarRover.reality */; };
 		5F51C6F227C7939200FE8356 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F51C6F127C7939200FE8356 /* NetworkManager.swift */; };
 		5F6259ED28AE08C7006751BA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6259EC28AE08C6006751BA /* OnboardingView.swift */; };
 		5F69F48127987F6500AF358B /* USDZScrollingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */; };
@@ -112,8 +110,6 @@
 		5F1E5F502755992F00AD6B62 /* StudioframeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudioframeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1E5F542755992F00AD6B62 /* StudioframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITests.swift; sourceTree = "<group>"; };
 		5F1E5F562755992F00AD6B62 /* StudioframeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioframeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		5F4FFFDE27AA081E00690A77 /* hab.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = hab.reality; sourceTree = "<group>"; };
-		5F4FFFDF27AA081E00690A77 /* LunarRover.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = LunarRover.reality; sourceTree = "<group>"; };
 		5F51C6F127C7939200FE8356 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5F6259EC28AE08C6006751BA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		5F69F48027987F6500AF358B /* USDZScrollingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZScrollingMenu.swift; sourceTree = "<group>"; };
@@ -362,8 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				5F94D509275E71BE00941292 /* AirForce.usdz */,
-				5F4FFFDE27AA081E00690A77 /* hab.reality */,
-				5F4FFFDF27AA081E00690A77 /* LunarRover.reality */,
 			);
 			path = "Usdz files";
 			sourceTree = "<group>";
@@ -617,9 +611,7 @@
 			files = (
 				5F1E5F412755992F00AD6B62 /* Preview Assets.xcassets in Resources */,
 				5F1E5F3E2755992F00AD6B62 /* Assets.xcassets in Resources */,
-				5F4FFFE227AA081E00690A77 /* LunarRover.reality in Resources */,
 				5F94D50A275E71BF00941292 /* AirForce.usdz in Resources */,
-				5F4FFFE127AA081E00690A77 /* hab.reality in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
